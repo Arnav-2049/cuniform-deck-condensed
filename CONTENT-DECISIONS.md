@@ -288,3 +288,69 @@ This inverts each weakness: 18 months + $0 raised → **capital efficiency**; pa
 of constrained achievement + the raise is the unlock**; small beta → **deliberate design-partner-led
 development**. Investors fund **slope, not position** — this framing makes the slope the story.
 Kyle going full-time on close is the concrete inflection point that makes it credible.
+
+---
+
+## 8 · ROUND 3 — PHASE 2 STRATEGY, ADVISOR, GTM
+
+### Phase 2 REVISED: "cities prefer us" — not "cities buy us"
+**The original flywheel treated cities as untapped Phase 2 territory. That is no longer accurate.**
+
+City-side AI plan review is already contested:
+| Player | Deployment |
+|---|---|
+| **Archistar** | **Austin** — adopted Oct 2024 after 3-month pilot; no critical errors reported |
+| **Symbium** | **Bakersfield** — ~500 permits in under 4 months |
+| **CivCheck** | **Honolulu** — "Guided AI Plan Review"; Chicago-based |
+| **Swiftbuild.ai** | Municipal deployments |
+
+But adoption is genuinely early: **~10–15 US cities with active AI plan-review deployments as of
+June 2026 — ~2% of a 741-city dataset.**
+
+**Also confirmed: PermitFlow is NOT a Phase 2 competitor.** It sells to *private construction teams*
+managing applications across municipalities, not to governments.
+
+**Decided strategy — "pre-cleared submissions" flywheel:**
+> They make review faster. **We reduce what needs reviewing at all.**
+
+Architects using Cuniform produce submissions that arrive pre-checked, cited, and audit-trailed.
+Cities don't buy Cuniform — cities **prefer** Cuniform submissions because they clear faster. That
+preference becomes a distribution advantage pulling more architects in.
+
+Why this beats selling to cities:
+- **No government sales cycle** (12–24 months + procurement) on an 18-month runway
+- **No head-to-head** with funded city-side incumbents
+- Turns city-side tools into **complements** (possible interop/partnership path later)
+- Flywheel still turns, but every loop monetizes through architects we already reach
+
+**Competition slide:** add city-side players as a **separate category**. Signals landscape command
+and makes the architect-side position look deliberate rather than accidental.
+
+### Advisor — Haakon Sorenson
+- **Status: FORMAL ADVISOR WITH A SIGNED AGREEMENT.** (Integrity check passed — he can appear
+  on the deck and survive a reference check.)
+- Credential claimed: **head of sales at Procore**.
+- **⚠️ VERIFICATION INCONCLUSIVE.** Public sources surface Bill Crawford (SVP U.S. Sales) and
+  Dennis Lyandres (CRO) as Procore sales leadership; the only near-name match is **Hans Sorensen,
+  Commercial Account Executive, Procore (Boulder CO)** — very different seniority. No public
+  result for "Haakon Sorenson" as head of sales.
+- **Caveat:** search limits are real (LinkedIn poorly indexed; regional/divisional leaders rarely
+  appear in press; Procore was far smaller earlier, when the title would have meant different scope).
+- **ACTION REQUIRED:** get his **exact title and tenure** directly and state it verbatim. Black Pearl
+  will check LinkedIn; a mismatch between slide and profile makes every other claim look inflated.
+  *"Early Procore sales leadership"* or *"Regional Head of Sales, Procore"* carries nearly all the
+  credibility and survives verification.
+
+### GTM
+- **Owner: Joe (CEO, architect) — founder-led.** Architect selling to architects; domain credibility
+  is the asset. Free, credible, standard for this stage.
+- GTM hire funded post-close from the 25% allocation.
+
+### The one thing Black Pearl should remember
+> **"Code checking should happen while you design, not after."**
+The category-defining insight. Positions Cuniform as inevitable rather than incremental.
+Everything else in the deck should ladder up to this.
+
+### Demo
+- **Recorded demo video embedded** in the deck (avoids live-demo risk).
+- Doubles as the defense for the full-IBC coverage claim — showing beats telling.
