@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cuniform — Pitch 2026 (Condensed · 8 pages)</title>
+  <meta name="viewport" content="width=1920, initial-scale=1">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Deck stage (shared custom element) -->
+  <script src="deck-stage.js"></script>
+
+  <!-- React + Babel (runtime transpile of the .jsx below) -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+</head>
+<body>
+  <!-- React mounts the 8 <section class="slide"> elements directly into here. -->
+  <deck-stage width="1920" height="1080" id="stage"></deck-stage>
+
+  <!-- Shared primitives (Slide, ChromeBottom, Counter, …) -->
+  <script type="text/babel" src="src/primitives.jsx" data-plugins="transform-react-jsx-source" data-filename="src/primitives.jsx"></script>
+
+  <!-- The 8 condensed slides -->
+  <script type="text/babel" src="src/slides-condensed.jsx" data-plugins="transform-react-jsx-source" data-filename="src/slides-condensed.jsx"></script>
+
+  <!-- Mount -->
+  <script type="text/babel" data-plugins="transform-react-jsx-source" data-filename="mount">
+    function Deck() {
+      return (
+        <>
+          {window.CONDENSED_SLIDES.map((s, i) => (
+            <s.C key={s.key} index={i} />
+          ))}
+        </>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('stage')).render(<Deck />);
+  </script>
+</body>
+</html>
