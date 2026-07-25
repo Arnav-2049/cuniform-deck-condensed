@@ -200,3 +200,91 @@ The original slide does not reconcile with itself:
 - ENR Top 500 / PitchBook / RocketReach — RAMSA ~300 staff, $82.7M design revenue (2024); Hart Howerton ~255-300 staff
 - GetApp / up.codes — UpCodes pricing $33-39/seat/mo
 - Autodesk / Revizto — Revit $2,915/yr per named user; third-party Revit plugins EUR 74.90-109.90/mo
+
+---
+
+## 7 · ROUND 2 — PRODUCT, LEGAL, LIABILITY, MOMENTUM
+
+### Product truth
+| Item | Reality | Deck treatment |
+|---|---|---|
+| Integrations | **Revit only** today (deck previously claimed Revit + AutoCAD + Rhino) | State Revit only. Focus is a strength at seed: "starts where the work happens." |
+| Code coverage | **Full IBC claimed, incl. structural, MEP, energy** (founder's call, stated plainly) | Stated plainly per founder decision. **Backup prepared** — see risk note below. |
+| Stage | Design-partner beta, in active testing on live work | Describe the activity, **omit the tester count**. |
+
+**⚠️ Risk note (flagged, founder accepted):** "Full IBC incl. structural/MEP/energy" alongside
+"beta / small tester group" is where credibility strain concentrates. The likely attack is not
+"can the AI read code?" but **"what happens when the Revit model doesn't contain the data the
+check requires?"** (MEP often lives in linked models; envelope/R-values often unmodeled in
+design phases). Recommended fallback framing if probed: *"The engine is code-agnostic — it
+reasons over any ingested corpus. Coverage depth follows model completeness."*
+
+**Backup materials to prepare:** (a) per-domain confidence levels appendix, (b) live demo on a real model.
+
+### Legal — ICC copyright exposure
+- **ICC v. UpCodes (2017–2022):** ICC sued over redistribution of I-Codes. UpCodes largely won on
+  **fair use**; 2nd Circuit affirmed in part (2022). ICC then filed a **second suit for false
+  advertising**, targeting UpCodes' claim that customers gain a *"complete understanding"* of code.
+- **Cuniform's position:** relying on the fair-use precedent.
+- **Nuance to be aware of:** the fair-use win covered *displaying codes adopted into law*. Using code
+  text as reference data for an AI system is arguably *more* transformative (helps) but **untested**.
+- **The live risk is the second suit, not the first:** ICC has demonstrated it will attack
+  **completeness/accuracy marketing claims**. This directly constrains how Cuniform words its
+  accuracy and coverage claims in-product and in-market.
+
+### Liability — structurally favorable
+1. **Non-delegable duty.** Under US/UK/CA/EU licensing law, the licensed professional is responsible
+   for everything submitted under their seal; this **cannot** be transferred to software or AI.
+   "If an AI tool produces an error that leads to a claim, the design professional bears the
+   liability, not the AI vendor." Standard practice: clickthrough terms disclaiming output liability.
+2. **Emerging standard of care validates the positioning.** Professionals are expected to *"verify AI
+   output as they would verify a junior employee's work."* Cuniform's **"AI second-reader"** framing
+   maps precisely onto this. Use that language.
+3. **E&O + AI landscape — decided: use SOFTLY.**
+   - Headwind: Verisk standardized AI exclusion forms **CG 40 47 / CG 40 48, effective Jan 1 2026**,
+     defining generative AI broadly ("any machine-based learning system trained on data and capable
+     of creating content — text, images, audio, video, or **code**"). **Berkley** has an absolute AI
+     exclusion; **Philadelphia Insurance** and **Hamilton Select** exclude AI claims; **AIG, Great
+     American, WR Berkley** filing for approval.
+   - Opportunity: most carriers are **underwriting**, not excluding. Renewal forms ask *who reviews
+     AI output* and *what documentation exists of that review* — **which is literally the product**.
+   - Unused-but-available positioning: *"We don't create content. We create evidence."* Cuniform
+     verifies rather than generates, which may sit outside the Verisk definition.
+   - **Caveat:** whether Cuniform falls inside/outside the exclusion is a **legal question**. Get a
+     broker/counsel opinion before making it a headline claim. Decision for now: **mention the audit
+     trail as supporting E&O compliance; make no claims about exclusion status.**
+- **AIA publishes an "AI Firm Toolkit"** and an A&E AI standard-of-care framework exists — worth
+  referencing to signal alignment with professional norms.
+
+### Moat
+**Decided framing: Autodesk is a partner/acquirer, not a competitor.** They monetize the platform and
+acquire point solutions; being the best plug-in is both the strategy and the exit path.
+(Available to reinforce: jurisdictional depth of local amendments compounds slowly and unglamorously;
+accepted/dismissed flag data compounds with usage.)
+
+### Traction — what is actually true
+| Claim | Reality |
+|---|---|
+| RAMSA / Hart Howerton | **Design partners first, paid later. VERBAL intent to convert** — not written. Product being curated for them. Do **not** imply contracted revenue. |
+| Waitlist | **60 individuals** |
+| Usage | In active testing on live work — **state activity, not the count** |
+| Elapsed | **18 months** (idea through full build), **bootstrapped, zero outside capital** |
+
+### Team
+- **Joe (CEO) and Arnav (CDO) full-time; Kyle (CTO) part-time → FULL-TIME ON CLOSE.**
+- This is the single most important fact in the momentum narrative. State the transition explicitly.
+
+### Momentum — the core narrative problem, and the reframe
+**Founder's stated #1 concern: Black Pearl pushing back on momentum.** The raw arithmetic
+(18 months · $0 revenue · small tester group · verbal intent · part-time CTO) reads as slow.
+
+**Decided reframe — placed on the TRACTION slide (not the cover):**
+
+> "In 18 months, on **zero outside capital**, with our CTO working nights and weekends, we built a
+> working full-IBC compliance engine inside Revit and signed two ENR Top-500 firms as design
+> partners. That's what we did with nothing. This raise is what we do with something."
+
+This inverts each weakness: 18 months + $0 raised → **capital efficiency**; part-time CTO → **proof
+of constrained achievement + the raise is the unlock**; small beta → **deliberate design-partner-led
+development**. Investors fund **slope, not position** — this framing makes the slope the story.
+Kyle going full-time on close is the concrete inflection point that makes it credible.
