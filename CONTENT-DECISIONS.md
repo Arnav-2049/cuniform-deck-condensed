@@ -33,11 +33,17 @@ Use of funds (percentages unchanged): Engineering 55% ($825K) · GTM 25% ($375K)
 
 ### Milestones — staged, honest from a pre-revenue start
 Replaces the old single "$1M ARR" headline, which was not credible from 2 non-binding MOUs.
+Reframed around **few, large logos** (see §6) rather than many mid-market ones.
 
 - **M3** — design-partner beta hardened; RAMSA + Hart Howerton on live projects
-- **M6** — GA launch; first paid conversions (~$50–100K ARR)
-- **M12** — 8–12 paying firms (~$250–400K ARR); first firm-wide expansion
-- **M18** — 20–25 firms · **~$500K ARR (base case, what the raise buys) / $1M (stretch → Series A trigger)**
+- **M6** — GA launch; free tier live; first paid conversions (~$50–100K ARR)
+- **M12** — 5–8 paying firms (~$250–400K ARR); first firm-wide expansion
+- **M18** — **8–12 paying firms · ~$500K ARR (base) / $1M (stretch → Series A trigger)**, reported alongside **free-tier signups as a separate top-of-funnel metric**
+
+Land-and-expand math: a firm lands at one studio (~20–40 seats ≈ $40–60K ACV) and expands
+firm-wide over 12–18 months (~$215K at RAMSA scale). 8 firms × $60K blended = $500K;
+12 firms with 2–3 expanded firm-wide = $1M. In a freemium motion, showing the funnel
+de-risks the pitch — if ARR lags, signup growth still evidences demand.
 
 ### Numbers
 | Claim | Decision | Source |
@@ -79,13 +85,93 @@ Reasoning:
 |---|---|---|
 | O1 | **Survey data** — deck says 72%/48% (n=40+); founder says actual is **~80%** | **Placeholder "80%"** pending the form. Recompute exact n, % breakdowns, and top objections when attached. |
 | O2 | **IBC page count** — deck says 1,200; 2024 IBC is ~750 (~1,000+ with local amendments) | **Parked** — founder reworking this content separately. |
-| O3 | **Market slide seat model** — $59/seat, 30 seats/firm, 4,500 mid-market firms, 820K US BIM seats | **All confirmed placeholders. Rebuild from scratch.** See §4. |
+| O3 | ~~Market slide seat model~~ | **RESOLVED — see §6.** New pricing (freemium/$99/enterprise), large-firm beachhead, and a fully reconciled model. The old "4,500 mid-market firms" and "820K US BIM seats" are retired. |
 | O4 | Joe Yatco "80+ projects"; Arnav Somani "1M+ customers, Visa/Nike/IOC" | Unverified — founder to confirm. |
 | O5 | Portrait photos | Team slide still uses initials placeholders. |
 
 ---
 
-## 4 · THE MARKET SLIDE PROBLEM (to rebuild)
+## 6 · PRICING & BEACHHEAD (rebuilt — supersedes §4's open item O3)
+
+### Pricing: freemium + credits + enterprise
+The old flat "$59/seat/mo" was a placeholder **and underpriced**. Comparables:
+
+| Comparable | Price/seat/mo |
+|---|---|
+| UpCodes (code *search* only) | $33–39 |
+| **Third-party Revit plugins** | **$80–118** (€74.90 fixed / €109.90 premium) |
+| Revit itself | ~$250 ($2,915/yr) |
+| Archicad / Vectorworks | $234 / $128 |
+
+**Decided model:**
+
+| Tier | Price | Credits | Purpose |
+|---|---|---|---|
+| **Free** | $0 | ~10 checks/mo, 1 project, watermarked reports | Land the individual architect inside big firms |
+| **Pro** | **$99/seat/mo** | ~200 checks/mo, unlimited projects, full citations + export | Small/mid firms, teams |
+| **Enterprise** | **Custom (~$129/seat effective)** | Pooled/unlimited, SSO, audit logs, local amendments, support | Large firms — the beachhead |
+
+**Credit unit = one compliance run against a model.** Maps directly to inference cost, so
+gross margin stays honest as usage scales; easy for architects to reason about.
+
+Value check: firms pay **$2,500–15,000 per project** for code review. A 30-seat firm at $99
+pays $35.6K/yr — less than 3 mid-size projects' consultant spend, for unlimited projects.
+
+### Beachhead: LARGE firms (50+ employees), 100+ segment first
+**Both design partners are ~300-person firms** — RAMSA (~300 staff, $82.7M design revenue,
+ENR Top 500) and Hart Howerton (~255–300, ENR Top 225). The deck's stated "15–100 person
+mid-market" ICP contradicted its own traction.
+
+AIA distribution (~19,000 member-owned firms) is top-heavy:
+
+| Firm size | % of firms | ≈ count |
+|---|---|---|
+| <5 employees | 60% | ~11,400 |
+| 5–14 | ~20% | ~3,800 |
+| 15–49 | ~13% | ~2,470 |
+| **50+** | **6.5%** | **~1,235** |
+| (of which 100+) | 2.5% | ~475 |
+
+Decisive fact: **firms with 50+ employees are 6.5% of firms but over half of all
+private-practice employment and nearly half of industry revenue.**
+
+Rationale for going large:
+1. RAMSA alone ≈ 150 technical seats ≈ **$215K ARR from one logo**
+2. $500K M18 target needs **~3–5 large firms**, not 25 mid-market ones
+3. Fewer, bigger deals = smaller sales team = **lower burn** (critical on $1.5M)
+4. Large firms have **BIM managers** — one champion drives firm-wide rollout
+5. They do the complex work where consultants charge **$10–50K/project** — strongest ROI story
+6. **Two are already signed**
+
+**Freemium resolves the enterprise-sales-cycle objection:** individual architects adopt free
+inside a big firm, prove it on live work, and pull us into the enterprise conversation.
+Bottom-up adoption shortcuts top-down procurement.
+
+**Positioning decision:** large firms are the stated beachhead; **mid-market stays visible as
+the explicit Phase 2 volume play** (not removed from the deck).
+
+### The rebuilt market model
+
+| Segment | Firms | Seats/firm | Price | Value |
+|---|---|---|---|---|
+| 100+ employees | ~475 | ~100 | $129 | $73.5M |
+| 50–99 | ~760 | ~35 | $129 | $41.2M |
+| **Beachhead (SOM)** | **~1,235** | | | **~$115M** |
+| 15–49 (Phase 2) | ~2,470 | ~15 | $99 | $44M |
+| 5–14 (Phase 2) | ~3,800 | ~7 | $99 | $32M |
+| **US architecture (SAM)** | | | | **~$190M** |
+| **TAM** | Global building code compliance | | | **$8.16B → $14.73B** |
+
+**Seats/firm basis:** derived from RAMSA — ~300 staff → ~150 technical seats (0.5 ratio,
+excluding admin/support/non-modeling principals), scaled down by segment. Labeled as a
+modeled assumption, not a sourced fact.
+
+This replaces the old slide's unsupportable $270M SOM and the arithmetically wrong
+"$27M ARR at 10% penetration."
+
+---
+
+## 4 · THE MARKET SLIDE PROBLEM (now rebuilt in §6 — kept for the record)
 
 The original slide does not reconcile with itself:
 
@@ -109,3 +195,8 @@ The original slide does not reconcile with itself:
 - Mordor Intelligence — AEC software $11.11B (2025) [superseded as TAM anchor]
 - O'Reilly / Amazon — Kyle Gallatin, "Machine Learning with Python Cookbook" (2nd ed.)
 - Internal — `BIM API_DRAFT Market Research_20250102.pdf` (consultant fee tiers, review timelines, code compliance market breakdown)
+
+- AIA Firm Survey / OpenAsset — US architecture firm size distribution (~19,000 member-owned firms; 60% <5 employees; 6.5% 50+; 2.5% 100+)
+- ENR Top 500 / PitchBook / RocketReach — RAMSA ~300 staff, $82.7M design revenue (2024); Hart Howerton ~255-300 staff
+- GetApp / up.codes — UpCodes pricing $33-39/seat/mo
+- Autodesk / Revizto — Revit $2,915/yr per named user; third-party Revit plugins EUR 74.90-109.90/mo
