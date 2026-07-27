@@ -197,11 +197,6 @@ function ReworkLoop({ isActive }) {
           data-draw style={{ '--draw-len': 3500, '--reveal-delay': `${BASE + 1500}ms` }}
         />
         <polyline
-          points="880,144 856,152 880,160" fill="none"
-          stroke="var(--amber)" strokeWidth="2"
-          data-reveal style={{ '--reveal-delay': `${BASE + 2200}ms` }}
-        />
-        <polyline
           points="72,1 60,8 72,15" fill="none"
           stroke="var(--amber)" strokeWidth="2"
           data-reveal style={{ '--reveal-delay': `${BASE + 2400}ms` }}
@@ -758,24 +753,32 @@ function CondCompetition({ index }) {
    (Capital efficiency moved here from Traction, as conviction, not excuse.) */
 function CondTeam({ index }) {
   const founders = [
-    { name: 'Joe Yatco', role: 'CEO', bio: '[BIO PENDING]' },
+    { name: 'Joe Yatco', role: 'CEO', bio: 'Ten years in architecture. Lived the code-compliance problem across 80+ projects at RAMSA and East Horizon.' },
     { name: 'Kyle Gallatin', role: 'CTO', bio: 'Production ML at Pfizer, Etsy, and Handshake. O’Reilly author. Full-time on close.' },
-    { name: 'Arnav Somani', role: 'CDO', bio: '[BIO PENDING]' },
+    { name: 'Arnav Somani', role: 'CDO', bio: 'Led design at Smartmedia Tech. Enterprise tools used across Visa, Nike, and the IOC.' },
+  ];
+
+  /* Design lead and advisor. Al's line is drawn from his public profile
+     (Google, prior AWS design leadership, Rice). Haakon's Procore title is
+     still unconfirmed, so his line states only what is publicly visible. */
+  const support = [
+    { name: 'Al Deliallisi', role: 'PRODUCT DESIGN', bio: 'Design at Google. Previously led design for a major AWS service. Rice University.' },
+    { name: 'Haakon Sorensen', role: 'ADVISOR · GTM', bio: 'Construction-tech go-to-market. Procore certified. Currently at Shippeo.' },
   ];
 
   return (
     <Slide index={index} total={TOTAL} section="07 · Team" label="Team" tone="dark">
-      <div style={{ position: 'absolute', inset: 0, padding: '150px 120px 125px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+      <div style={{ position: 'absolute', inset: 0, padding: '132px 120px 118px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         <Eyebrow>TEAM</Eyebrow>
 
         {/* THE TAKEAWAY, the only serif on this slide */}
-        <h2 className="serif" style={{ fontSize: 88, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '24px 0 0' }}>
+        <h2 className="serif" style={{ fontSize: 78, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '20px 0 0' }}>
           <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>Built by an architect</span>{' '}
           <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>who lived the problem.</span>
         </h2>
 
         <div data-reveal style={{
-          marginTop: 26, fontSize: 26, lineHeight: 1.5, fontWeight: 300,
+          marginTop: 20, fontSize: 23, lineHeight: 1.45, fontWeight: 300,
           color: 'var(--bone-2)', maxWidth: 1420, '--reveal-delay': '900ms',
         }}>
           Most AEC software is built by technologists who studied the industry from outside.
@@ -785,21 +788,21 @@ function CondTeam({ index }) {
           The architect’s stamp stays the architect’s.</strong>
         </div>
 
-        <div style={{ paddingTop: 42, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}>
+        <div style={{ paddingTop: 30, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}>
           {founders.map((f, i) => (
             <div key={f.name} data-reveal style={{
               '--reveal-delay': `${1200 + i * 180}ms`, '--reveal-y': '30px',
               borderTop: '1px solid rgba(242,237,228,0.22)', paddingTop: 24,
             }}>
               <div style={{
-                width: 92, height: 92, marginBottom: 20,
+                width: 64, height: 64, marginBottom: 14,
                 background: 'linear-gradient(135deg, #1C1C1C, #0A0A0A)',
                 border: '1px solid rgba(242,237,228,0.14)',
                 position: 'relative', overflow: 'hidden',
               }}>
                 <div style={{
                   position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 34, fontWeight: 300, color: 'var(--amber)', opacity: 0.4, letterSpacing: '0.02em',
+                  fontSize: 24, fontWeight: 300, color: 'var(--amber)', opacity: 0.4, letterSpacing: '0.02em',
                 }}>
                   {f.name.split(' ').map((s) => s[0]).join('')}
                 </div>
@@ -807,25 +810,57 @@ function CondTeam({ index }) {
               <div className="mono" style={{ fontSize: 11, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 12 }}>
                 {f.role}
               </div>
-              <div style={{ fontSize: 32, lineHeight: 1.1, letterSpacing: '-0.02em', fontWeight: 500, color: 'var(--bone)', marginBottom: 14 }}>
+              <div style={{ fontSize: 28, lineHeight: 1.1, letterSpacing: '-0.02em', fontWeight: 500, color: 'var(--bone)', marginBottom: 10 }}>
                 {f.name}
               </div>
-              <div style={{ fontSize: 19, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.85 }}>
+              <div style={{ fontSize: 17, lineHeight: 1.4, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.85 }}>
                 {f.bio}
               </div>
             </div>
           ))}
         </div>
 
-        <div data-reveal style={{
-          marginTop: 34, paddingTop: 24, borderTop: '1px solid rgba(242,237,228,0.14)',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 40,
-          '--reveal-delay': '1850ms',
+        {/* Design lead and advisor, one tier down from the founders. */}
+        <div style={{
+          marginTop: 22, paddingTop: 20, borderTop: '1px solid rgba(242,237,228,0.14)',
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48, alignItems: 'start',
         }}>
-          <div style={{ fontSize: 22, color: 'var(--bone)', fontWeight: 400 }}>
-            <strong style={{ fontWeight: 500 }}>Six people. Eighteen months.</strong> <strong style={{ color: 'var(--amber)', fontWeight: 600 }}>No outside capital, and nobody paid.</strong>
+          {support.map((p, i) => (
+            <div key={p.name} data-reveal style={{ '--reveal-delay': `${1780 + i * 150}ms` }}>
+              <div className="mono" style={{ fontSize: 10, letterSpacing: '0.26em', color: 'var(--amber)', opacity: 0.85, marginBottom: 10 }}>
+                {p.role}
+              </div>
+              <div style={{ fontSize: 22, lineHeight: 1.1, letterSpacing: '-0.015em', fontWeight: 500, color: 'var(--bone)', marginBottom: 7 }}>
+                {p.name}
+              </div>
+              <div style={{ fontSize: 16, lineHeight: 1.4, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.8 }}>
+                {p.bio}
+              </div>
+            </div>
+          ))}
+
+          <div data-reveal style={{ '--reveal-delay': '2080ms' }}>
+            <div className="mono" style={{ fontSize: 10, letterSpacing: '0.26em', color: 'var(--amber)', opacity: 0.85, marginBottom: 10 }}>
+              ENGINEERING
+            </div>
+            <div style={{ fontSize: 22, lineHeight: 1.1, letterSpacing: '-0.015em', fontWeight: 500, color: 'var(--bone)', marginBottom: 7 }}>
+              Two engineers
+            </div>
+            <div style={{ fontSize: 16, lineHeight: 1.4, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.8 }}>
+              Building the compliance engine alongside Kyle since day one.
+            </div>
           </div>
-          <div style={{ fontSize: 22, color: 'var(--bone-2)', fontWeight: 300, textAlign: 'right' }}>
+        </div>
+
+        <div data-reveal style={{
+          marginTop: 20, paddingTop: 18, borderTop: '1px solid rgba(242,237,228,0.14)',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 40,
+          '--reveal-delay': '2250ms',
+        }}>
+          <div style={{ fontSize: 20, color: 'var(--bone)', fontWeight: 400 }}>
+            <strong style={{ fontWeight: 500 }}>Six people. Eighteen months.</strong> <strong style={{ color: 'var(--amber)', fontWeight: 500 }}>No outside capital, and nobody paid.</strong>
+          </div>
+          <div style={{ fontSize: 20, color: 'var(--bone-2)', fontWeight: 300, textAlign: 'right' }}>
             The software can be copied. The relationships cannot be rushed.
           </div>
         </div>
