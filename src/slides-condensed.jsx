@@ -196,11 +196,6 @@ function ReworkLoop({ isActive }) {
           fill="none" stroke="rgba(220,38,38,0.55)" strokeWidth="1.5" strokeDasharray="7 9"
           data-draw style={{ '--draw-len': 3500, '--reveal-delay': `${BASE + 1500}ms` }}
         />
-        <polyline
-          points="72,1 60,8 72,15" fill="none"
-          stroke="var(--amber)" strokeWidth="2"
-          data-reveal style={{ '--reveal-delay': `${BASE + 2400}ms` }}
-        />
       </svg>
 
       <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between' }}>
@@ -294,6 +289,78 @@ function CondProblem({ index }) {
 
 /* ============ 03 · DEMO ============
    ONE IDEA: It already works, inside Revit, on the New York City code. */
+
+/* Demo player.
+   Drop the recording in as `assets/demo.mp4` and it plays in place, in the
+   deck, with no link-out. Until that file exists the poster still shows, so
+   the slide is never broken or half-finished looking.
+   The poster is also what a PDF export prints, since PDFs cannot play video. */
+function DemoPlayer() {
+  const videoRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+
+  const start = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    const p = v.play();
+    if (p && p.then) p.then(() => setPlaying(true)).catch(() => {});
+    else setPlaying(true);
+  };
+
+  return (
+    <div
+      style={{
+        position: 'relative', width: '100%', lineHeight: 0,
+        borderRadius: 10, overflow: 'hidden',
+        boxShadow: '0 30px 80px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(242,237,228,0.10)',
+      }}
+    >
+      <video
+        ref={videoRef}
+        src="assets/demo.mp4"
+        poster="assets/Group_74.png"
+        preload="none"
+        playsInline
+        controls={playing}
+        onEnded={() => setPlaying(false)}
+        style={{ width: '100%', height: 'auto', display: 'block', background: '#0A0A0A' }}
+      />
+
+      {!playing && (
+        <button
+          type="button"
+          onClick={start}
+          aria-label="Play the Cuniform walkthrough"
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: 'rgba(10,10,10,0.28)', border: 0, cursor: 'pointer', padding: 0,
+          }}
+        >
+          <span
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 16,
+              padding: '18px 30px 18px 24px',
+              background: 'var(--amber)', color: '#0A0A0A',
+              borderRadius: 100, boxShadow: '0 10px 40px -8px rgba(0,0,0,0.6)',
+            }}
+          >
+            <svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true">
+              <path d="M2 1 L18 11 L2 21 Z" fill="#0A0A0A" />
+            </svg>
+            <span
+              className="mono"
+              style={{ fontSize: 14, letterSpacing: '0.2em', fontWeight: 700, lineHeight: 1 }}
+            >
+              WATCH IT RUN
+            </span>
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
+
 function CondDemo({ index }) {
   return (
     <Slide index={index} total={TOTAL} section="02 · The Product" label="Demo" tone="dark">
@@ -312,38 +379,16 @@ function CondDemo({ index }) {
           </div>
 
           <div data-reveal style={{ '--reveal-delay': '900ms', fontSize: 24, lineHeight: 1.5, fontWeight: 300, color: 'var(--bone-2)', paddingTop: 42 }}>
-            Every flag links to the clause it came from. The architect can read it,
-            argue with it, or dismiss it, and that decision is logged.
+            The drawing, the violation, and the clause that governs it, in one window.
+            Nothing to export, nobody to email, no code book to go and open.
             <div style={{ marginTop: 18, color: 'var(--bone)', fontWeight: 400 }}>
-              The architect stays the author. We make sure nothing leaves the office
-              that the city would send back.
+              The architect never leaves the model. <strong style={{ color: 'var(--amber)', fontWeight: 500 }}>No context switching, ever.</strong>
             </div>
           </div>
         </div>
 
-        <div
-          data-scale-in
-          style={{
-            '--reveal-delay': '600ms',
-            paddingTop: 36,
-            borderRadius: 10,
-            boxShadow: '0 30px 80px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(242,237,228,0.10)',
-            overflow: 'hidden', lineHeight: 0, width: '100%',
-          }}
-        >
-          <img
-            src="assets/Group_74.png"
-            alt="Cuniform running inside Revit, live compliance panel with cited code violations"
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-          />
-        </div>
-
-        {/* TODO: swap for the recorded walkthrough link once it exists */}
-        <div data-reveal className="mono" style={{
-          '--reveal-delay': '1400ms', marginTop: 20, textAlign: 'center',
-          fontSize: 14, letterSpacing: '0.2em', color: 'var(--amber)',
-        }}>
-          ▸ WATCH THE 90-SECOND WALKTHROUGH, [LINK PENDING]
+        <div data-scale-in style={{ '--reveal-delay': '600ms', paddingTop: 32 }}>
+          <DemoPlayer />
         </div>
       </div>
     </Slide>
@@ -428,7 +473,7 @@ function CondWhyNow({ index }) {
   const isActive = useSlideActive(innerRef);
 
   const forces = [
-    { n: '01', t: 'The AI can read a code book', b: 'If-this-then-that logic, with the clause cited. A demo three years ago. Production now.', Icon: IconCodeBook },
+    { n: '01', t: 'Machine learning became auditable', b: <>Models now hold a full code book in context, reason through its conditional logic, and <strong style={{ fontWeight: 500, color: 'var(--bone)' }}>show the clause they relied on</strong>. Three years ago that was a research demo.</>, Icon: IconCodeBook },
     { n: '02', t: 'BIM opened up', b: 'We run inside the tool architects already work in all day.', Icon: IconBIM },
     { n: '03', t: 'Permits gridlocked', b: <>Post-2023 backlogs pushed review to <strong style={{ fontWeight: 500, color: 'var(--bone)' }}>4–12 weeks</strong>, long enough that firms will change how they work.</>, Icon: IconGridlock },
     { n: '04', t: 'The consultants are retiring', b: 'Code expertise is leaving the profession faster than it is replaced. A succession problem we turn into a software problem.', Icon: IconRetiring },
@@ -465,12 +510,6 @@ function CondWhyNow({ index }) {
           ))}
         </div>
 
-        <div data-reveal style={{
-          marginTop: 20, fontSize: 26, color: 'var(--bone)', fontWeight: 400,
-          '--reveal-delay': '1900ms',
-        }}>
-          Not early to the problem. <span style={{ color: 'var(--amber)' }}>On time for the solution.</span>
-        </div>
       </div>
     </Slide>
   );
@@ -492,29 +531,30 @@ function CondTraction({ index }) {
   const talking = ['Selldorf Architects', 'Arquitectonica', 'FXCollaborative', 'Notre Dame School of Architecture'];
 
   return (
-    <Slide index={index} total={TOTAL} section="04 · Traction" label="Traction" tone="dark">
+    <Slide index={index} total={TOTAL} section="04 · Momentum" label="Momentum" tone="dark">
       <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-        <Eyebrow>TRACTION</Eyebrow>
+        <Eyebrow>MOMENTUM</Eyebrow>
 
         {/* THE TAKEAWAY, the only serif on this slide */}
         <h2 className="serif" style={{ fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0' }}>
-          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>We never advertised.</span>{' '}
-          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>They came anyway.</span>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>The firms that set the standard</span><br />
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>are already at the table.</span>
         </h2>
 
         <div data-reveal style={{
           marginTop: 28, fontSize: 28, lineHeight: 1.45, fontWeight: 300,
           color: 'var(--bone-2)', maxWidth: 1400, '--reveal-delay': '950ms',
         }}>
-          Two ENR-ranked firms are running Cuniform on live projects today.
-          Four more are asking. Sixty architects joined a waitlist we never promoted.
+          RAMSA and Hart Howerton have testing scheduled, with dates set. Four more firms are
+          in conversation. Joe spent ten years inside these practices, which is why this began
+          as a conversation rather than a cold pitch.
         </div>
 
         {/* Support: the pull, quantified. Sans throughout. */}
         <div style={{ paddingTop: 46, display: 'grid', gridTemplateColumns: '1.25fr 1fr', gap: 76 }}>
           <div>
             <div className="mono" data-reveal style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 20, '--reveal-delay': '1250ms' }}>
-              TESTING ON LIVE WORK
+              TESTING SCHEDULED · DATES SET
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22 }}>
               {partners.map((p, i) => (
@@ -534,7 +574,7 @@ function CondTraction({ index }) {
               '--reveal-delay': '1620ms', marginTop: 16,
               fontSize: 11, letterSpacing: '0.18em', color: 'var(--bone-2)', opacity: 0.5,
             }}>
-              VERBAL COMMITMENTS · NOTHING COUNTERSIGNED
+              COMMITMENTS ARE VERBAL · NOTHING COUNTERSIGNED
             </div>
 
             <div style={{ display: 'flex', gap: 64, marginTop: 34 }}>
@@ -559,7 +599,7 @@ function CondTraction({ index }) {
 
           <div style={{ borderLeft: '1px solid rgba(242,237,228,0.12)', paddingLeft: 52 }}>
             <div className="mono" data-reveal style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', opacity: 0.8, marginBottom: 22, '--reveal-delay': '1500ms' }}>
-              WHO CAME ASKING
+              IN CONVERSATION
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
               {talking.map((n, i) => (
@@ -567,6 +607,16 @@ function CondTraction({ index }) {
                   {n}
                 </div>
               ))}
+            </div>
+
+            {/* The rate statement: what changed, and how fast. */}
+            <div data-reveal style={{
+              marginTop: 34, paddingTop: 26, borderTop: '1px solid rgba(242,237,228,0.12)',
+              fontSize: 21, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300,
+              '--reveal-delay': '2150ms',
+            }}>
+              Eighteen months from idea to a product we can put in front of firms like these.
+              <strong style={{ color: 'var(--bone)', fontWeight: 500 }}> The waitlist built itself while we were heads-down.</strong>
             </div>
           </div>
         </div>
