@@ -354,3 +354,43 @@ Everything else in the deck should ladder up to this.
 ### Demo
 - **Recorded demo video embedded** in the deck (avoids live-demo risk).
 - Doubles as the defense for the full-IBC coverage claim — showing beats telling.
+
+---
+
+## 9 · ROUND 4 — BENCHMARK STRATEGY, PRE-PITCH ACTIONS
+
+### 🎯 The accuracy benchmark — now a category-defining claim
+**Founder insight (adopted):** there is no accuracy standard for automated code compliance anywhere
+in the industry. Rather than a gap to apologize for, this is **a category to own.**
+
+> "There is no accuracy benchmark for automated code compliance. We're establishing it."
+
+Precedent: MLPerf defined how ML systems are measured; SOC 2 defined security assurance. **Whoever
+defines the metric shapes the category** — competitors end up measured on our terms. Converts the
+#1 objection (accuracy) into a leadership position, and is hard to copy because standards accrue to
+whoever publishes first and achieves adoption.
+
+**Critical nuance:** must be presented as **both** — "here's our internal measurement, *and* we're
+publishing the standard." Benchmark-as-ambition without a number reads as dodging the question.
+
+**Self-reinforcing loop:** dead-project pilots (run on already-permitted work, where ground truth
+exists because the jurisdiction already ruled) → every catch is a measured data point → the data
+*becomes* the benchmark → the benchmark is the marketing.
+
+### Data security
+- **SOC 2 in progress/planned.** Include in roadmap + use-of-funds as an enterprise-readiness
+  milestone. Directly answers the NDA concern surfaced in the founders' own survey.
+
+### ⚠️ PRE-PITCH ACTION ITEMS (not deck work — do these before pitching)
+| # | Action | Why |
+|---|---|---|
+| **A1** | **Formalize the cap table** — splits + 4yr vesting / 1yr cliff, documented | **Highest-value action on this list.** "We're aligned" is not a legal state. Undocumented founder equity is among the most common ways seed rounds die late. Three founders, 18 months, one part-time — settle it now while everyone's happy, not after a term sheet under investor scrutiny. |
+| **A2** | **Run Cuniform on own test projects** to generate first accuracy data | Produces a real number before the pitch and seeds the benchmark. (Founder chose own test projects over partner projects for speed.) |
+| **A3** | **Get Haakon's exact Procore title + tenure**, state verbatim | Public verification was inconclusive; a slide/LinkedIn mismatch makes every other claim look inflated. |
+| **A4** | **Broker/counsel opinion** on whether Cuniform falls inside Verisk AI exclusion language | Required before the E&O angle can be a headline claim rather than a soft mention. |
+| **A5** | Confirm Joe's "80+ projects" and Arnav's "1M+ customers / Visa, Nike, IOC" | Unverified team bio claims (open item O4). |
+
+### Objection prep
+Written to **OBJECTION-PREP.md** — prepared answers for: accuracy, why-not-before, 18-months-no-revenue,
+and the building-failure/liability question, plus short answers for Autodesk/UpCodes/PermitFlow/ICC/
+Revit-only/build-it-internally, and a list of questions to ask Black Pearl back.
