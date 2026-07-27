@@ -294,25 +294,80 @@ function CondProblem({ index }) {
    Drop the recording in as `assets/demo.mp4` and it plays in place, in the
    deck, with no link-out. Until that file exists the poster still shows, so
    the slide is never broken or half-finished looking.
-   The poster is also what a PDF export prints, since PDFs cannot play video. */
+   The poster is also what a PDF export prints, since PDFs cannot play video.
+
+   On play the player pops out: it zooms to the center of the slide so the
+   whole recording is visible, the rest of the slide dims behind it, and a
+   deeper shadow lifts it off the page. Escape, a click outside, or the end
+   of the video puts it back. The pop is a pure transform, so the slide
+   layout underneath never shifts. */
 function DemoPlayer() {
   const videoRef = useRef(null);
+  const boxRef = useRef(null);
   const [playing, setPlaying] = useState(false);
+  const [pop, setPop] = useState(null);
+
+  const close = () => {
+    const v = videoRef.current;
+    if (v) v.pause();
+    setPlaying(false);
+    setPop(null);
+  };
 
   const start = () => {
     const v = videoRef.current;
-    if (!v) return;
+    const box = boxRef.current;
+    if (!v || !box) return;
+
+    /* Measure the player in slide coordinates (the stage scales the slide,
+       so convert from screen px) and compute the translate + scale that
+       centers it, fitting the full video inside the 1920×1080 slide. */
+    const slide = box.closest('.slide');
+    if (slide) {
+      const sr = slide.getBoundingClientRect();
+      const br = box.getBoundingClientRect();
+      const unit = sr.width / 1920;
+      const w = br.width / unit;
+      const h = br.height / unit;
+      const cx = (br.left - sr.left + br.width / 2) / unit;
+      const cy = (br.top - sr.top + br.height / 2) / unit;
+      const k = Math.min(1700 / w, 940 / h);
+      setPop({ dx: 960 - cx, dy: 540 - cy, k });
+    }
+
     const p = v.play();
     if (p && p.then) p.then(() => setPlaying(true)).catch(() => {});
     else setPlaying(true);
   };
 
+  /* Escape or a click anywhere outside the popped-out player closes it. */
+  useEffect(() => {
+    if (!playing) return undefined;
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
+    const onDown = (e) => {
+      if (boxRef.current && !boxRef.current.contains(e.target)) close();
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onDown);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onDown);
+    };
+  }, [playing]);
+
   return (
     <div
+      ref={boxRef}
       style={{
         position: 'relative', width: '100%', lineHeight: 0,
         borderRadius: 10, overflow: 'hidden',
-        boxShadow: '0 30px 80px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(242,237,228,0.10)',
+        zIndex: playing ? 70 : 'auto',
+        transform: playing && pop ? `translate(${pop.dx}px, ${pop.dy}px) scale(${pop.k})` : 'none',
+        transition: 'transform 600ms cubic-bezier(.4,0,.2,1), box-shadow 600ms ease',
+        /* The 4000px spread dims the whole slide behind the popped player. */
+        boxShadow: playing
+          ? '0 0 0 4000px rgba(6,6,6,0.72), 0 60px 140px -20px rgba(0,0,0,0.85), 0 0 0 1px rgba(242,237,228,0.12)'
+          : '0 30px 80px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(242,237,228,0.10)',
       }}
     >
       <video
@@ -322,7 +377,7 @@ function DemoPlayer() {
         preload="none"
         playsInline
         controls={playing}
-        onEnded={() => setPlaying(false)}
+        onEnded={close}
         style={{ width: '100%', height: 'auto', display: 'block', background: '#0A0A0A' }}
       />
 
