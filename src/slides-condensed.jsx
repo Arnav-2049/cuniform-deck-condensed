@@ -801,9 +801,9 @@ function CondCompetition({ index }) {
    (Capital efficiency moved here from Traction, as conviction, not excuse.) */
 function CondTeam({ index }) {
   const founders = [
-    { name: 'Joe Yatco', role: 'CEO', bio: 'Ten years in architecture. Lived the code-compliance problem across 80+ projects at RAMSA and East Horizon.' },
-    { name: 'Kyle Gallatin', role: 'CTO', bio: 'Production ML at Pfizer, Etsy, and Handshake. O’Reilly author. Full-time on close.' },
-    { name: 'Arnav Somani', role: 'CDO', bio: 'Led design at Smartmedia Tech. Enterprise tools used across Visa, Nike, and the IOC.' },
+    { name: 'Joe Yatco', role: 'CEO', bio: 'Ten years in architecture. Lived the code-compliance problem across 80+ projects at RAMSA and East Horizon.', photo: 'assets/joe-yatco.png' },
+    { name: 'Kyle Gallatin', role: 'CTO', bio: 'Production ML at Pfizer, Etsy, and Handshake. O’Reilly author. Full-time on close.', photo: 'assets/kyle-gallatin.png' },
+    { name: 'Arnav Somani', role: 'CDO', bio: 'Led design at Smartmedia Tech. Enterprise tools used across Visa, Nike, and the IOC.', photo: 'assets/arnav-somani.png' },
   ];
 
   /* Design lead and advisor. Al's line is drawn from his public profile
@@ -830,10 +830,9 @@ function CondTeam({ index }) {
           color: 'var(--bone-2)', maxWidth: 1420, '--reveal-delay': '900ms',
         }}>
           Most AEC software is built by technologists who studied the industry from outside.
-          Joe spent ten years losing months to code review, then built the tool he needed. That shows
-          up most in what we chose <em style={{ fontStyle: 'italic' }}>not</em> to build:
-          <strong style={{ color: 'var(--bone)', fontWeight: 500 }}> no auto-fix, no generated drawings.
-          The architect’s stamp stays the architect’s.</strong>
+          Joe spent ten years losing months to code review, then built the tool he needed.
+          <strong style={{ color: 'var(--bone)', fontWeight: 500 }}> Eighteen months, no outside
+          funding, an enterprise-ready product — built by the team that proves it can be done.</strong>
         </div>
 
         <div style={{ paddingTop: 30, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}>
@@ -844,16 +843,19 @@ function CondTeam({ index }) {
             }}>
               <div style={{
                 width: 64, height: 64, marginBottom: 14,
-                background: 'linear-gradient(135deg, #1C1C1C, #0A0A0A)',
+                background: '#0A0A0A',
                 border: '1px solid rgba(242,237,228,0.14)',
                 position: 'relative', overflow: 'hidden',
               }}>
-                <div style={{
-                  position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 24, fontWeight: 300, color: 'var(--amber)', opacity: 0.4, letterSpacing: '0.02em',
-                }}>
-                  {f.name.split(' ').map((s) => s[0]).join('')}
-                </div>
+                <img
+                  src={f.photo}
+                  alt={f.name}
+                  style={{
+                    width: '100%', height: '100%',
+                    objectFit: 'cover', objectPosition: 'center top',
+                    display: 'block', filter: 'grayscale(1)',
+                  }}
+                />
               </div>
               <div className="mono" style={{ fontSize: 11, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 12 }}>
                 {f.role}
@@ -900,18 +902,6 @@ function CondTeam({ index }) {
           </div>
         </div>
 
-        <div data-reveal style={{
-          marginTop: 20, paddingTop: 18, borderTop: '1px solid rgba(242,237,228,0.14)',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 40,
-          '--reveal-delay': '2250ms',
-        }}>
-          <div style={{ fontSize: 20, color: 'var(--bone)', fontWeight: 400 }}>
-            <strong style={{ fontWeight: 500 }}>Six people. Eighteen months.</strong> <strong style={{ color: 'var(--amber)', fontWeight: 500 }}>No outside capital, and nobody paid.</strong>
-          </div>
-          <div style={{ fontSize: 20, color: 'var(--bone-2)', fontWeight: 300, textAlign: 'right' }}>
-            The software can be copied. The relationships cannot be rushed.
-          </div>
-        </div>
       </div>
     </Slide>
   );
