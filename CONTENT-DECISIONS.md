@@ -2,9 +2,12 @@
 
 Living record of every content decision, its source, and what's still open.
 Audience context: **pitching Black Pearl Investment Group as a sole check.**
-Company status: **bootstrapped · pre-revenue · design-partner-only beta · MOUs/LOIs, no paid seats yet.**
+Company status: **bootstrapped · pre-revenue · design-partner-only beta · VERBAL intent only, nothing countersigned, no paid seats.**
 
-Last updated: 2026-07-25
+Last updated: 2026-07-27
+
+> ⚠️ **This document is append-only.** Later sections SUPERSEDE earlier ones. Where they conflict,
+> the higher-numbered section wins. Superseded rows are marked inline.
 
 ---
 
@@ -14,8 +17,8 @@ Last updated: 2026-07-25
 | Item | Decision | Rationale |
 |---|---|---|
 | Round name | **Seed** | Avoids Series-A-level scrutiny you can't yet satisfy pre-revenue. Fixes the footer that read "SERIES A 2026". |
-| Amount | **$1.5M** | Less dilution (~15% at $10M post) than the original $2M ask. |
-| Valuation | **$10M post-money SAFE** | Below 2025 median seed (~$16M pre / $24M post median; AI ~$17.9M pre) — deliberately founder-friendly, a negotiating anchor with a sole investor. |
+| Amount | **$1.5M** | Less dilution than the original $2M ask. |
+| Valuation | **$12M post-money SAFE → 12.5% dilution** | ⚠️ **SUPERSEDED THE ORIGINAL $10M — see §12.** Carta 2025 shows SAFE caps ~$15M for $1–2.5M rounds, so $10M was *below* market for this raise size. **$12M is the live figure. Do not quote $10M anywhere.** |
 | Runway | **18 months** | AEC sales cycles run 6–9 months. A 12-month runway means re-raising before the first pilots convert. |
 
 ### Burn model (replaces placeholder roadmap figures)

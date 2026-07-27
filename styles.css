@@ -387,6 +387,29 @@ deck-stage { background: var(--ink); }
 .slide[data-active] .fw-bar { width: var(--fw-w) !important; }
 .slide[data-active] .fw-bar-accent { width: var(--fw-w) !important; }
 
+/* ── Print / PDF export: every animated element rests at its final,
+      fully-revealed state so each slide holds up as a still frame ── */
+@media print {
+  .slide [data-reveal],
+  .slide [data-scale-in] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .slide [data-wipe],
+  .slide [data-wipe-up] {
+    clip-path: inset(0 0 0 0) !important;
+    transition: none !important;
+  }
+  .slide [data-draw] {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+  .slide .bar-with { width: var(--bar-w) !important; transition: none !important; }
+  .slide .fw-bar, .slide .fw-bar-accent { width: var(--fw-w) !important; transition: none !important; }
+}
+
 /* ── Cover ticker ── */
 .ticker-wrap {
   display: inline-block;

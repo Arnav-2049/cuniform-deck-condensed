@@ -62,12 +62,16 @@ function Counter({ to, duration = 1600, delay = 0, format = (n) => Math.round(n)
 
   useEffect(() => {
     if (!active) {
-      setVal(0);
+      // Rest at the FINAL value while inactive — the slide is off-screen on
+      // the live deck, but print / PDF export captures every slide at once
+      // and must show the real number, not 0.
+      setVal(to);
       startedRef.current = false;
       return;
     }
     if (startedRef.current) return;
     startedRef.current = true;
+    setVal(0);
 
     const start = performance.now() + delay;
     const tick = (t) => {
