@@ -1,12 +1,12 @@
 /* ──────────────────────────────────────────────────────────────
-   Shared slide primitives — chrome, reveals, mono counter
+   Shared slide primitives, chrome, reveals, mono counter
    Globals: React hooks, React
    ────────────────────────────────────────────────────────────── */
 
 const { useState, useEffect, useRef, useMemo } = React;
 
 /**
- * ChromeTop — section label + rule
+ * ChromeTop, section label + rule
  */
 function ChromeTop({ label, num, total, accent = 'var(--amber)', showDot = true }) {
   return (
@@ -24,10 +24,10 @@ function ChromeTop({ label, num, total, accent = 'var(--amber)', showDot = true 
 }
 
 /**
- * ChromeBottom — editorial running footer
+ * ChromeBottom, editorial running footer
  * Left: NN / TT slide counter (tabular figures)
  * Center: section name, small-caps
- * Right: CUNIFORM — SEED 2026 (amber)
+ * Right: CUNIFORM, SEED 2026 (amber)
  */
 function ChromeBottom({ index, total, section, left, right }) {
   // Strip "01 · " style prefix from section labels for a cleaner center mark.
@@ -40,11 +40,11 @@ function ChromeBottom({ index, total, section, left, right }) {
         <span className="chrome-bottom__left tnum">
           {left || (typeof index === 'number' && typeof total === 'number'
             ? <>{pad(index + 1)} <span className="sep">/</span> {pad(total)}</>
-            : '—')}
+            : '·')}
         </span>
         <span className="chrome-bottom__center">{sectionName}</span>
         <span className="chrome-bottom__right">
-          {right || <>CUNIFORM <span className="em-dash">—</span> SEED 2026</>}
+          {right || <>CUNIFORM <span className="em-dash">·</span> SEED 2026</>}
         </span>
       </div>
     </div>
@@ -52,7 +52,7 @@ function ChromeBottom({ index, total, section, left, right }) {
 }
 
 /**
- * Counter — animates from 0 → target when the slide becomes active.
+ * Counter, animates from 0 → target when the slide becomes active.
  * Respects the slidechange event via `active` prop fed by parent slide.
  */
 function Counter({ to, duration = 1600, delay = 0, format = (n) => Math.round(n).toLocaleString(), active, prefix = '', suffix = '' }) {
@@ -62,7 +62,7 @@ function Counter({ to, duration = 1600, delay = 0, format = (n) => Math.round(n)
 
   useEffect(() => {
     if (!active) {
-      // Rest at the FINAL value while inactive — the slide is off-screen on
+      // Rest at the FINAL value while inactive, the slide is off-screen on
       // the live deck, but print / PDF export captures every slide at once
       // and must show the real number, not 0.
       setVal(to);
@@ -91,7 +91,7 @@ function Counter({ to, duration = 1600, delay = 0, format = (n) => Math.round(n)
 }
 
 /**
- * SplitChars — splits text into chars for per-char stagger
+ * SplitChars, splits text into chars for per-char stagger
  */
 function SplitChars({ text, baseDelay = 0, perChar = 18, className = '' }) {
   const chars = Array.from(text);
@@ -142,7 +142,7 @@ function useActiveSlideIndex() {
 }
 
 /**
- * Slide wrapper — mirrors `data-deck-active` (set synchronously by deck-stage)
+ * Slide wrapper, mirrors `data-deck-active` (set synchronously by deck-stage)
  * onto `data-active` via MutationObserver so CSS transitions fire even when
  * React state updates are throttled (e.g. in a backgrounded preview tab).
  */
@@ -183,7 +183,7 @@ function Slide({ index, total, section, label, tone = 'dark', children, noChrome
 }
 
 /**
- * useSlideActive — returns whether the nearest ancestor .slide has
+ * useSlideActive, returns whether the nearest ancestor .slide has
  * `data-deck-active`, via MutationObserver. Robust to React state throttling.
  * Pass a ref that points to an element inside the slide.
  */

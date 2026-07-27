@@ -1,5 +1,5 @@
 /* ──────────────────────────────────────────────────────────────
-   Cuniform — Cinematic Deck
+   Cuniform · Cinematic Deck
    Design system
    ────────────────────────────────────────────────────────────── */
 
@@ -42,7 +42,7 @@
   --rule: rgba(255,255,255,0.12);
   --rule-dark: rgba(10,10,10,0.12);
 
-  /* Type scale — 1920×1080 deck */
+  /* Type scale · 1920×1080 deck */
   --fs-mega: 320px;     /* hero figures */
   --fs-display: 200px;  /* display titles */
   --fs-title: 96px;     /* slide titles */
@@ -66,13 +66,13 @@ html, body {
   padding: 0;
   background: var(--ink);
   color: var(--bone);
-  font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 .serif {
-  font-family: 'Calibra', 'Inter', -apple-system, sans-serif;
+  font-family: 'Calibra', 'IBM Plex Sans', -apple-system, sans-serif;
   font-weight: 400;
   font-style: normal !important;
   letter-spacing: -0.01em;
@@ -154,7 +154,7 @@ html, body {
   left: var(--pad-x);
   right: var(--pad-x);
   z-index: 5;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 11px;
   font-weight: 500;
   font-feature-settings: "tnum" 1, "ss01" 1;
@@ -317,7 +317,7 @@ deck-stage { background: var(--ink); }
   50%, 100% { opacity: 0; }
 }
 
-/* Flywheel node "ignition" halo — an SVG circle that scales outward and fades.
+/* Flywheel node "ignition" halo · an SVG circle that scales outward and fades.
    Uses transform + opacity for broad compatibility (no filter: drop-shadow). */
 @keyframes fwHalo {
   0%   { opacity: 0;    transform: scale(1);    }
@@ -330,7 +330,7 @@ deck-stage { background: var(--ink); }
   50%      { opacity: 0.28; transform: scale(1.25); }
 }
 
-/* Rework Loop — counter + arc ring */
+/* Rework Loop · counter + arc ring */
 .loop-counter-wrap {
   position: relative;
   width: 520px;
@@ -378,11 +378,11 @@ deck-stage { background: var(--ink); }
 /* Bigger hit targets for keynote feel */
 ::selection { background: var(--amber); color: var(--ink); }
 
-/* Competition slide — pre-construction timeline bars */
+/* Competition slide · pre-construction timeline bars */
 .bar-with { width: 0; transition: width 900ms cubic-bezier(.4,0,.2,1) var(--bar-delay); flex-shrink: 0; }
 .slide[data-active] .bar-with { width: var(--bar-w) !important; }
 
-/* Flywheel slide — phase timeline bars */
+/* Flywheel slide · phase timeline bars */
 .fw-bar, .fw-bar-accent { width: 0; transition: width 800ms cubic-bezier(.4,0,.2,1) var(--fw-delay); }
 .slide[data-active] .fw-bar { width: var(--fw-w) !important; }
 .slide[data-active] .fw-bar-accent { width: var(--fw-w) !important; }
@@ -439,4 +439,43 @@ deck-stage { background: var(--ink); }
   opacity: 0;
   transition: transform 260ms cubic-bezier(0.55, 0, 1, 0.45),
               opacity 180ms ease;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Cover ticker · ported from the extensive deck.
+   Words rise in, hold, then exit upward.
+   ────────────────────────────────────────────────────────────── */
+.ticker-wrap {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 1.15em;
+  vertical-align: bottom;
+  min-width: 205px;
+  text-align: left;
+}
+.ticker-word {
+  display: inline-block;
+  position: relative;
+  color: var(--amber);
+  font-weight: 600;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0ms, opacity 0ms;
+}
+.ticker-word.visible {
+  transform: translateY(0%);
+  opacity: 1;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 200ms ease;
+}
+.ticker-word.exit {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 260ms cubic-bezier(0.55, 0, 1, 0.45),
+              opacity 180ms ease;
+}
+/* Print/PDF: no animation, rest on the final word. */
+@media print {
+  .ticker-word { transform: none !important; opacity: 1 !important; }
 }
