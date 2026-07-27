@@ -607,3 +607,74 @@ a $1.5M raise (that framing made sense at a $2M ask, not $1.5M).
   people have thin public footprints. But **public verification is not possible.**
 - **ACTION A3 (unchanged, now urgent): get exact title + dates from Haakon directly.** Two-minute
   message. Do not put an unverified title on a slide a sole-check investor will diligence.
+
+---
+
+## 13 · ROUND 8 — THE TEAM IS SIX, NOT THREE (major revision)
+
+### The actual team
+| Person | Role | Status |
+|---|---|---|
+| Joe Yatco | CEO | Full-time |
+| Kyle Gallatin | CTO | Part-time → **full-time on close** |
+| Arnav Somani | CDO | Full-time |
+| *Kyle's brother* | Engineer | **Unpaid / equity only** |
+| Fizza | Engineer | **Unpaid / equity only** |
+| Al Deliasi | Product Designer | **Unpaid / equity only** |
+| Haakon Sorenson | Advisor (signed) | Credential unverified — see A3 |
+
+**ALL SIX HAVE WORKED UNPAID, EQUITY ONLY, FOR 18 MONTHS.**
+
+### 🔥 The momentum narrative — rewritten
+This supersedes the Round 2 reframe. It is materially stronger.
+
+> **"Six people. Eighteen months. Zero dollars. Two ENR Top-500 firms."**
+
+Six people building unpaid for 18 months is extraordinary conviction evidence, and it inverts the
+question: not *"why has this taken 18 months?"* but ***"what do six people know that made them work
+18 months for free?"***
+
+**And it changes what the raise is for.** Not funding an unproven hiring plan — **making an existing,
+proven, shipping team sustainable.** Materially lower-risk proposition. Say it that way.
+
+**Deck decisions:** show **all 6** on the Team slide (founders featured, team listed). Kyle's brother
+listed **by name, relationship not flagged** (founder's call; prepared answer if asked).
+
+### Burn model — REBUILT for a 6-person team
+| Line | Monthly | 18 months |
+|---|---|---|
+| 3 founders (~$100K each) | $25K | $450K |
+| 2 engineers (~$150K each) | $25K | $450K |
+| 1 designer (~$120K) | $10K | $180K |
+| Infra, inference, **SOC 2**, legal, tools | ~$20K | $360K |
+| **Total** | **~$80K/mo** | **~$1.44M** ✓ |
+
+$1.5M funds the existing team at modest salaries for 18 months with buffer.
+*(Supersedes the Round 1 model, which assumed hiring 2 engineers who in fact already exist.)*
+
+### Use of funds — top priority
+**Enterprise readiness: SOC 2, SSO, admin controls.**
+**Justification is concrete: RAMSA and Hart Howerton will require it.** A named-customer requirement
+is the strongest possible defense of a line item — it is not speculative infrastructure spend, it is
+the gate between design partner and paying enterprise customer.
+
+### Biggest technical risk (founder's own assessment)
+**Accuracy at scale across code domains** — works in demos, may degrade on real complex models.
+*Consistent with the full-IBC coverage risk flagged in §7. Have the honest answer ready:
+this is why validation infrastructure and the benchmark matter.*
+
+### "Why us" — drafted, awaiting selection
+**A · The triad** — "Shipping trustworthy AI into a regulated workflow requires three things that
+rarely coexist: someone who has felt the pain, someone who can build ML you can audit, and someone
+who can make it usable under professional pressure… This isn't a team assembled around an idea —
+it's the exact triad the problem requires."
+
+**B · The customer built it** *(recommended as the spoken line)* — "Most AEC software is built by
+technologists who studied the industry from outside. Cuniform was built by an architect who lived it.
+Joe spent ten years watching projects lose months to code review — then built the tool he needed.
+That difference shows up most in what we chose *not* to build."
+
+**C · Access as the moat** *(recommended as the follow-up)* — "The hard part of AEC isn't the
+technology — it's getting a 300-person firm to let you inside their model. We started with RAMSA and
+Hart Howerton because Joe spent a decade earning that access. Competitors will spend years reaching
+the rooms we started in."
