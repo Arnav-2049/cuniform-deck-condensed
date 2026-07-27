@@ -394,3 +394,91 @@ exists because the jurisdiction already ruled) → every catch is a measured dat
 Written to **OBJECTION-PREP.md** — prepared answers for: accuracy, why-not-before, 18-months-no-revenue,
 and the building-failure/liability question, plus short answers for Autodesk/UpCodes/PermitFlow/ICC/
 Revit-only/build-it-internally, and a list of questions to ask Black Pearl back.
+
+---
+
+## 10 · ROUND 5 — THE AUDIENCE (this reframes everything)
+
+### Who we are actually pitching
+**J.R. Chantengco** — Founder & Managing Director, **Black Pearl Investments** (NYC).
+*(Note spelling: Chantengco. Firm is "Black Pearl Investments.")* **Second meeting held.**
+
+| Fact | Source |
+|---|---|
+| 30+ years; **pioneer in P3 (public-private partnerships) and economic development** | Chase Growth Fund bio |
+| **Stanford GSB** alum | ” |
+| Firm focus: **capital advisory, structured finance, commercial real estate, alternative investments** | blackpearlinvestments.com |
+| Built Black Pearl Holding Co. to **$300M+ pipeline** via housing initiative with a **Native American CDFI network** | ” |
+| **$650M** partnership with TPT Global Tech for **"Green Smart City Projects"** (Tuskegee, AL) | Newswire |
+| **Reported low attention span** | Founder |
+
+### ⚠️ CRITICAL: Black Pearl is primarily an ADVISORY/PLACEMENT firm, not a VC
+From their own site: *"operates as both a principal investor and **licensed intermediary**… functions
+**primarily in a capital advisory and placement capacity rather than as direct operational
+investors**… **rather than deploying their own substantial capital directly into companies**, BPI
+emphasizes sourcing highly compatible funding… curating and formatting capital requests to secure
+competitive, vetted term sheets."*
+
+Pillars: **Capital Advisory** (Co-GP equity, mezzanine, senior credit/debt) · **Loss Mitigation**
+(institutional lenders) · **Real Estate**. Clients: **family offices, UHNW, institutional partners**.
+Mechanisms: private syndications, **SEC Rule 144A** placements.
+
+**Implication:** the likely proposition is **they raise the money for us and charge for it**, not that
+they write the check. Standard placement/advisory economics: **1–3% of capital raised**, sometimes a
+**retainer**, often **placement warrants** (equity comp ~1.5–2× the cash equivalent), some firms take
+**3–5% equity**.
+
+**Three consequences:**
+1. **A retainer is cash out of a bootstrapped company** — materially different decision from taking investment.
+2. **Their capital base is real-estate money** (family offices/institutional) that typically wants cash
+   flow, asset backing, downside protection. **A pre-revenue AI SaaS company is a hard fit** for that profile.
+3. **Still potentially valuable** — JR's P3 network, CRE relationships, and smart-city activity could open
+   *developer and municipal* doors no software VC could. But that's **distribution and strategic access**,
+   which is negotiated differently than capital.
+
+**OPEN — ACTION A6:** clarify directly whether Black Pearl intends to invest its own capital or to act
+as placement agent, and on what fee terms. Suggested framing: *"Before we go deeper — are you looking
+at this as a direct investment from Black Pearl, or would you be raising it from your network? And if
+the latter, how do you typically structure that engagement?"*
+**Founder decision: focus on Black Pearl only for now (noted: concentration risk — no leverage from a
+parallel process).** Negotiation brief deferred until the relationship is clarified.
+
+### 🔄 THE REFRAME — pitch to a CRE/P3 operator, not a software VC
+The deck was built for a SaaS investor (ARR, seat pricing, TAM/SAM/SOM, freemium funnels).
+**That is not his native language.**
+
+| Our asset | Why it lands with him |
+|---|---|
+| **Carrying costs — $50–200K/month on a stalled project** | He has lived this; needs no explanation |
+| **12 months of pre-construction** | 12 months of financing carry |
+| **Permit delay = capital destruction** | The core economic fact of his career |
+| **Cities / P3** | 30 years of public-private work — home turf |
+| **Smart-city infrastructure** | He just committed $650M to this thesis |
+
+**DECIDED:**
+1. **Lead with developer/project economics**, not seat economics. The *alternate* deck's line —
+   **"Cuniform compresses pre-construction from 12 → 2 months"** — is far better tuned to him than
+   the current per-seat framing. Seat economics become supporting detail.
+2. **Elevate the cities/P3 vision to a prominent slide.** *(This reverses my earlier advice, which was
+   correct for a generic software VC and wrong for a P3 veteran.)* Execution guidance stands —
+   don't *sell* to cities on an 18-month runway — but the **vision** should breathe.
+3. **Frame value in real-asset logic:** reduced project risk, faster time-to-break-ground, protected
+   carrying costs. Makes an AI SaaS legible to a CRE/LP audience.
+
+### Narrative structure — tuned for low attention span
+Hook must land in ~90 seconds; each slide must stand alone as a re-entry point.
+
+| # | Slide | Time | Job |
+|---|---|---|---|
+| 1 | Cover — "Code checking should happen while you design, not after." | 5s | The one thing |
+| 2 | Problem — **40%** huge, one line (strip the four-figure grid) | 20s | Undeniable |
+| 3 | **🎬 Demo (recorded)** | 60–90s | **Win it here** |
+| 4 | Why Now — 3 forces, ~5 words each | 20s | Timing |
+| 5 | Traction — logos + bootstrap line | 30s | Proof + momentum |
+| 6 | Market — one number + the wedge | 20s | Size |
+| 7 | Competition — "nobody's in the canvas" | 20s | Defensibility |
+| 8 | Team — 3 faces + Haakon | 20s | Who |
+| 9 | Ask — $1.5M + repeat the one-liner | 20s | Close |
+
+**9 slides retained, but every word must earn its place.** Repeat the one-liner on the Ask slide —
+he may not recall slide 1 by slide 9; give him the anchor at the moment of decision.
