@@ -245,7 +245,7 @@ $500K by a firm count.)*
 
 ---
 
-## SLIDE 7 · COMPETITION
+## SLIDE 7 · LANDSCAPE
 
 ### ON SCREEN
 > # Nobody is inside the model.
@@ -429,7 +429,7 @@ price on-slide reads as a validated one.
 | 4 Why Now | 0:20 | 2:45 |
 | 5 Traction | 0:35 | 3:20 |
 | 6 Market | 0:35 | 3:55 |
-| 7 Competition | 0:25 | 4:20 |
+| 7 Landscape | 0:25 | 4:20 |
 | 8 Team | 0:35 | 4:55 |
 | 9 Ask | 0:35 | **5:30** |
 

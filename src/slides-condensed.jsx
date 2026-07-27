@@ -714,7 +714,7 @@ function CondMarket({ index }) {
   );
 }
 
-/* ============ 07 · COMPETITION ============
+/* ============ 07 · LANDSCAPE ============
    ONE IDEA: Everyone works after the drawing is done. Nobody is in the model. */
 function CondCompetition({ index }) {
   const COLS = '230px 1fr 96px 150px';
@@ -726,9 +726,9 @@ function CondCompetition({ index }) {
   ];
 
   return (
-    <Slide index={index} total={TOTAL} section="06 · Competition" label="Competition" tone="paper">
+    <Slide index={index} total={TOTAL} section="06 · Landscape" label="Landscape" tone="paper">
       <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-        <Eyebrow style={{ color: 'var(--amber)' }}>COMPETITION</Eyebrow>
+        <Eyebrow style={{ color: 'var(--amber)' }}>LANDSCAPE</Eyebrow>
 
         {/* THE TAKEAWAY, the only serif on this slide */}
         <h2 className="serif" style={{ fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0', color: 'var(--ink)' }}>
