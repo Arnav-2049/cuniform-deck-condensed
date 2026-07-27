@@ -543,3 +543,67 @@ anything* — that's the wedge into municipal review. Clearly labeled Phase 2. N
 - **Demo: deferred** until content is locked. Script to be written after.
 - **Team bios (O4): BOTH need refining** — awaiting accurate versions from founder. Do not ship the
   current "80+ projects" / "1M+ customers" language unverified.
+
+---
+
+## 12 · ROUND 7 — AUDIENCE DETAIL, VALUATION, CAP TABLE
+
+### Meeting context (corrected)
+- **Meeting 1 was an ANALYST SCREENING CALL — JR was not present.**
+  The upcoming meeting is the **actual first impression on the decision-maker**. Assume he has
+  not been briefed in detail.
+- **Not yet scheduled** → all pre-pitch action items are achievable. Real advantage.
+- **Joe (CEO) presents.**
+
+### JR Chantengco — credential detail (LinkedIn)
+| Credential | Pitch relevance |
+|---|---|
+| **LEED GA Professional** | Green-building credentialed *(energy angle deliberately NOT used — see below)* |
+| **Senior Healthcare / Assisted Living Administrator license** | **Healthcare = most code-complex building type**, the $10–50K consultant tier. He understands this burden first-hand. |
+| **New Markets Tax Credits Allocator** (US Treasury) | Community development finance; pairs with the CDFI housing work |
+| **CCIM Designee (1992)**; President, NY Metro CCIM 2020–22 | Deep CRE operator, not a technologist |
+| **Adjunct Faculty, Baruch (Zicklin)** | He teaches — expects clear structure, dislikes hand-waving |
+| Co-founder, FIIRE (Filipinos in Institutional Real Estate) | Community-building orientation |
+| Licensed RE Broker (NY + CA), Stanford GSB 2001–02 | — |
+
+**DECIDED: use a healthcare / assisted-living example as the proof point.** Maximum code complexity,
+highest consultant fees, and his licensed domain — he feels the pain without explanation.
+
+**DECIDED: keep energy/IECC OUT of the deck** (founder's call, despite the LEED connection).
+*Internal note: the full-IBC claim explicitly included energy, yet energy is being withheld from the
+deck. If energy coverage is thinner than other domains, that is fine — but it is exactly what a
+probing question would surface. Worth knowing internally.*
+
+### The ask — framing
+**Capital ask + "you specifically" strategic case:** *"We're raising $1.5M. You're the one investor
+whose P3 and developer network makes Phase 2 real."* Clear ask, plus a role only he can fill.
+*(Founder wants intros to developers, municipal/P3 access, capital, and credibility — but asking for
+all four at once dilutes. Lead with capital; make strategic fit the reason he specifically belongs.)*
+
+### 💰 VALUATION REVISED: $12M post-money
+Carta 2025: **SAFE caps run $15M for rounds of $1–2.5M.** The original $10M was **below market** for
+a $1.5M raise (that framing made sense at a $2M ask, not $1.5M).
+
+| Structure | Dilution |
+|---|---|
+| $1.5M @ $10M post (original) | 15% |
+| **$1.5M @ $12M post (DECIDED)** | **12.5%** |
+| $1.5M @ $15M post (market) | 10% |
+
+### Cap table — standard structure for this situation
+- **Founder vesting: 4 years, 1-year cliff — WITH CREDIT FOR THE 18 MONTHS ALREADY SERVED.**
+  (Do not reset the clock on time already worked.)
+- **Option pool:** 10–15% of fully diluted at seed (10% standard, negotiable to 8% if pool exists)
+- **Advisor equity:** 0.1–0.5% for Haakon, 2-year vest
+- **SAFE:** post-money (87% of 2025 SAFEs are post-money)
+- Note: option pools are typically carved out **pre-money**, which dilutes founders, not incoming
+  investors — watch this term.
+
+### ❌ Haakon Sorenson — VERIFICATION FAILED TWICE
+- LinkedIn blocked automated access (HTTP 999); web search returned no match for "Haakon Sorenson"
+  in construction-tech sales. Earlier search surfaced Procore sales leadership as Bill Crawford
+  (SVP US Sales) and Dennis Lyandres (CRO).
+- **This is not evidence he lacks the credential** — LinkedIn blocks tools like this and many senior
+  people have thin public footprints. But **public verification is not possible.**
+- **ACTION A3 (unchanged, now urgent): get exact title + dates from Haakon directly.** Two-minute
+  message. Do not put an unverified title on a slide a sole-check investor will diligence.
