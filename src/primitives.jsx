@@ -27,7 +27,7 @@ function ChromeTop({ label, num, total, accent = 'var(--amber)', showDot = true 
  * ChromeBottom — editorial running footer
  * Left: NN / TT slide counter (tabular figures)
  * Center: section name, small-caps
- * Right: CUNIFORM — SERIES A 2026 (amber)
+ * Right: CUNIFORM — SEED 2026 (amber)
  */
 function ChromeBottom({ index, total, section, left, right }) {
   // Strip "01 · " style prefix from section labels for a cleaner center mark.
@@ -44,7 +44,7 @@ function ChromeBottom({ index, total, section, left, right }) {
         </span>
         <span className="chrome-bottom__center">{sectionName}</span>
         <span className="chrome-bottom__right">
-          {right || <>CUNIFORM <span className="em-dash">—</span> SERIES A 2026</>}
+          {right || <>CUNIFORM <span className="em-dash">—</span> SEED 2026</>}
         </span>
       </div>
     </div>

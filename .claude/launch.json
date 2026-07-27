@@ -1,6 +1,16 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "cuniform-condensed", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "5174"], "port": 5174, "url": "http://localhost:5174" }
+    {
+      "name": "cuniform-condensed",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5178"
+      ],
+      "port": 5178,
+      "url": "http://localhost:5178"
+    }
   ]
 }
