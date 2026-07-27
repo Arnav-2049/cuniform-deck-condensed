@@ -89,12 +89,21 @@ function useCoverTicker(isActive) {
 
     let i = 0;
 
+    /* Size the wrap to the word so the following text always sits flush
+       after it. Without this the container holds a fixed width and short
+       words leave a visible gap. */
+    function fitWrap(el) {
+      const wrap = el.parentElement;
+      if (wrap) wrap.style.width = `${Math.ceil(el.scrollWidth)}px`;
+    }
+
     function showWord(index) {
       const el = elRef.current;
       if (!el) return;
       el.textContent = TICKER_WORDS[index];
       el.className = 'ticker-word';
       void el.offsetHeight;
+      fitWrap(el);
       el.classList.add('visible');
     }
 
@@ -114,6 +123,10 @@ function useCoverTicker(isActive) {
         }, 900);
       }
     }
+
+    /* Give the wrap an explicit starting width so the first resize
+       animates rather than snapping from `auto`. */
+    if (elRef.current) fitWrap(elRef.current);
 
     timerRef.current = setTimeout(next, 1700);
     return () => clearTimeout(timerRef.current);
@@ -185,21 +198,19 @@ function CondCover({ index }) {
           <span>who touches a building before it is built.</span>
         </div>
 
-        {/* Support, sans and quieter. Key terms bolded. */}
-        <div data-reveal style={{
-          fontSize: 26, lineHeight: 1.5, fontWeight: 300, textAlign: 'center',
-          color: 'var(--bone-2)', opacity: 0.85, maxWidth: 1020, '--reveal-delay': '1400ms',
-        }}>
-          Cuniform runs <strong style={{ fontWeight: 600, color: 'var(--bone)' }}>inside Revit</strong> and
-          checks the building against the code as the architect draws it. Every flag links to
-          the <strong style={{ fontWeight: 600, color: 'var(--bone)' }}>clause it came from</strong>.
-        </div>
-
-        <div className="mono" data-reveal style={{
-          fontSize: 14, letterSpacing: '0.3em', color: 'var(--amber)', marginTop: 8,
-          '--reveal-delay': '1700ms',
-        }}>
-          SEED · 2026
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, marginTop: 12 }}>
+          <div className="mono" data-reveal style={{
+            fontSize: 14, letterSpacing: '0.3em', color: 'var(--amber)',
+            '--reveal-delay': '1500ms',
+          }}>
+            SEED · 2026
+          </div>
+          <div className="mono" data-reveal style={{
+            fontSize: 13, letterSpacing: '0.26em', color: 'var(--bone-2)', opacity: 0.55,
+            '--reveal-delay': '1700ms',
+          }}>
+            PREPARED FOR BLACK PEARL INVESTMENT GROUP
+          </div>
         </div>
       </div>
 
@@ -215,8 +226,102 @@ function CondCover({ index }) {
 }
 
 /* ============ 02 · PROBLEM ============
-   ONE IDEA: The check happens after the drawing is finished 
+   ONE IDEA: The check happens after the drawing is finished,
    which costs the project money and clogs the city. */
+
+/* The rework loop. Six steps, drawn left to right, then an arc carries
+   the eye back to the start so the cycle is visible rather than described.
+   Rejection is the only amber node: it is the step that costs money. */
+function ReworkLoop({ isActive }) {
+  const STEPS = [
+    { t: 'Design' },
+    { t: 'Code check', s: 'by architect' },
+    { t: 'Submit' },
+    { t: 'Code check', s: 'by city' },
+    { t: 'Rejection', hot: true },
+    { t: 'Redraw' },
+  ];
+  const BASE = 900;
+
+  return (
+    <div style={{ position: 'relative', width: '100%', paddingBottom: 124 }}>
+      {/* connecting rail + loop-back arc */}
+      <svg
+        viewBox="0 0 1680 190"
+        preserveAspectRatio="none"
+        style={{ position: 'absolute', left: 0, right: 0, top: 6, width: '100%', height: 190, pointerEvents: 'none' }}
+      >
+        {/* the forward rail the six steps sit on */}
+        <line
+          x1="60" y1="8" x2="1620" y2="8"
+          stroke="rgba(242,237,228,0.28)" strokeWidth="1.5"
+          data-draw style={{ '--draw-len': 1560, '--reveal-delay': `${BASE}ms` }}
+        />
+        {/* Return path. Drops from the last step, runs back beneath the
+            labels, and re-enters the first. The mid-run arrowhead is what
+            makes this read as flow rather than a box around the row. */}
+        <path
+          d="M 1620 8 C 1664 8 1664 152 1600 152 L 80 152 C 16 152 16 8 60 8"
+          fill="none" stroke="rgba(220,38,38,0.55)" strokeWidth="1.5" strokeDasharray="7 9"
+          data-draw style={{ '--draw-len': 3500, '--reveal-delay': `${BASE + 1500}ms` }}
+        />
+        <polyline
+          points="880,144 856,152 880,160" fill="none"
+          stroke="var(--amber)" strokeWidth="2"
+          data-reveal style={{ '--reveal-delay': `${BASE + 2200}ms` }}
+        />
+        <polyline
+          points="72,1 60,8 72,15" fill="none"
+          stroke="var(--amber)" strokeWidth="2"
+          data-reveal style={{ '--reveal-delay': `${BASE + 2400}ms` }}
+        />
+      </svg>
+
+      <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between' }}>
+        {STEPS.map((st, i) => (
+          <div
+            key={st.t + i}
+            data-reveal
+            style={{
+              '--reveal-delay': `${BASE + 120 + i * 150}ms`,
+              flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14,
+            }}
+          >
+            <span style={{
+              width: 13, height: 13, borderRadius: '50%',
+              background: st.hot ? 'var(--amber)' : 'var(--ink)',
+              border: `1.5px solid ${st.hot ? 'var(--amber)' : 'rgba(242,237,228,0.5)'}`,
+            }} />
+            <span style={{
+              fontSize: 21, fontWeight: 500, letterSpacing: '-0.01em',
+              color: st.hot ? 'var(--amber)' : 'var(--bone)', textAlign: 'center',
+            }}>
+              {st.t}
+            </span>
+            {st.s && (
+              <span className="mono" style={{ fontSize: 10, letterSpacing: '0.16em', color: 'var(--bone-2)', opacity: 0.55, marginTop: -8 }}>
+                {st.s}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div
+        data-reveal
+        className="mono"
+        style={{
+          '--reveal-delay': `${BASE + 2450}ms`,
+          position: 'absolute', left: 0, right: 0, bottom: 2,
+          textAlign: 'center', fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)',
+        }}
+      >
+        BACK TO THE START
+      </div>
+    </div>
+  );
+}
+
 function CondProblem({ index }) {
   const innerRef = useRef(null);
   const isActive = useSlideActive(innerRef);
@@ -232,52 +337,25 @@ function CondProblem({ index }) {
           <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>until the drawing is finished.</span>
         </h2>
 
+        {/* Two sentences, one per line. */}
         <div data-reveal style={{
-          marginTop: 30, fontSize: 29, lineHeight: 1.45, fontWeight: 300,
-          color: 'var(--bone-2)', maxWidth: 1460, '--reveal-delay': '950ms',
+          marginTop: 26, fontSize: 28, lineHeight: 1.5, fontWeight: 300,
+          color: 'var(--bone-2)', '--reveal-delay': '950ms',
         }}>
-          Firms pay <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$700 million a year</strong> to
-          have consultants check it by hand, weeks after the fact. Pre-construction still runs twelve months.
+          <div>
+            Firms pay <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$700 million a year</strong> to have consultants check it by hand.
+          </div>
+          <div>
+            Every rejection costs the project <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$50–200K a month</strong> and re-enters a <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>4–12 week</strong> city queue.
+          </div>
         </div>
 
-        {/* Support: the two parties who pay for a late check.
-            Cities included per founder, it sets up phase two. */}
-        <div style={{
-          paddingTop: 44,
-          borderTop: '1px solid rgba(242,237,228,0.16)',
-          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80,
-        }}>
-          <div data-reveal style={{ '--reveal-delay': '1300ms' }}>
-            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 18 }}>
-              WHEN IT FAILS · THE PROJECT
-            </div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 18, marginBottom: 12 }}>
-              <div style={{ fontSize: 62, fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--bone)' }}>
-                $50–200K
-              </div>
-              <div style={{ fontSize: 22, color: 'var(--bone-2)', opacity: 0.7 }}>a month</div>
-            </div>
-            <div style={{ fontSize: 22, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.85 }}>
-              in carry: financing, taxes, insurance, revenue not yet earned.
-              Every rejection adds <strong style={{ fontWeight: 600, color: 'var(--bone)' }}>four to eight weeks</strong>.
-            </div>
+        {/* The loop, drawn. Replaces the two support columns. */}
+        <div style={{ paddingTop: 40, borderTop: '1px solid rgba(242,237,228,0.16)' }}>
+          <div className="mono" data-reveal style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 34, '--reveal-delay': '1250ms' }}>
+            THE LOOP THIS CREATES
           </div>
-
-          <div data-reveal style={{ '--reveal-delay': '1500ms' }}>
-            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 18 }}>
-              WHEN IT FAILS · THE CITY
-            </div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 18, marginBottom: 12 }}>
-              <div style={{ fontSize: 62, fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--bone)' }}>
-                4–12 weeks
-              </div>
-              <div style={{ fontSize: 22, color: 'var(--bone-2)', opacity: 0.7 }}>per review</div>
-            </div>
-            <div style={{ fontSize: 22, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.85 }}>
-              Every resubmission re-enters a queue already backlogged.
-              The rework <em style={{ fontStyle: 'italic' }}>is</em> the backlog.
-            </div>
-          </div>
+          <ReworkLoop isActive={isActive} />
         </div>
 
         <SourceTag style={{ marginTop: 26 }}>
@@ -426,7 +504,7 @@ function CondWhyNow({ index }) {
   const forces = [
     { n: '01', t: 'The AI can read a code book', b: 'If-this-then-that logic, with the clause cited. A demo three years ago. Production now.', Icon: IconCodeBook },
     { n: '02', t: 'BIM opened up', b: 'We run inside the tool architects already work in all day.', Icon: IconBIM },
-    { n: '03', t: 'Permits gridlocked', b: <>Post-2023 backlogs pushed review to <strong style={{ fontWeight: 600, color: 'var(--bone)' }}>4–12 weeks</strong>, long enough that firms will change how they work.</>, Icon: IconGridlock },
+    { n: '03', t: 'Permits gridlocked', b: <>Post-2023 backlogs pushed review to <strong style={{ fontWeight: 500, color: 'var(--bone)' }}>4–12 weeks</strong>, long enough that firms will change how they work.</>, Icon: IconGridlock },
     { n: '04', t: 'The consultants are retiring', b: 'Code expertise is leaving the profession faster than it is replaced. A succession problem we turn into a software problem.', Icon: IconRetiring },
   ];
 
@@ -451,7 +529,7 @@ function CondWhyNow({ index }) {
               <div className="mono" style={{ fontSize: 12, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 14 }}>
                 {f.n}
               </div>
-              <div style={{ fontSize: 27, lineHeight: 1.2, fontWeight: 600, color: 'var(--bone)', marginBottom: 14, letterSpacing: '-0.01em' }}>
+              <div style={{ fontSize: 27, lineHeight: 1.2, fontWeight: 500, color: 'var(--bone)', marginBottom: 14, letterSpacing: '-0.01em' }}>
                 {f.t}
               </div>
               <div style={{ fontSize: 19, lineHeight: 1.5, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.85 }}>
@@ -520,7 +598,7 @@ function CondTraction({ index }) {
                   background: 'rgba(242,237,228,0.03)',
                   padding: '26px 24px',
                 }}>
-                  <div style={{ fontSize: 34, lineHeight: 1.1, letterSpacing: '-0.02em', fontWeight: 600, color: 'var(--bone)' }}>{p.name}</div>
+                  <div style={{ fontSize: 34, lineHeight: 1.1, letterSpacing: '-0.02em', fontWeight: 500, color: 'var(--bone)' }}>{p.name}</div>
                   <div style={{ fontSize: 16, color: 'var(--bone-2)', opacity: 0.65, marginTop: 8, fontWeight: 300 }}>{p.sub}</div>
                 </div>
               ))}
@@ -628,7 +706,7 @@ function CondMarket({ index }) {
           <div data-reveal style={{ '--reveal-delay': '1600ms', display: 'flex', gap: 14, alignItems: 'baseline', marginTop: 16 }}>
             <span style={{ width: 26, height: 10, background: 'var(--amber)', display: 'inline-block' }} />
             <span style={{ fontSize: 24, color: 'var(--bone)', fontWeight: 400 }}>
-              <strong style={{ fontWeight: 600 }}>~$700M</strong> paid to outside code consultants. The line item we replace.
+              <strong style={{ fontWeight: 500 }}>~$700M</strong> paid to outside code consultants. The line item we replace.
             </span>
           </div>
         </div>
@@ -641,7 +719,7 @@ function CondMarket({ index }) {
             </div>
             <div style={{ fontSize: 23, lineHeight: 1.45, fontWeight: 300, color: 'var(--bone-2)' }}>
               <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>1,235 US firms</strong> have 50 or more
-              people. That is <strong style={{ fontWeight: 600, color: 'var(--bone)' }}>6.5% of firms</strong>, but <strong style={{ fontWeight: 600, color: 'var(--bone)' }}>more than half</strong> of everyone in private practice, where the
+              people. That is <strong style={{ fontWeight: 500, color: 'var(--bone)' }}>6.5% of firms</strong>, but <strong style={{ fontWeight: 500, color: 'var(--bone)' }}>more than half</strong> of everyone in private practice, where the
               complex projects are and where our design partners already are.
             </div>
           </div>
@@ -814,7 +892,7 @@ function CondTeam({ index }) {
           '--reveal-delay': '1850ms',
         }}>
           <div style={{ fontSize: 22, color: 'var(--bone)', fontWeight: 400 }}>
-            <strong style={{ fontWeight: 600 }}>Six people. Eighteen months.</strong> <strong style={{ color: 'var(--amber)', fontWeight: 600 }}>No outside capital, and nobody paid.</strong>
+            <strong style={{ fontWeight: 500 }}>Six people. Eighteen months.</strong> <strong style={{ color: 'var(--amber)', fontWeight: 600 }}>No outside capital, and nobody paid.</strong>
           </div>
           <div style={{ fontSize: 22, color: 'var(--bone-2)', fontWeight: 300, textAlign: 'right' }}>
             The software can be copied. The relationships cannot be rushed.
@@ -851,7 +929,7 @@ function CondAsk({ index }) {
           color: 'var(--bone-2)', maxWidth: 1400, '--reveal-delay': '950ms',
         }}>
           SAFE at <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$12M post-money</strong>.
-          Eighteen months is sized to this industry’s sales cycle of <strong style={{ color: 'var(--bone)', fontWeight: 600 }}>six to nine months</strong> a deal.
+          Eighteen months is sized to this industry’s sales cycle of <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>six to nine months</strong> a deal.
         </div>
 
         {/* Support, sans, two columns, clearly secondary */}

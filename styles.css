@@ -451,8 +451,11 @@ deck-stage { background: var(--ink); }
   overflow: hidden;
   height: 1.15em;
   vertical-align: bottom;
-  min-width: 205px;
   text-align: left;
+  white-space: nowrap;
+  /* Width is set per word in JS so the following text always sits
+     flush after it. Transition keeps the resize from snapping. */
+  transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .ticker-word {
   display: inline-block;
