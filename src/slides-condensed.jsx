@@ -545,9 +545,7 @@ function CondTraction({ index }) {
           marginTop: 28, fontSize: 28, lineHeight: 1.45, fontWeight: 300,
           color: 'var(--bone-2)', maxWidth: 1400, '--reveal-delay': '950ms',
         }}>
-          RAMSA and Hart Howerton have testing scheduled, with dates set. Four more firms are
-          in conversation. Joe spent ten years inside these practices, which is why this began
-          as a conversation rather than a cold pitch.
+          Two firms have testing dates on the calendar. Four more are in conversation.
         </div>
 
         {/* Support: the pull, quantified. Sans throughout. */}
@@ -615,7 +613,7 @@ function CondTraction({ index }) {
               fontSize: 21, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300,
               '--reveal-delay': '2150ms',
             }}>
-              Eighteen months from idea to a product we can put in front of firms like these.
+              Eighteen months from idea to an enterprise-level product — no outside funding.
               <strong style={{ color: 'var(--bone)', fontWeight: 500 }}> The waitlist built itself while we were heads-down.</strong>
             </div>
           </div>

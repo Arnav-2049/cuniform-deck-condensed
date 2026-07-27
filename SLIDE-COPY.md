@@ -165,12 +165,17 @@ spoken track — it was the only sentence on this slide doing persuasive work.*
 >
 > **RAMSA** · **Hart Howerton**
 > `DESIGN PARTNERS · BOTH ENR-RANKED · ~300 PEOPLE EACH`
-> `VERBAL COMMITMENTS · TESTING ON LIVE WORK NOW · NOTHING COUNTERSIGNED`
+> `VERBAL COMMITMENTS · TESTING DATES ON THE CALENDAR · NOTHING COUNTERSIGNED`
+>
+> Two firms have testing dates on the calendar. Four more are in conversation.
 >
 > ---
 >
 > **In conversation:** Selldorf · Arquitectonica · FXCollaborative · Notre Dame
 > **60** on a waitlist we never advertised.
+>
+> Eighteen months from idea to an enterprise-level product — no outside funding.
+> The waitlist built itself while we were heads-down.
 >
 > **That's what we did with nothing.
 > This raise is what we do with something.**
@@ -184,7 +189,7 @@ spoken track — it was the only sentence on this slide doing persuasive work.*
 > *"Verbal commitments and active testing. Nothing countersigned yet, and I won't pretend otherwise."*
 
 ### PRESENTER TRACK
-> "RAMSA and Hart Howerton. Both ENR-ranked, both around three hundred people. **They came on board as design partners** — they're testing it on live work right now. Four more firms in conversation. Sixty people on a waitlist we never advertised.
+> "RAMSA and Hart Howerton. Both ENR-ranked, both around three hundred people. **They came on board as design partners** — two firms have testing dates on the calendar. Four more are in conversation. Sixty people on a waitlist we never advertised.
 >
 > Here's the part I'd want to know if I were you. **We built all of this with six people, over eighteen months, on zero outside capital.** Nobody has been paid.
 >
