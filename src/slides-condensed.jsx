@@ -327,8 +327,8 @@ function IconGridlock({ d = 0 }) {
 function CondWhyNow({ index }) {
   const forces = [
     { n: '01', t: 'The AI can finally read a code book', b: 'If-this-then-that logic, with the clause cited. A demo three years ago. Production now.', Icon: IconCodeBook },
-    { n: '02', t: 'BIM opened up', b: 'Stable APIs mean we live inside the tool architects already open every morning.', Icon: IconBIM },
-    { n: '03', t: 'Permits gridlocked', b: 'Post-2023 backlogs stretched review to 8–12 weeks. Firms will change how they work to fix it.', Icon: IconGridlock },
+    { n: '02', t: 'BIM opened up', b: 'We run inside the tool architects already work in all day.', Icon: IconBIM },
+    { n: '03', t: 'Permits gridlocked', b: 'Post-2023 backlogs pushed review to 4–12 weeks — long enough that firms will change how they work.', Icon: IconGridlock },
   ];
 
   return (
@@ -415,6 +415,21 @@ function CondTraction({ index }) {
                   <div style={{ fontSize: 17, color: 'var(--bone-2)', opacity: 0.7, marginTop: 10, fontWeight: 300 }}>{p.sub}</div>
                 </div>
               ))}
+            </div>
+
+            {/* Integrity disclosure — intent is VERBAL only, nothing countersigned.
+                On-slide because an email reader cannot ask, and "signed?" is the
+                first question a 30-year operator asks about "design partners." */}
+            <div
+              className="mono"
+              data-reveal
+              style={{
+                '--reveal-delay': '1650ms',
+                marginTop: 18, fontSize: 12, letterSpacing: '0.18em',
+                color: 'var(--bone-2)', opacity: 0.55,
+              }}
+            >
+              VERBAL COMMITMENTS · TESTING ON LIVE WORK NOW · NOTHING COUNTERSIGNED
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 32 }}>
