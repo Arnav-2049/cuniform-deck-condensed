@@ -1,13 +1,14 @@
 # Cuniform — Slide Copy (word for word)
 
-**Draft 3** — after two review passes. Exact on-screen words, then the spoken track for Joe.
-On-screen copy is sparse: the words on the wall are anchors, not the argument.
+**Draft 4 — FINAL.** Exact on-screen words, then the spoken track for Joe.
+Sources are cited **on-slide**, per founder instruction. On-screen copy stays sparse:
+the words on the wall are anchors, not the argument.
 
-**Runtime: 5:30 total. Hook lands at 2:25.** *(Verified by summing the table at the bottom —
-draft 2 claimed 4:30 and was wrong.)* If the room is running cold, the cut list is at the end.
+**Runtime: 5:30. Hook lands at 2:25.** *(Summed and verified — see table at end.)*
+**Bridges marked `→`.** Without them Joe reads slides; with them he gives a pitch.
 
-**Bridges matter.** Joe has strong closing lines and needs opening ones. Every slide below has a
-bridge sentence marked **`→`**. Without them he is reading slides; with them he is giving a pitch.
+**Audience:** J.R. Chantengco — 30+ years CRE, P3, structured finance. Licensed NY broker.
+CCIM, LEED GA, assisted-living administrator license. **Low attention span. Thinks in project capital.**
 
 ---
 
@@ -28,48 +29,53 @@ bridge sentence marked **`→`**. Without them he is reading slides; with them h
 >
 > That's the whole idea. Everything else is detail."
 
-**Headline is locked.** It repeats verbatim on Slide 9. *(It works as a category imperative, not as
-direct address — J.R. neither draws nor submits, and that's fine. Do not "fix" it on those grounds.)*
+**Headline locked.** Repeats verbatim on Slide 9.
 
 ---
 
 ## SLIDE 2 · PROBLEM
 
 ### ON SCREEN
-> # 40%
-> ### Two in five permit submissions fail the first review.
+> # $700M a year
+> ### paid to humans to check code by hand.
+>
+> It still takes **12 months** to get to permit.
+> It still comes back.
 >
 > ---
 >
-> Each rejection adds **4–8 weeks**.
+> Every rejection adds **4–8 weeks**.
 > That's **$50,000–$200,000 a month** in carry.
 >
-> `~1.4M US PERMITS ANNUALLY · [SOURCE TAG REQUIRED]`
+> `CODE CONSULTING SPEND: COHERENT MARKET INSIGHTS, 2023`
+> `CARRY: 1–3% OF PROJECT COST PER MONTH OF DELAY`
 
 ### SPOKEN
-> "Forty percent of permit submissions in this country are rejected on first review.
+> "Architecture firms spend about seven hundred million dollars a year paying outside consultants to check code by hand. Every project, every time.
 >
-> That's not a rare failure. **That's the default.**
+> **And it still takes twelve months to get to permit. And it still comes back.**
 >
-> And a rejection costs the architect a few redlines. **It costs the project four to eight weeks of carry.** You know what that number looks like — financing, taxes, insurance, revenue that isn't coming in yet. Fifty to two hundred thousand dollars a month, while everyone waits for the drawings to come back around."
+> When it comes back, that costs the architect a few redlines. **It costs the project four to eight weeks of carry.** You know what that number looks like — financing, taxes, insurance, revenue that isn't coming in yet. Fifty to two hundred thousand a month, while everyone waits for drawings to go back around."
 
 **`→ BRIDGE TO SLIDE 3:`** *"Here's what we do about it."* *[advance]*
 
-> **⚠️ TWO BLOCKERS ON THIS SLIDE**
-> 1. **Source the 40% and the 1.4M on-screen.** This is the load-bearing number of the entire pitch, and a structured-finance investor's first move is "source?" It needs the same treatment as the CMI tag on Slide 6.
-> 2. **Scope the claim.** Not all 40% are code violations Cuniform catches — some are zoning, incomplete sets, administrative defects. As written the spoken track implies the whole 40% is addressable. **Joe must know what share of rejections are code errors** and be ready to say it. If the answer is favorable, add one clause: *"and the single biggest bucket is code — the thing we check."*
+> **Why this opening, not the 40% rejection stat:** the "40% of permits rejected on first submission"
+> figure appears only in vendor blogs — no government or academic source — **and** research shows the
+> most common rejection cause is *incomplete documentation, not code violations*. It measures someone
+> else's product. The $700M is sourced, is money actually changing hands, and **is the exact budget
+> Cuniform replaces** — which is the argument a finance investor engages with.
 
 ---
 
 ## SLIDE 3 · DEMO 🎬
 
 ### ON SCREEN
-> ### Inside Revit. While you draw.
+> ### Inside Revit. Against the New York City code.
 >
 > *[embedded video — 60–90s]*
 
 ### SPOKEN (before playing)
-> "This is a live model — an assisted-living facility. **You hold the administrator's license, so you know exactly how thick that code book is.**"
+> "This is a live model, running against **the New York City code** — an assisted-living facility. **You hold the administrator's license, so you know exactly how thick that code book is.**"
 
 ### SPOKEN (after)
 > "Every flag links to the clause it came from. The architect can read it, argue with it, or dismiss it — and that decision is logged.
@@ -78,7 +84,8 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 
 **`→ BRIDGE TO SLIDE 4:`** *"So why didn't this exist three years ago? Because it couldn't."*
 
-> **⚠️ PREPARE THE JURISDICTION ANSWER.** He is a New York investor. "Does it do New York?" is the most predictable question in this meeting, and the deck currently has no answer anywhere. Code is jurisdictional — IBC plus state plus city amendments. **Joe needs a line: which jurisdictions are live today, and how long a new one takes to add.** Ideal shape: *"We're live on [X] today, and each new jurisdiction is weeks, not years."*
+*NYC named deliberately: he is a licensed New York broker, pitching in New York, and NYC is the
+hardest code environment in the country. It turns an abstract demo into his own market.*
 
 **This is the slide that wins or loses. Recorded, not live.**
 
@@ -97,6 +104,8 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 >
 > **03 · Permits gridlocked**
 > Post-2023 backlogs stretched review to 8–12 weeks.
+>
+> `REVIEW TIMES: 4–12 WEEKS, LARGE RESIDENTIAL/COMMERCIAL`
 
 ### SPOKEN
 > "**The AI** can finally read a code book the way a plans examiner does — if this, then that — and point to the clause. BIM opened up, so we can read the building from inside the software. And backlogs got bad enough that firms will change how they work to fix it.
@@ -105,8 +114,7 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 
 **`→ BRIDGE TO SLIDE 5:`** *"Two firms already have."* *[beat]* *[advance]*
 
-*Headline changed from "why this wasn't possible" — bullet 03 is about demand, not possibility.*
-*Spoken says "the AI," never "the models" — "model" is reserved for the building, everywhere.*
+*"The AI," never "the models" — "model" is reserved for the building, everywhere in this deck.*
 
 ---
 
@@ -133,9 +141,9 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 
 **`→ BRIDGE TO SLIDE 6:`** *"So how big is the thing we're walking into?"*
 
-> **🔴 GUARDRAIL — INTEGRITY.** Draft 2 opened this slide with *"Two firms **signed on**"* — which implies signatures that do not exist. Intent is **verbal only**. "Came on board" carries the same warmth without the paper. **Never imply contracted revenue.** If asked directly: *"Verbal commitments and active testing — nothing countersigned yet, and I won't pretend otherwise."*
-
-*"Nights and weekends" moved to Slide 8, where "full-time on close" makes it investable.*
+> **🔴 INTEGRITY GUARDRAIL.** Intent is **verbal only** — nothing countersigned. Never say "signed,"
+> never imply contracted revenue. If asked directly:
+> *"Verbal commitments and active testing. Nothing countersigned yet, and I won't pretend otherwise."*
 
 ---
 
@@ -148,28 +156,25 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 >
 > ---
 >
-> **Firms spend ~$700M a year on outside code consultants.**
+> **~$700M/yr** goes to outside code consultants.
 > **That's the line item we replace.**
-> `[SOURCE TAG REQUIRED]`
 >
 > Beachhead: **1,235 US firms** with 50+ people —
 > 6.5% of firms, **more than half of all private-practice employment.**
+> `AIA FIRM SURVEY`
 
 ### SPOKEN
 > "Code compliance is about an eight-billion-dollar market today, just under fifteen by 2030.
 >
-> What matters is which part we take. Firms spend roughly seven hundred million a year on outside code consultants. **That's the line item we replace** — delivered as software.
+> What matters is which part we take — that seven hundred million firms already spend on consultants. **We replace that line item**, delivered as software.
 >
 > We start with large firms. About twelve hundred US firms have fifty or more people. Six percent of firms — and **more than half of everyone working in private practice.** That's where the complex projects are, and where our design partners already are.
 >
-> **And that's phase one. Phase two is the cities.** Every submission that leaves a Cuniform firm arrives pre-checked and cited — **jurisdictions that accept pre-checked submissions move projects to ground months faster, and it costs them nothing and requires no procurement.**"
+> **And that's phase one. Phase two is the cities.** Every submission that leaves a Cuniform firm arrives pre-checked and cited. **Jurisdictions that accept pre-checked submissions move projects to ground months faster — it costs them nothing, and it requires no procurement.**"
 
 **`→ BRIDGE TO SLIDE 7:`** *"The obvious question is who else is doing this."*
 
-*Added the phase-two planting sentence — the close references "our second phase," which draft 2*
-*never defined anywhere. Now the close is a callback instead of a dangling pointer.*
-
-**GUARDRAIL:** **No per-seat price** — never validated with a customer.
+**GUARDRAIL:** **No per-seat price on-slide** — pricing has never been validated with a customer.
 
 ---
 
@@ -186,9 +191,11 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 > | **Archistar · CivCheck · Symbium** | Help city reviewers review faster. | — |
 >
 > **Cuniform** — inside the model, while it's being drawn.
+>
+> `FUNDING: PITCHBOOK, TECHCRUNCH, BUSINESSWIRE`
 
 ### SPOKEN
-> "There's real money in this category now. PermitFlow has raised ninety-one million to automate permit paperwork. UpCodes made the code searchable. Archistar, CivCheck, and Symbium are helping cities review faster.
+> "There's real money in this category now. PermitFlow has raised ninety-one million to automate permit paperwork. UpCodes made the code searchable. Archistar, CivCheck, and Symbium help cities review faster.
 >
 > **Every one of them works on the drawing after it's finished, or on the paperwork around it.**
 >
@@ -206,18 +213,16 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 > # An architect, an ML engineer, and a designer.
 >
 > **Joe Yatco** — CEO
-> *[bio pending]*
+> *[BIO PENDING]*
 >
 > **Kyle Gallatin** — CTO
 > Production ML at Pfizer, Etsy, Handshake. O'Reilly author.
 > **Full-time on close.**
 >
 > **Arnav Somani** — CDO
-> *[bio pending]*
+> *[BIO PENDING]*
 >
 > `+ TWO ENGINEERS · ONE PRODUCT DESIGNER`
->
-> **Advisor:** Haakon Sorenson — *[title pending]*, Procore
 
 ### SPOKEN
 > "Most AEC software is built by technologists who studied the industry from the outside. **Cuniform was built by an architect who lived it.** Joe spent ten years watching projects lose months to code review, then built the tool he needed. That shows up most in what we chose *not* to build — **no auto-fix, no generated drawings. The architect's stamp stays the architect's.**
@@ -230,14 +235,16 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 
 **`→ BRIDGE TO SLIDE 9:`** *"Getting all the way into those rooms is what this raise buys."*
 
-*Softened from "somebody else can build the software," which handed ammunition to a skeptic and*
-*contradicted Slide 7's moat claim.*
-*"Unpaid" cut here — it appears on Slide 5 where it's strongest. Three repetitions turned conviction*
-*into hardship appeal, and made the raise sound like back-pay rather than fuel.*
+> **🔴 HAAKON SORENSEN — OMITTED PENDING VERIFICATION.**
+> Three separate checks failed to substantiate "head of sales at Procore." His LinkedIn shows a
+> **"Procore Certified: Associate"** credential (Jan 2016) — *a training certification anyone in the
+> industry can earn, not a job title* — and a current role at **Shippeo**, a supply-chain company.
+> A past role in **Carpinteria, CA** (Procore's HQ) is consistent with having worked there, but the
+> titles sit behind LinkedIn's login wall.
+> **Get his exact title and dates from him directly. Then add him.** A slide claiming "Head of Sales,
+> Procore" against a profile showing a Procore *certificate* would do more damage than his absence.
 
-> **⚠️ CONFIRM:** "no auto-fix, no generated drawings" is inferred from the second-reader positioning. **Verify it's true before Joe says it.** If it isn't, cut the clause — unsupported intrigue is worse than nothing.
-
-**BLOCKERS:** Both bios pending. **Haakon's exact Procore title must be confirmed before this ships.**
+**BLOCKERS:** Both bios pending. *(The "no auto-fix / no generated drawings" clause is confirmed accurate.)*
 
 ---
 
@@ -277,12 +284,11 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 >
 > **What would you need to see to get to a decision?**"
 
-*Added the GTM line — draft 2's use of funds had no salesperson and no sales motion, while citing*
-*6–9 month enterprise cycles. Founder-led selling is a good answer; silence read as not-thought-about.*
-*"Design partner → paying customer" softened: it asserted conversion on verbal intent.*
 ***DECIDED: do not raise direct-investment-vs-placement. Let him raise the structure himself.***
 
-> **⚠️ THE PRICE LEAK.** The guardrail says no per-seat price, but "$500K ARR ÷ 8–12 firms" lets him compute ~$40–60K a firm. **Firm count removed from the on-screen copy** and kept in the spoken track only. If he does the division out loud, own it: *"We're modeling roughly fifty a firm. That's from comparables, not from a signed customer — which is exactly what the next six months are for."*
+> **⚠️ IF HE DIVIDES $500K BY THE FIRM COUNT** and asks about price:
+> *"We're modeling roughly fifty a firm. That's from comparables, not from a signed customer —
+> which is exactly what the next six months are for."*
 
 ---
 
@@ -300,8 +306,8 @@ direct address — J.R. neither draws nor submits, and that's fine. Do not "fix"
 | 8 Team | 0:35 | 4:55 |
 | 9 Ask | 0:35 | **5:30** |
 
-**If the room is running cold — cut in this order:** Slide 4 spoken to one sentence (−10s) ·
-Slide 6 beachhead statistics (−10s) · Slide 7 to the last line only (−15s) · demo to 60s (−25s).
+**If the room runs cold, cut in this order:** Slide 4 spoken to one sentence (−10s) ·
+Slide 6 beachhead stats (−10s) · Slide 7 to the last line only (−15s) · demo to 60s (−25s).
 **Floor: ~4:30.**
 
 ---
@@ -310,12 +316,15 @@ Slide 6 beachhead statistics (−10s) · Slide 7 to the last line only (−15s) 
 
 | # | Item | Slide |
 |---|---|---|
-| 1 | **Source for the 40% and 1.4M permits** — the pitch's load-bearing number | 2 |
-| 2 | **What share of rejections are code errors** Cuniform catches | 2 |
-| 3 | **Jurisdiction answer** — "does it do New York?" is the likeliest question in the room | 3 |
-| 4 | **Source for the $700M consultant spend** | 6 |
-| 5 | **Both team bios** | 8 |
-| 6 | **Haakon's exact Procore title** | 8 |
-| 7 | **Confirm "no auto-fix, no generated drawings"** is accurate | 8 |
-| 8 | **Demo script + recording** — "the slide that wins or loses," still unmade | 3 |
-| 9 | Survey data — not currently used; slot into Slide 5 if the numbers hold | 5 |
+| 1 | **Both team bios** | 8 |
+| 2 | **Haakon's exact Procore title + dates** — omitted until verified | 8 |
+| 3 | **Demo script + recording** — "the slide that wins or loses," still unmade | 3 |
+| 4 | Survey data — still unfound; slot into Traction only if the numbers hold | 5 |
+
+## RESOLVED THIS DRAFT
+
+- ~~40% rejection stat~~ → replaced with the sourced **$700M consultant spend**, which is money
+  actually changing hands *and* the budget Cuniform replaces
+- ~~Jurisdiction answer~~ → **NYC is live**, now named in the demo setup
+- ~~Auto-fix uncertainty~~ → confirmed: flags and cites only
+- ~~Unsourced claims~~ → sources now cited on-slide throughout
