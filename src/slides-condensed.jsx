@@ -255,7 +255,7 @@ function CondProblem({ index }) {
         {/* THE TAKEAWAY, the only serif on this slide */}
         <h2 className="serif" style={{ fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0', maxWidth: 1560 }}>
           <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>Nobody checks the code</span><br />
-          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>until the drawing is finished.</span>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', paddingBottom: '0.16em', marginBottom: '-0.16em', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>until the drawing is finished.</span>
         </h2>
 
         {/* Two sentences, one per line. */}
@@ -288,7 +288,7 @@ function CondProblem({ index }) {
 }
 
 /* ============ 03 · DEMO ============
-   ONE IDEA: It already works, inside Revit, on the New York City code. */
+   ONE IDEA: It already works, inside Revit, on codes across North America. */
 
 /* Demo player.
    Drop the recording in as `assets/demo.mp4` and it plays in place, in the
@@ -367,7 +367,7 @@ function CondDemo({ index }) {
       <div style={{ position: 'absolute', inset: 0, padding: '150px 120px 125px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 64, alignItems: 'start' }}>
           <div>
-            <Eyebrow>INSIDE REVIT · LIVE ON THE NEW YORK CITY CODE</Eyebrow>
+            <Eyebrow>INSIDE REVIT · CODES ACROSS ALL OF NORTH AMERICA</Eyebrow>
 
             {/* THE TAKEAWAY, the only serif on this slide.
                 NOTE: clip-path wipes drop wrapped line fragments, so each
@@ -803,7 +803,7 @@ function CondTeam({ index }) {
   const founders = [
     { name: 'Joe Yatco', role: 'CEO', bio: 'Ten years in architecture. Lived the code-compliance problem across 80+ projects at RAMSA and East Horizon.', photo: 'assets/joe-yatco.png' },
     { name: 'Kyle Gallatin', role: 'CTO', bio: 'Production ML at Pfizer, Etsy, and Handshake. O’Reilly author. Full-time on close.', photo: 'assets/kyle-gallatin.png' },
-    { name: 'Arnav Somani', role: 'CDO', bio: 'Led design at Smartmedia Tech. Enterprise tools used across Visa, Nike, and the IOC.', photo: 'assets/arnav-somani.png' },
+    { name: 'Arnav Somani', role: 'SENIOR DESIGNER', bio: 'Led design at Smartmedia Tech. Enterprise tools used across Visa, Nike, and the IOC.', photo: 'assets/arnav-somani.png' },
   ];
 
   /* Design lead and advisor. Al's line is drawn from his public profile
@@ -811,7 +811,7 @@ function CondTeam({ index }) {
      still unconfirmed, so his line states only what is publicly visible. */
   const support = [
     { name: 'Al Deliallisi', role: 'PRODUCT DESIGN', bio: 'Design at Google. Previously led design for a major AWS service. Rice University.' },
-    { name: 'Haakon Sorensen', role: 'ADVISOR · GTM', bio: 'Construction-tech go-to-market. Procore certified. Currently at Shippeo.' },
+    { name: 'Haakon Sorensen', role: 'CSO', bio: 'Construction-tech go-to-market. Procore certified. Currently at Shippeo.' },
   ];
 
   return (
@@ -832,7 +832,7 @@ function CondTeam({ index }) {
           Most AEC software is built by technologists who studied the industry from outside.
           Joe spent ten years losing months to code review, then built the tool he needed.
           <strong style={{ color: 'var(--bone)', fontWeight: 500 }}> Eighteen months, no outside
-          funding, an enterprise-ready product — built by the team that proves it can be done.</strong>
+          funding, an enterprise-ready product. Built by the team that proves it can be done.</strong>
         </div>
 
         <div style={{ paddingTop: 30, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}>
@@ -891,13 +891,13 @@ function CondTeam({ index }) {
 
           <div data-reveal style={{ '--reveal-delay': '2080ms' }}>
             <div className="mono" style={{ fontSize: 10, letterSpacing: '0.26em', color: 'var(--amber)', opacity: 0.85, marginBottom: 10 }}>
-              ENGINEERING
+              PLATFORM TECH LEAD
             </div>
             <div style={{ fontSize: 22, lineHeight: 1.1, letterSpacing: '-0.015em', fontWeight: 500, color: 'var(--bone)', marginBottom: 7 }}>
-              Two engineers
+              Michael Gallatin
             </div>
             <div style={{ fontSize: 16, lineHeight: 1.4, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.8 }}>
-              Building the compliance engine alongside Kyle since day one.
+              Staff software engineer. Machine-learning systems at Etsy and Pfizer.
             </div>
           </div>
         </div>
@@ -971,8 +971,8 @@ function CondAsk({ index }) {
               </div>
             </div>
             <div style={{ fontSize: 20, lineHeight: 1.5, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.8 }}>
-              Reached by firm-wide expansion at two or three logos, the motion our design
-              partners are already in.
+              Two or three firms adopting Cuniform firm-wide gets us there.
+              Our design partners are already on that path.
             </div>
           </div>
         </div>
