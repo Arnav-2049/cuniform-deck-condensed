@@ -678,3 +678,66 @@ That difference shows up most in what we chose *not* to build."
 technology — it's getting a 300-person firm to let you inside their model. We started with RAMSA and
 Hart Howerton because Joe spent a decade earning that access. Competitors will spend years reaching
 the rooms we started in."
+
+---
+
+## 14 · ROUND 9 — CLOSE, RISKS, AND THE IP GAP
+
+### 🔴 A1 ESCALATED — the biggest risk to the raise
+Founder previously reported *"incorporated, IP assigned."* Founder now reports **nothing documented**,
+with **three non-founder contributors** (2 engineers + 1 designer) building for **18 months**.
+
+**These cannot both be true.** IP assignment exists only where someone signed something. If Kyle's
+brother, Fizza, and Al Deliasi never signed IP assignment agreements, **Cuniform does not own the code
+and designs they wrote — they do.**
+
+Why it's serious:
+1. **Hard diligence blocker** — no investor closes on a company that can't demonstrate it owns its product. Standard checklist item.
+2. **Exposure compounds with success** — six people with unwritten equity expectations after 18 months unpaid is a dispute waiting for a liquidity event. Everyone is aligned *now*, while the company is worth nothing.
+3. **Founders personally exposed** — including Arnav, with no documented equity after 18 months of work.
+
+**Fix:** IP assignment agreements for all six (one page each), documented founder splits with 4-year
+vesting crediting time served, small option pool covering the three non-founders. ~1 week, a few
+thousand dollars with a startup lawyer. **Highest-return spend of the entire raise.**
+
+**Do it BEFORE the meeting** — if JR moves fast, assembling a cap table under term-sheet pressure is
+the worst time to do it. And given his structured-finance background, "who owns the IP?" is a
+question he may well ask.
+
+**Founder decision: added to the action list, timing undecided.**
+
+### Current burn — corrected
+**Materially lower than the earlier $20–50K/mo estimate.** Team is unpaid/equity-only; spend is
+essentially infrastructure. Strengthens the capital-efficiency story further.
+
+### Risks slide — DECIDED: none
+For a low-attention-span investor, a risks slide spends scarce attention on doubt. Risks are answered
+**verbally and cold** — see OBJECTION-PREP.md.
+
+### "Why us" — SELECTED: **B, "the customer built it"**
+> "Most AEC software is built by technologists who studied the industry from outside. Cuniform was
+> built by an architect who lived it. Joe spent ten years watching projects lose months to code
+> review — then built the tool he needed. That difference shows up most in what we chose *not* to build."
+
+**C (access as moat) is the follow-up** when he asks about defensibility.
+
+### The close — RECOMMENDED (founder asked; wants a soft approach)
+> "We're raising $1.5M, and we think you're the right partner for reasons beyond the capital — your
+> P3 and developer network is exactly what Phase 2 needs. **What would you need to see to get to a
+> decision? And would that be Black Pearl investing directly, or bringing it to your network?"**
+
+Three things at once: unambiguous ask; **he** defines the next step (no pressure); and the
+**direct-investment-vs-placement question resolves naturally** — likely the most valuable outcome
+of the meeting.
+
+### Where Fable fits in the process
+**After slide copy is drafted, before final revision.** Rationale: current work is *strategy* —
+what's true and defensible, which benefits from research and verification. Once prose exists, the
+task becomes *language and narrative flow*, and a **fresh read unanchored by these decisions** is
+more useful than one carrying all of them.
+
+**Sequence:** content plan → draft copy → **Fable review** → revise → build slides → demo script.
+
+### Deliverable
+**CONTENT-PLAN.md** written — full 9-slide plan with per-slide job, time budget, headline, supporting
+content, rationale, and sources; plus deliberate exclusions, open items, and pre-pitch actions.
