@@ -3,25 +3,53 @@
 
    BUILT FOR EMAIL, NOT PRESENTATION.
    J.R. Chantengco reads this alone, with a low attention span.
-   Design rule: the HEADLINES ALONE must carry the whole argument.
-   If he skims only the big type, he still gets the pitch.
 
-   Copy is locked in SLIDE-COPY.md (draft 4). Do not edit copy here
-   without updating that file — it is the source of truth.
+   ── TWO RULES THAT GOVERN THIS FILE ──
+
+   1. TYPOGRAPHY. `.serif` (Instrument Serif) is reserved for THE ONE
+      TAKEAWAY on a slide — the sentence we want him to leave with, and
+      the hero number when that number IS the takeaway. Everything else
+      is Geist (no class) or `.mono` for labels, meta, and sources.
+      If serif is everywhere, nothing is emphasised. Do not spread it.
+
+   2. ONE IDEA PER SLIDE. Each slide makes a single point. Support may
+      stay, but it must read as clearly secondary — smaller, quieter,
+      lower contrast. The eye should find the takeaway first, always.
+
+   Copy source of truth: SLIDE-COPY.md
    ────────────────────────────────────────────────────────────── */
 
 const TOTAL = 9;
 
-/* ---------- small shared bits ---------- */
+/* ---------- shared bits ---------- */
 
 function SourceTag({ children, dark = true, style }) {
   return (
     <div
       className="mono"
       style={{
-        fontSize: 13,
+        fontSize: 12,
         letterSpacing: '0.18em',
-        color: dark ? 'rgba(242,237,228,0.38)' : 'rgba(10,10,10,0.38)',
+        color: dark ? 'rgba(242,237,228,0.32)' : 'rgba(10,10,10,0.32)',
+        ...style,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* Small uppercase section label — always mono, never serif. */
+function Eyebrow({ children, delay = 0, dark = true, style }) {
+  return (
+    <div
+      className="mono"
+      data-reveal
+      style={{
+        fontSize: 13,
+        letterSpacing: '0.28em',
+        color: 'var(--amber)',
+        '--reveal-delay': `${delay}ms`,
         ...style,
       }}
     >
@@ -42,7 +70,8 @@ function Logomark({ size = 28 }) {
   );
 }
 
-/* ============ 01 · COVER ============ */
+/* ============ 01 · COVER ============
+   ONE IDEA: Building code compliance in real time. */
 function CondCover({ index }) {
   const activeIdx = useActiveSlideIndex();
   const ref = useRef(null);
@@ -64,10 +93,10 @@ function CondCover({ index }) {
   return (
     <section ref={ref} className="slide dark" data-label="Cover">
       <div style={{ position: 'absolute', top: 56, left: 120, right: 120, display: 'flex', justifyContent: 'space-between' }}>
-        <div className="mono" data-reveal style={{ fontSize: 15, letterSpacing: '0.24em', '--reveal-delay': '100ms' }}>
+        <div className="mono" data-reveal style={{ fontSize: 14, letterSpacing: '0.24em', '--reveal-delay': '100ms' }}>
           <span style={{ color: 'var(--amber)' }}>●</span>&nbsp;&nbsp;CUNIFORM
         </div>
-        <div className="mono" data-reveal style={{ fontSize: 15, letterSpacing: '0.24em', opacity: 0.6, '--reveal-delay': '100ms' }}>
+        <div className="mono" data-reveal style={{ fontSize: 14, letterSpacing: '0.24em', opacity: 0.5, '--reveal-delay': '100ms' }}>
           CONFIDENTIAL
         </div>
       </div>
@@ -76,31 +105,33 @@ function CondCover({ index }) {
         position: 'absolute', inset: 0,
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        gap: 56, padding: '0 120px',
+        gap: 52, padding: '0 120px',
       }}>
         <span data-reveal style={{ display: 'inline-block', '--reveal-delay': '200ms', '--reveal-y': '60px' }}>
-          <img src="assets/Cuniform.svg" alt="Cuniform" style={{ width: 1180, height: 'auto', display: 'block' }} />
+          <img src="assets/Cuniform.svg" alt="Cuniform" style={{ width: 1080, height: 'auto', display: 'block' }} />
         </span>
 
+        {/* THE TAKEAWAY — the only serif on this slide */}
         <div className="serif" data-reveal style={{
-          fontSize: 76, lineHeight: 1.08, letterSpacing: '-0.02em',
+          fontSize: 82, lineHeight: 1.06, letterSpacing: '-0.02em',
           textAlign: 'center', color: 'var(--bone)',
           '--reveal-delay': '700ms',
         }}>
-          Check the code while you draw.<br />
-          <span style={{ color: 'var(--amber)', fontStyle: 'italic' }}>Not after you submit.</span>
+          Building code compliance,{' '}
+          <span style={{ color: 'var(--amber)', fontStyle: 'italic' }}>in real time.</span>
         </div>
 
+        {/* Support — sans, quieter */}
         <div data-reveal style={{
-          fontSize: 30, lineHeight: 1.5, fontWeight: 300, textAlign: 'center',
-          color: 'var(--bone-2)', maxWidth: 1100, '--reveal-delay': '1100ms',
+          fontSize: 27, lineHeight: 1.5, fontWeight: 300, textAlign: 'center',
+          color: 'var(--bone-2)', opacity: 0.85, maxWidth: 1000, '--reveal-delay': '1100ms',
         }}>
-          A code compliance engine that runs inside Revit — flagging violations
-          with cited clauses <em style={{ fontStyle: 'italic' }}>while the building is being drawn.</em>
+          Cuniform runs inside Revit and checks the building against the code
+          as the architect draws it — every flag linked to the clause it came from.
         </div>
 
         <div className="mono" data-reveal style={{
-          fontSize: 15, letterSpacing: '0.3em', color: 'var(--amber)', marginTop: 8,
+          fontSize: 14, letterSpacing: '0.3em', color: 'var(--amber)', marginTop: 8,
           '--reveal-delay': '1400ms',
         }}>
           —&nbsp;&nbsp;SEED · 2026&nbsp;&nbsp;—
@@ -118,127 +149,106 @@ function CondCover({ index }) {
   );
 }
 
-/* ============ 02 · PROBLEM ============ */
+/* ============ 02 · PROBLEM ============
+   ONE IDEA: The check happens after the drawing is finished —
+   which costs the project money and clogs the city. */
 function CondProblem({ index }) {
   const innerRef = useRef(null);
   const isActive = useSlideActive(innerRef);
 
   return (
     <Slide index={index} total={TOTAL} section="01 · The Problem" label="Problem" tone="dark">
-      <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column' }}>
-        <div className="mono" data-reveal style={{ fontSize: 15, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 26 }}>
-          THE PROBLEM
-        </div>
+      <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Eyebrow>THE PROBLEM</Eyebrow>
 
-        <div className="serif" style={{ fontSize: 150, lineHeight: 0.92, letterSpacing: '-0.03em' }}>
-          <span data-wipe style={{ '--reveal-delay': '200ms' }}>
-            $<Counter to={700} duration={1300} delay={300} active={isActive} format={(n) => Math.round(n)} />M a year
-          </span>
-        </div>
+        {/* THE TAKEAWAY — the only serif on this slide */}
+        <h2 className="serif" style={{ fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0', maxWidth: 1560 }}>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>Nobody checks the code</span><br />
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>until the drawing is finished.</span>
+        </h2>
 
-        <div className="serif" data-reveal style={{
-          fontSize: 60, lineHeight: 1.15, fontStyle: 'italic',
-          color: 'var(--bone-2)', marginTop: 18, maxWidth: 1500,
-          '--reveal-delay': '900ms',
+        <div data-reveal style={{
+          marginTop: 30, fontSize: 29, lineHeight: 1.45, fontWeight: 300,
+          color: 'var(--bone-2)', maxWidth: 1460, '--reveal-delay': '950ms',
         }}>
-          paid to humans to check code by hand.
+          Firms pay <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$700 million a year</strong> to
+          have consultants check it by hand, weeks after the fact. Pre-construction still runs twelve months.
         </div>
 
-        <div className="serif" data-reveal style={{
-          fontSize: 64, lineHeight: 1.15, marginTop: 44, maxWidth: 1500,
-          '--reveal-delay': '1300ms',
-        }}>
-          It still takes <span style={{ color: 'var(--amber)' }}>12 months</span> to get to permit.
-          <br />And it still comes back.
-        </div>
-
-        {/* ── Rejection math, drawn as a fork: one rejection, two very
-               different costs. The project's carry resolves last. ── */}
+        {/* Support: the two parties who pay for a late check.
+            Cities included per founder — it sets up phase two. */}
         <div style={{
-          marginTop: 'auto', paddingTop: 36,
-          borderTop: '1px solid rgba(242,237,228,0.18)',
-          display: 'grid', gridTemplateColumns: 'auto 200px 1fr', alignItems: 'center',
+          paddingTop: 44,
+          borderTop: '1px solid rgba(242,237,228,0.16)',
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80,
         }}>
-          <div data-reveal style={{ '--reveal-delay': '1700ms' }}>
-            <div className="mono" style={{ fontSize: 13, letterSpacing: '0.26em', color: 'var(--bone-2)', opacity: 0.7, marginBottom: 14 }}>
-              EVERY REJECTION ADDS
+          <div data-reveal style={{ '--reveal-delay': '1300ms' }}>
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 18 }}>
+              WHEN IT FAILS · THE PROJECT
             </div>
-            <div className="serif" style={{ fontSize: 80, lineHeight: 0.95, letterSpacing: '-0.02em' }}>4–8 weeks</div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 18, marginBottom: 12 }}>
+              <div style={{ fontSize: 62, fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--bone)' }}>
+                $50–200K
+              </div>
+              <div style={{ fontSize: 22, color: 'var(--bone-2)', opacity: 0.7 }}>a month</div>
+            </div>
+            <div style={{ fontSize: 22, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.85 }}>
+              in carry — financing, taxes, insurance, revenue not yet earned —
+              for every four to eight weeks a rejection adds.
+            </div>
           </div>
 
-          {/* drawn fork: rejection splits into two costs */}
-          <svg width="200" height="180" viewBox="0 0 200 180" fill="none" style={{ justifySelf: 'center' }}>
-            <path data-draw style={{ '--draw-len': '260', '--reveal-delay': '2000ms' }}
-              d="M 8 96 L 66 96 C 112 96 112 46 158 46 L 182 46"
-              stroke="rgba(242,237,228,0.35)" strokeWidth="1.5" />
-            <path data-draw style={{ '--draw-len': '260', '--reveal-delay': '2200ms' }}
-              d="M 8 96 L 66 96 C 112 96 112 146 158 146 L 182 146"
-              stroke="var(--amber)" strokeWidth="2" />
-            <polyline data-reveal style={{ '--reveal-delay': '2350ms' }}
-              points="175,40 183,46 175,52" stroke="rgba(242,237,228,0.35)" strokeWidth="1.5" fill="none" />
-            <polyline data-reveal style={{ '--reveal-delay': '2550ms' }}
-              points="175,140 183,146 175,152" stroke="var(--amber)" strokeWidth="2" fill="none" />
-          </svg>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 30, paddingLeft: 32 }}>
-            <div data-reveal style={{ '--reveal-delay': '2350ms', display: 'flex', alignItems: 'baseline', gap: 28 }}>
-              <div className="mono" style={{ fontSize: 13, letterSpacing: '0.26em', color: 'var(--bone-2)', opacity: 0.7, width: 290, flexShrink: 0 }}>
-                COSTS THE ARCHITECT
-              </div>
-              <div className="serif" style={{ fontSize: 40, fontStyle: 'italic', color: 'var(--bone-2)', opacity: 0.75 }}>
-                a few redlines
-              </div>
+          <div data-reveal style={{ '--reveal-delay': '1500ms' }}>
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 18 }}>
+              WHEN IT FAILS · THE CITY
             </div>
-            <div data-reveal style={{ '--reveal-delay': '2600ms', display: 'flex', alignItems: 'baseline', gap: 28 }}>
-              <div className="mono" style={{ fontSize: 13, letterSpacing: '0.26em', color: 'var(--amber)', width: 290, flexShrink: 0 }}>
-                COSTS THE PROJECT
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 18, marginBottom: 12 }}>
+              <div style={{ fontSize: 62, fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--bone)' }}>
+                4–12 weeks
               </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 18, flexWrap: 'wrap' }}>
-                <span className="serif" style={{ fontSize: 62, lineHeight: 1, color: 'var(--amber)', letterSpacing: '-0.02em' }}>
-                  $50,000–$200,000
-                </span>
-                <span className="serif" style={{ fontSize: 34, fontStyle: 'italic', color: 'var(--amber)' }}>
-                  a month in carry
-                </span>
-              </div>
+              <div style={{ fontSize: 22, color: 'var(--bone-2)', opacity: 0.7 }}>per review</div>
+            </div>
+            <div style={{ fontSize: 22, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.85 }}>
+              Every resubmission re-enters a queue already backlogged.
+              The rework <em style={{ fontStyle: 'italic' }}>is</em> the backlog.
             </div>
           </div>
         </div>
 
-        <div style={{ marginTop: 26, display: 'flex', gap: 64 }}>
-          <SourceTag>CODE CONSULTING SPEND · COHERENT MARKET INSIGHTS, 2023</SourceTag>
-          <SourceTag>CARRY · 1–3% OF PROJECT COST PER MONTH OF DELAY</SourceTag>
-        </div>
+        <SourceTag style={{ marginTop: 26 }}>
+          CODE CONSULTING SPEND · COHERENT MARKET INSIGHTS, 2023&nbsp;&nbsp;·&nbsp;&nbsp;CARRY · 1–3% OF PROJECT COST PER MONTH&nbsp;&nbsp;·&nbsp;&nbsp;REVIEW TIMES · 4–12 WEEKS
+        </SourceTag>
       </div>
     </Slide>
   );
 }
 
-/* ============ 03 · DEMO ============ */
+/* ============ 03 · DEMO ============
+   ONE IDEA: It already works, inside Revit, on the New York City code. */
 function CondDemo({ index }) {
   return (
     <Slide index={index} total={TOTAL} section="02 · The Product" label="Demo" tone="dark">
-      <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 140px', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 60, alignItems: 'baseline' }}>
+      <div style={{ position: 'absolute', inset: 0, padding: '150px 120px 125px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 64, alignItems: 'start' }}>
           <div>
-            <div className="mono" data-reveal style={{ fontSize: 15, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 24 }}>
-              INSIDE REVIT · LIVE ON THE NEW YORK CITY CODE
-            </div>
-            {/* NOTE: each line is an inline-block + nowrap — clip-path wipes
-                drop line fragments that wrap, so lines must never wrap. */}
-            <h2 className="serif" style={{ fontSize: 78, lineHeight: 1.06, letterSpacing: '-0.02em', margin: 0 }}>
+            <Eyebrow>INSIDE REVIT · LIVE ON THE NEW YORK CITY CODE</Eyebrow>
+
+            {/* THE TAKEAWAY — the only serif on this slide.
+                NOTE: clip-path wipes drop wrapped line fragments, so each
+                line must be inline-block + nowrap. Do not let these wrap. */}
+            <h2 className="serif" style={{ fontSize: 76, lineHeight: 1.06, letterSpacing: '-0.02em', margin: '24px 0 0' }}>
               <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>Violations flagged</span><br />
-              <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '500ms', fontStyle: 'italic', color: 'var(--amber)' }}>as the building is drawn.</span>
+              <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>as the building is drawn.</span>
             </h2>
           </div>
-          <div data-reveal style={{ '--reveal-delay': '900ms', fontSize: 26, lineHeight: 1.5, fontWeight: 300, color: 'var(--bone-2)', paddingTop: 10 }}>
+
+          <div data-reveal style={{ '--reveal-delay': '900ms', fontSize: 24, lineHeight: 1.5, fontWeight: 300, color: 'var(--bone-2)', paddingTop: 42 }}>
             Every flag links to the clause it came from. The architect can read it,
             argue with it, or dismiss it — and that decision is logged.
-            <br /><br />
-            <strong style={{ color: 'var(--bone)', fontWeight: 600 }}>
+            <div style={{ marginTop: 18, color: 'var(--bone)', fontWeight: 400 }}>
               The architect stays the author. We make sure nothing leaves the office
-              that the city would bounce.
-            </strong>
+              that the city would send back.
+            </div>
           </div>
         </div>
 
@@ -246,10 +256,10 @@ function CondDemo({ index }) {
           data-scale-in
           style={{
             '--reveal-delay': '600ms',
-            marginTop: 'auto', paddingTop: 40,
-            borderRadius: 12,
+            paddingTop: 36,
+            borderRadius: 10,
             boxShadow: '0 30px 80px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(242,237,228,0.10)',
-            overflow: 'hidden', lineHeight: 0, alignSelf: 'center', width: '100%',
+            overflow: 'hidden', lineHeight: 0, width: '100%',
           }}
         >
           <img
@@ -259,10 +269,10 @@ function CondDemo({ index }) {
           />
         </div>
 
-        {/* TODO: replace with a link to the recorded demo once it exists */}
+        {/* TODO: swap for the recorded walkthrough link once it exists */}
         <div data-reveal className="mono" style={{
-          '--reveal-delay': '1400ms', marginTop: 24, textAlign: 'center',
-          fontSize: 15, letterSpacing: '0.2em', color: 'var(--amber)',
+          '--reveal-delay': '1400ms', marginTop: 20, textAlign: 'center',
+          fontSize: 14, letterSpacing: '0.2em', color: 'var(--amber)',
         }}>
           ▸ WATCH THE 90-SECOND WALKTHROUGH — [LINK PENDING]
         </div>
@@ -271,110 +281,141 @@ function CondDemo({ index }) {
   );
 }
 
-/* ============ 04 · WHY NOW ============ */
+/* ============ 04 · WHY NOW ============
+   ONE IDEA: Four things became true at once — including the human
+   supply of code expertise walking out the door. */
 
-/* Drawn icons — one per force, extensive-deck vocabulary (data-draw strokes,
-   one amber accent each, resolving after the stroke work). */
 function IconCodeBook({ d = 0 }) {
   return (
-    <svg width="96" height="68" viewBox="0 0 96 68" fill="none">
-      {/* code-book text lines */}
-      <line data-draw style={{ '--draw-len': '56', '--reveal-delay': `${d}ms` }} x1="0" y1="6" x2="56" y2="6" stroke="rgba(242,237,228,0.5)" strokeWidth="2" />
-      <line data-draw style={{ '--draw-len': '48', '--reveal-delay': `${d + 120}ms` }} x1="0" y1="17" x2="48" y2="17" stroke="rgba(242,237,228,0.5)" strokeWidth="2" />
-      <line data-draw style={{ '--draw-len': '52', '--reveal-delay': `${d + 240}ms` }} x1="0" y1="28" x2="52" y2="28" stroke="rgba(242,237,228,0.5)" strokeWidth="2" />
-      {/* if-this-then-that branch */}
-      <path data-draw style={{ '--draw-len': '48', '--reveal-delay': `${d + 380}ms` }} d="M 0 52 L 44 52" stroke="rgba(242,237,228,0.5)" strokeWidth="1.5" />
-      <path data-draw style={{ '--draw-len': '22', '--reveal-delay': `${d + 520}ms` }} d="M 44 52 L 60 40" stroke="rgba(242,237,228,0.5)" strokeWidth="1.5" />
-      <path data-draw style={{ '--draw-len': '22', '--reveal-delay': `${d + 520}ms` }} d="M 44 52 L 60 64" stroke="rgba(242,237,228,0.5)" strokeWidth="1.5" />
-      {/* the cited clause */}
-      <circle data-reveal style={{ '--reveal-delay': `${d + 700}ms` }} cx="68" cy="40" r="5" fill="var(--amber)" />
-      <text data-reveal style={{ '--reveal-delay': `${d + 800}ms` }} x="80" y="45"
-        fontFamily="'JetBrains Mono', monospace" fontSize="14" fill="var(--amber)">§</text>
+    <svg width="92" height="60" viewBox="0 0 92 60" fill="none">
+      <line data-draw style={{ '--draw-len': '52', '--reveal-delay': `${d}ms` }} x1="0" y1="5" x2="52" y2="5" stroke="rgba(242,237,228,0.45)" strokeWidth="2" />
+      <line data-draw style={{ '--draw-len': '44', '--reveal-delay': `${d + 120}ms` }} x1="0" y1="15" x2="44" y2="15" stroke="rgba(242,237,228,0.45)" strokeWidth="2" />
+      <path data-draw style={{ '--draw-len': '42', '--reveal-delay': `${d + 300}ms` }} d="M 0 40 L 40 40" stroke="rgba(242,237,228,0.45)" strokeWidth="1.5" />
+      <path data-draw style={{ '--draw-len': '20', '--reveal-delay': `${d + 440}ms` }} d="M 40 40 L 54 30" stroke="rgba(242,237,228,0.45)" strokeWidth="1.5" />
+      <path data-draw style={{ '--draw-len': '20', '--reveal-delay': `${d + 440}ms` }} d="M 40 40 L 54 50" stroke="rgba(242,237,228,0.45)" strokeWidth="1.5" />
+      <circle data-reveal style={{ '--reveal-delay': `${d + 620}ms` }} cx="62" cy="30" r="4.5" fill="var(--amber)" />
+      <text data-reveal style={{ '--reveal-delay': `${d + 720}ms` }} x="73" y="35"
+        fontFamily="'JetBrains Mono', monospace" fontSize="13" fill="var(--amber)">§</text>
     </svg>
   );
 }
 
 function IconBIM({ d = 0 }) {
   return (
-    <svg width="84" height="68" viewBox="0 0 84 72" fill="none">
-      <path data-draw style={{ '--draw-len': '230', '--reveal-delay': `${d}ms` }}
-        d="M14 20 L42 6 L70 20 L70 52 L42 66 L14 52 Z" stroke="rgba(242,237,228,0.5)" strokeWidth="1.5" />
-      <path data-draw style={{ '--draw-len': '90', '--reveal-delay': `${d + 350}ms` }}
-        d="M14 20 L42 34 L70 20" stroke="rgba(242,237,228,0.5)" strokeWidth="1.5" />
-      <path data-draw style={{ '--draw-len': '34', '--reveal-delay': `${d + 550}ms` }}
-        d="M42 34 L42 66" stroke="rgba(242,237,228,0.5)" strokeWidth="1.5" />
-      <circle data-reveal style={{ '--reveal-delay': `${d + 750}ms` }} cx="60" cy="25" r="5" fill="var(--amber)" />
+    <svg width="80" height="60" viewBox="0 0 80 64" fill="none">
+      <path data-draw style={{ '--draw-len': '210', '--reveal-delay': `${d}ms` }}
+        d="M12 18 L38 5 L64 18 L64 47 L38 60 L12 47 Z" stroke="rgba(242,237,228,0.45)" strokeWidth="1.5" />
+      <path data-draw style={{ '--draw-len': '82', '--reveal-delay': `${d + 320}ms` }}
+        d="M12 18 L38 31 L64 18" stroke="rgba(242,237,228,0.45)" strokeWidth="1.5" />
+      <path data-draw style={{ '--draw-len': '30', '--reveal-delay': `${d + 500}ms` }}
+        d="M38 31 L38 60" stroke="rgba(242,237,228,0.45)" strokeWidth="1.5" />
+      <circle data-reveal style={{ '--reveal-delay': `${d + 680}ms` }} cx="55" cy="22" r="4.5" fill="var(--amber)" />
     </svg>
   );
 }
 
 function IconGridlock({ d = 0 }) {
   return (
-    <svg width="96" height="68" viewBox="0 0 96 68" fill="none">
-      {/* review queue, growing */}
-      <line data-draw style={{ '--draw-len': '26', '--reveal-delay': `${d}ms` }} x1="0" y1="10" x2="26" y2="10" stroke="rgba(242,237,228,0.45)" strokeWidth="7" strokeLinecap="square" />
-      <line data-draw style={{ '--draw-len': '40', '--reveal-delay': `${d + 140}ms` }} x1="0" y1="25" x2="40" y2="25" stroke="rgba(242,237,228,0.45)" strokeWidth="7" strokeLinecap="square" />
-      <line data-draw style={{ '--draw-len': '54', '--reveal-delay': `${d + 280}ms` }} x1="0" y1="40" x2="54" y2="40" stroke="rgba(242,237,228,0.45)" strokeWidth="7" strokeLinecap="square" />
-      <line data-draw style={{ '--draw-len': '68', '--reveal-delay': `${d + 420}ms` }} x1="0" y1="55" x2="68" y2="55" stroke="var(--amber)" strokeWidth="7" strokeLinecap="square" />
-      {/* the clock it burns */}
-      <circle data-draw style={{ '--draw-len': '63', '--reveal-delay': `${d + 350}ms` }} cx="84" cy="16" r="10" stroke="rgba(242,237,228,0.5)" strokeWidth="1.5" />
-      <line data-reveal style={{ '--reveal-delay': `${d + 650}ms` }} x1="84" y1="16" x2="84" y2="8" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" />
-      <line data-reveal style={{ '--reveal-delay': `${d + 650}ms` }} x1="84" y1="16" x2="90" y2="18" stroke="rgba(242,237,228,0.6)" strokeWidth="1.5" strokeLinecap="round" />
+    <svg width="92" height="60" viewBox="0 0 92 60" fill="none">
+      <line data-draw style={{ '--draw-len': '24', '--reveal-delay': `${d}ms` }} x1="0" y1="8" x2="24" y2="8" stroke="rgba(242,237,228,0.4)" strokeWidth="6" strokeLinecap="square" />
+      <line data-draw style={{ '--draw-len': '36', '--reveal-delay': `${d + 140}ms` }} x1="0" y1="22" x2="36" y2="22" stroke="rgba(242,237,228,0.4)" strokeWidth="6" strokeLinecap="square" />
+      <line data-draw style={{ '--draw-len': '48', '--reveal-delay': `${d + 280}ms` }} x1="0" y1="36" x2="48" y2="36" stroke="rgba(242,237,228,0.4)" strokeWidth="6" strokeLinecap="square" />
+      <line data-draw style={{ '--draw-len': '62', '--reveal-delay': `${d + 420}ms` }} x1="0" y1="50" x2="62" y2="50" stroke="var(--amber)" strokeWidth="6" strokeLinecap="square" />
+      <circle data-draw style={{ '--draw-len': '57', '--reveal-delay': `${d + 340}ms` }} cx="80" cy="14" r="9" stroke="rgba(242,237,228,0.45)" strokeWidth="1.5" />
+      <line data-reveal style={{ '--reveal-delay': `${d + 620}ms` }} x1="80" y1="14" x2="80" y2="7" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/* Code consultants retiring — the human supply of code expertise
+   walking out (founder addition). Two figures fade, one stays amber. */
+function IconRetiring({ d = 0 }) {
+  return (
+    <svg width="92" height="60" viewBox="0 0 92 60" fill="none">
+      {[0, 1, 2].map((i) => (
+        <g
+          key={i}
+          data-reveal
+          style={{ '--reveal-delay': `${d + i * 150}ms` }}
+          opacity={i < 2 ? 0.22 : 1}
+        >
+          <circle cx={12 + i * 26} cy="16" r="6"
+            stroke={i < 2 ? 'rgba(242,237,228,0.45)' : 'var(--amber)'} strokeWidth="1.5" fill="none" />
+          <path d={`M${4 + i * 26} 44 Q${12 + i * 26} 30 ${20 + i * 26} 44 L${20 + i * 26} 50 L${4 + i * 26} 50 Z`}
+            stroke={i < 2 ? 'rgba(242,237,228,0.45)' : 'var(--amber)'} strokeWidth="1.5" fill="none" />
+        </g>
+      ))}
+      {/* the exit arrow */}
+      <path data-draw style={{ '--draw-len': '20', '--reveal-delay': `${d + 620}ms` }}
+        d="M 70 30 L 88 30" stroke="rgba(242,237,228,0.45)" strokeWidth="1.5" />
+      <path data-reveal style={{ '--reveal-delay': `${d + 760}ms` }}
+        d="M 83 25 L 89 30 L 83 35" stroke="rgba(242,237,228,0.45)" strokeWidth="1.5" fill="none" />
     </svg>
   );
 }
 
 function CondWhyNow({ index }) {
+  const innerRef = useRef(null);
+  const isActive = useSlideActive(innerRef);
+
   const forces = [
-    { n: '01', t: 'The AI can finally read a code book', b: 'If-this-then-that logic, with the clause cited. A demo three years ago. Production now.', Icon: IconCodeBook },
+    { n: '01', t: 'The AI can read a code book', b: 'If-this-then-that logic, with the clause cited. A demo three years ago. Production now.', Icon: IconCodeBook },
     { n: '02', t: 'BIM opened up', b: 'We run inside the tool architects already work in all day.', Icon: IconBIM },
     { n: '03', t: 'Permits gridlocked', b: 'Post-2023 backlogs pushed review to 4–12 weeks — long enough that firms will change how they work.', Icon: IconGridlock },
+    { n: '04', t: 'The consultants are retiring', b: 'Code expertise is leaving the profession faster than it is replaced. A succession problem we turn into a software problem.', Icon: IconRetiring },
   ];
 
   return (
     <Slide index={index} total={TOTAL} section="03 · Why Now" label="Why Now" tone="dark">
-      <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column' }}>
-        <h2 className="serif" style={{ fontSize: 104, lineHeight: 1.0, letterSpacing: '-0.02em', margin: 0 }}>
-          <span data-wipe style={{ '--reveal-delay': '200ms' }}>Why this is</span>{' '}
-          <span data-wipe style={{ '--reveal-delay': '500ms', fontStyle: 'italic', color: 'var(--amber)' }}>happening now.</span>
+      <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Eyebrow>WHY NOW</Eyebrow>
+
+        {/* THE TAKEAWAY — the only serif on this slide */}
+        <h2 className="serif" style={{ fontSize: 94, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0' }}>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>Four things became true</span>{' '}
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>at the same time.</span>
         </h2>
 
-        <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 56, alignContent: 'center' }}>
+        {/* Support — sans throughout, clearly secondary */}
+        <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 40, alignContent: 'center', marginTop: 20 }}>
           {forces.map((f, i) => (
-            <div key={f.n} data-reveal style={{ '--reveal-delay': `${800 + i * 220}ms`, '--reveal-y': '40px', borderTop: '2px solid var(--amber)', paddingTop: 26 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
-                <div className="mono" style={{ fontSize: 14, letterSpacing: '0.3em', color: 'var(--amber)', paddingTop: 6 }}>
-                  {f.n}
-                </div>
-                <f.Icon d={1100 + i * 220} />
+            <div key={f.n} data-reveal style={{ '--reveal-delay': `${950 + i * 190}ms`, '--reveal-y': '32px', borderTop: '1px solid rgba(242,237,228,0.22)', paddingTop: 24 }}>
+              <div style={{ minHeight: 64, marginBottom: 14 }}>
+                <f.Icon d={1150 + i * 190} />
               </div>
-              <div className="serif" style={{ fontSize: 44, lineHeight: 1.1, letterSpacing: '-0.015em', marginBottom: 20, minHeight: 97 }}>
+              <div className="mono" style={{ fontSize: 12, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 14 }}>
+                {f.n}
+              </div>
+              <div style={{ fontSize: 27, lineHeight: 1.2, fontWeight: 500, color: 'var(--bone)', marginBottom: 14, letterSpacing: '-0.01em' }}>
                 {f.t}
               </div>
-              <div style={{ fontSize: 23, lineHeight: 1.5, color: 'var(--bone-2)', fontWeight: 300 }}>
+              <div style={{ fontSize: 19, lineHeight: 1.5, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.85 }}>
                 {f.b}
               </div>
             </div>
           ))}
         </div>
 
-        <div data-reveal className="serif" style={{
-          fontSize: 42, fontStyle: 'italic', color: 'var(--bone)',
-          '--reveal-delay': '2100ms',
+        <div data-reveal style={{
+          marginTop: 20, fontSize: 26, color: 'var(--bone)', fontWeight: 400,
+          '--reveal-delay': '1900ms',
         }}>
-          We're not early to the problem. <span style={{ color: 'var(--amber)' }}>We're on time for the solution.</span>
+          Not early to the problem. <span style={{ color: 'var(--amber)' }}>On time for the solution.</span>
         </div>
-
-        <SourceTag style={{ marginTop: 20 }}>REVIEW TIMES · 4–12 WEEKS, LARGE RESIDENTIAL / COMMERCIAL</SourceTag>
       </div>
     </Slide>
   );
 }
 
-/* ============ 05 · TRACTION ============ */
+/* ============ 05 · TRACTION ============
+   ONE IDEA: Demand is pulling us — we never went looking for it.
+   (Founder note: the "six people, zero dollars" framing was not landing
+   here; capital efficiency now lives on the Team slide where it reads as
+   conviction rather than as an excuse.) */
 function CondTraction({ index }) {
   const innerRef = useRef(null);
   const isActive = useSlideActive(innerRef);
+
   const partners = [
     { name: 'RAMSA', sub: 'Robert A.M. Stern Architects' },
     { name: 'Hart Howerton', sub: 'Architecture · Planning · Landscape' },
@@ -383,92 +424,81 @@ function CondTraction({ index }) {
 
   return (
     <Slide index={index} total={TOTAL} section="04 · Traction" label="Traction" tone="dark">
-      <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '160px 120px 140px', display: 'flex', flexDirection: 'column' }}>
-        <h2 className="serif" style={{ fontSize: 100, lineHeight: 1.0, letterSpacing: '-0.02em', margin: 0 }}>
-          <span data-wipe style={{ '--reveal-delay': '200ms' }}>Six people. Eighteen months.</span><br />
-          <span data-wipe style={{ '--reveal-delay': '600ms', fontStyle: 'italic', color: 'var(--amber)' }}>Zero dollars.</span>
+      <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Eyebrow>TRACTION</Eyebrow>
+
+        {/* THE TAKEAWAY — the only serif on this slide */}
+        <h2 className="serif" style={{ fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0' }}>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>We never advertised.</span>{' '}
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>They came anyway.</span>
         </h2>
 
         <div data-reveal style={{
-          marginTop: 36, fontSize: 30, lineHeight: 1.5, fontWeight: 300,
-          color: 'var(--bone-2)', maxWidth: 1400, '--reveal-delay': '1000ms',
+          marginTop: 28, fontSize: 28, lineHeight: 1.45, fontWeight: 300,
+          color: 'var(--bone-2)', maxWidth: 1400, '--reveal-delay': '950ms',
         }}>
-          Two ENR-ranked firms came on board as design partners — both around 300 people,
-          both testing Cuniform on live work today. Built on no outside capital, by a team
-          that hasn't been paid.
+          Two ENR-ranked firms are running Cuniform on live projects today.
+          Four more are asking. Sixty architects joined a waitlist we never promoted.
         </div>
 
-        <div style={{ marginTop: 'auto', paddingTop: 48, display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 72 }}>
+        {/* Support: the pull, quantified. Sans throughout. */}
+        <div style={{ paddingTop: 46, display: 'grid', gridTemplateColumns: '1.25fr 1fr', gap: 76 }}>
           <div>
-            <div className="mono" data-reveal style={{ fontSize: 13, letterSpacing: '0.26em', color: 'var(--amber)', marginBottom: 22, '--reveal-delay': '1300ms' }}>
-              DESIGN PARTNERS
+            <div className="mono" data-reveal style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 20, '--reveal-delay': '1250ms' }}>
+              TESTING ON LIVE WORK
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22 }}>
               {partners.map((p, i) => (
                 <div key={p.name} data-reveal style={{
-                  '--reveal-delay': `${1400 + i * 150}ms`, '--reveal-y': '20px',
+                  '--reveal-delay': `${1350 + i * 150}ms`, '--reveal-y': '18px',
                   border: '1px solid rgba(242,237,228,0.14)',
                   background: 'rgba(242,237,228,0.03)',
-                  padding: '28px 26px',
+                  padding: '26px 24px',
                 }}>
-                  <div className="serif" style={{ fontSize: 40, lineHeight: 1, letterSpacing: '-0.015em' }}>{p.name}</div>
-                  <div style={{ fontSize: 17, color: 'var(--bone-2)', opacity: 0.7, marginTop: 10, fontWeight: 300 }}>{p.sub}</div>
+                  <div style={{ fontSize: 34, lineHeight: 1.1, letterSpacing: '-0.02em', fontWeight: 500, color: 'var(--bone)' }}>{p.name}</div>
+                  <div style={{ fontSize: 16, color: 'var(--bone-2)', opacity: 0.65, marginTop: 8, fontWeight: 300 }}>{p.sub}</div>
                 </div>
               ))}
             </div>
 
-            {/* Integrity disclosure — intent is VERBAL only, nothing countersigned.
-                On-slide because an email reader cannot ask, and "signed?" is the
-                first question a 30-year operator asks about "design partners." */}
-            <div
-              className="mono"
-              data-reveal
-              style={{
-                '--reveal-delay': '1650ms',
-                marginTop: 18, fontSize: 12, letterSpacing: '0.18em',
-                color: 'var(--bone-2)', opacity: 0.55,
-              }}
-            >
-              VERBAL COMMITMENTS · TESTING ON LIVE WORK NOW · NOTHING COUNTERSIGNED
+            <div className="mono" data-reveal style={{
+              '--reveal-delay': '1620ms', marginTop: 16,
+              fontSize: 11, letterSpacing: '0.18em', color: 'var(--bone-2)', opacity: 0.5,
+            }}>
+              VERBAL COMMITMENTS · NOTHING COUNTERSIGNED
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 32 }}>
-              <div data-reveal style={{ '--reveal-delay': '1800ms' }}>
-                <div className="serif" style={{ fontSize: 64, lineHeight: 1 }}>
-                  <Counter to={60} duration={1100} delay={1900} active={isActive} format={(n) => Math.round(n)} />
+            <div style={{ display: 'flex', gap: 64, marginTop: 34 }}>
+              <div data-reveal style={{ '--reveal-delay': '1750ms' }}>
+                <div style={{ fontSize: 58, lineHeight: 1, fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--bone)' }}>
+                  <Counter to={60} duration={1100} delay={1850} active={isActive} format={(n) => Math.round(n)} />
                 </div>
-                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.2em', color: 'var(--bone-2)', opacity: 0.7, marginTop: 12 }}>
-                  ON THE WAITLIST · NO MARKETING
+                <div className="mono" style={{ fontSize: 11, letterSpacing: '0.2em', color: 'var(--bone-2)', opacity: 0.6, marginTop: 10 }}>
+                  WAITLIST · UNPROMOTED
                 </div>
               </div>
-              <div data-reveal style={{ '--reveal-delay': '1950ms' }}>
-                <div className="serif" style={{ fontSize: 64, lineHeight: 1, color: 'var(--amber)' }}>Live</div>
-                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.2em', color: 'var(--bone-2)', opacity: 0.7, marginTop: 12 }}>
-                  IN ACTIVE TESTING AT BOTH FIRMS
+              <div data-reveal style={{ '--reveal-delay': '1880ms' }}>
+                <div style={{ fontSize: 58, lineHeight: 1, fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--amber)' }}>
+                  <Counter to={4} duration={900} delay={1980} active={isActive} format={(n) => Math.round(n)} />
+                </div>
+                <div className="mono" style={{ fontSize: 11, letterSpacing: '0.2em', color: 'var(--bone-2)', opacity: 0.6, marginTop: 10 }}>
+                  FIRMS IN CONVERSATION
                 </div>
               </div>
             </div>
           </div>
 
-          <div style={{ borderLeft: '1px solid rgba(242,237,228,0.12)', paddingLeft: 56 }}>
-            <div className="mono" data-reveal style={{ fontSize: 13, letterSpacing: '0.26em', color: 'var(--amber)', opacity: 0.8, marginBottom: 24, '--reveal-delay': '1600ms' }}>
-              IN CONVERSATION
+          <div style={{ borderLeft: '1px solid rgba(242,237,228,0.12)', paddingLeft: 52 }}>
+            <div className="mono" data-reveal style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', opacity: 0.8, marginBottom: 22, '--reveal-delay': '1500ms' }}>
+              WHO CAME ASKING
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
               {talking.map((n, i) => (
-                <div key={n} data-reveal style={{ '--reveal-delay': `${1700 + i * 120}ms`, fontSize: 24, color: 'var(--bone)', fontWeight: 300 }}>
+                <div key={n} data-reveal style={{ '--reveal-delay': `${1600 + i * 110}ms`, fontSize: 22, color: 'var(--bone)', fontWeight: 300 }}>
                   {n}
                 </div>
               ))}
             </div>
-            <div data-reveal className="serif" style={{
-              marginTop: 40, paddingTop: 28, borderTop: '1px solid rgba(242,237,228,0.12)',
-              fontSize: 30, fontStyle: 'italic', lineHeight: 1.3, color: 'var(--bone)',
-              '--reveal-delay': '2200ms',
-            }}>
-              That's what we did with nothing.<br />
-              <span style={{ color: 'var(--amber)' }}>This raise is what we do with something.</span>
-            </div>
           </div>
         </div>
       </div>
@@ -476,202 +506,182 @@ function CondTraction({ index }) {
   );
 }
 
-/* ============ 06 · MARKET ============ */
+/* ============ 06 · MARKET ============
+   ONE IDEA: We replace a $700M line item firms already pay every year.
+   (Founder notes: the arrow animation was glitchy — removed. The row
+   bars said nothing — replaced with a single proportional figure that
+   shows the replaceable slice inside the whole market.) */
 function CondMarket({ index }) {
   const innerRef = useRef(null);
   const isActive = useSlideActive(innerRef);
 
-  // Proportions (of $14.73B track width): today = 8.16/14.73, wedge = 0.7/14.73
-  const TODAY_W = '55.4%';
-  const WEDGE_W = '4.75%';
-
   return (
     <Slide index={index} total={TOTAL} section="05 · Market" label="Market" tone="dark">
-      <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '150px 120px 130px', display: 'flex', flexDirection: 'column' }}>
-        <div className="mono" data-reveal style={{ fontSize: 15, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 24 }}>
-          MARKET
-        </div>
-        <div className="serif" style={{ fontSize: 110, lineHeight: 0.95, letterSpacing: '-0.03em' }}>
-          <span data-wipe style={{ '--reveal-delay': '200ms' }}>
-            $<Counter to={8.16} duration={1200} delay={300} active={isActive} format={(n) => n.toFixed(2)} />B
-          </span>
-          <span className="serif" style={{ fontSize: 56, color: 'var(--bone-2)', margin: '0 20px' }}>→</span>
-          <span data-wipe style={{ '--reveal-delay': '700ms', color: 'var(--amber)', fontStyle: 'italic' }}>$14.73B</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 40, marginTop: 18 }}>
-          <div data-reveal style={{ fontSize: 29, color: 'var(--bone-2)', fontWeight: 300, '--reveal-delay': '1000ms' }}>
-            Global building code compliance, growing 8.8% a year to 2030.
-          </div>
-          <SourceTag>COHERENT MARKET INSIGHTS, 2023</SourceTag>
-        </div>
+      <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Eyebrow>MARKET</Eyebrow>
 
-        {/* ── The wedge, to scale: full market → the consultant line item ── */}
-        <div style={{ marginTop: 'auto', marginBottom: 'auto', paddingTop: 24 }}>
-          {/* Track 1 — the market */}
-          <div style={{ position: 'relative', height: 44, background: 'rgba(242,237,228,0.06)', border: '1px solid rgba(242,237,228,0.14)' }}>
-            <div className="bar-with" style={{
-              '--bar-w': TODAY_W, '--bar-delay': '600ms',
-              position: 'absolute', left: 0, top: 0, bottom: 0,
-              background: 'rgba(242,237,228,0.26)',
-            }} />
-            <div className="mono" data-reveal style={{
-              '--reveal-delay': '1200ms',
-              position: 'absolute', left: `calc(${TODAY_W} - 8px)`, top: -26, transform: 'translateX(-100%)',
-              fontSize: 12, letterSpacing: '0.2em', color: 'var(--bone-2)', opacity: 0.7,
-            }}>
-              TODAY
+        {/* THE TAKEAWAY — the only serif on this slide.
+            The hero is the replaceable line item, not the market size. */}
+        <h2 className="serif" style={{ fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0' }}>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>Firms already pay </span>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '480ms', fontStyle: 'italic', color: 'var(--amber)' }}>$700M a year</span><br />
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '820ms' }}>for this. We replace it.</span>
+        </h2>
+
+        {/* Proportional figure: the replaceable slice inside the market.
+            One idea, drawn to scale — no decorative arrow. */}
+        <div style={{ marginTop: 52 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 12 }}>
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.22em', color: 'var(--bone-2)', opacity: 0.6 }}>
+              GLOBAL BUILDING CODE COMPLIANCE · $8.16B TODAY
             </div>
-            <div className="mono" data-reveal style={{
-              '--reveal-delay': '1200ms',
-              position: 'absolute', right: 0, top: -26,
-              fontSize: 12, letterSpacing: '0.2em', color: 'var(--bone-2)', opacity: 0.7,
-            }}>
-              2030
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.22em', color: 'var(--bone-2)', opacity: 0.45 }}>
+              $14.73B BY 2030 · 8.8% CAGR
             </div>
           </div>
 
-          {/* Track 2 — the wedge we take */}
-          <div style={{ position: 'relative', height: 110, marginTop: 16 }}>
-            <div className="bar-with" style={{
-              '--bar-w': WEDGE_W, '--bar-delay': '1500ms',
-              position: 'absolute', left: 0, top: 0, height: 44,
-              background: 'var(--amber)',
-            }} />
-            <div data-reveal style={{ '--reveal-delay': '1800ms', position: 'absolute', left: `calc(${WEDGE_W} + 36px)`, top: -4 }}>
-              <div className="serif" style={{ fontSize: 38, lineHeight: 1.25, letterSpacing: '-0.015em' }}>
-                ~$700M a year goes to outside code consultants.
-              </div>
-              <div className="serif" style={{ fontSize: 38, lineHeight: 1.25, fontStyle: 'italic', color: 'var(--amber)' }}>
-                That's the line item we replace.
-              </div>
+          {/* full-market track, with the ~$700M consultant slice to scale (8.6%) */}
+          <div style={{ position: 'relative', height: 56, width: '100%', border: '1px solid rgba(242,237,228,0.18)' }}>
+            <div
+              className="fw-bar"
+              style={{
+                '--fw-w': '8.6%', '--fw-delay': '1150ms',
+                position: 'absolute', left: 0, top: 0, bottom: 0,
+                background: 'var(--amber)',
+              }}
+            />
+            <div
+              className="fw-bar"
+              style={{
+                '--fw-w': '55.4%', '--fw-delay': '1350ms',
+                position: 'absolute', left: '8.6%', top: 0, bottom: 0,
+                background: 'rgba(242,237,228,0.10)',
+              }}
+            />
+          </div>
+
+          <div data-reveal style={{ '--reveal-delay': '1600ms', display: 'flex', gap: 14, alignItems: 'baseline', marginTop: 16 }}>
+            <span style={{ width: 26, height: 10, background: 'var(--amber)', display: 'inline-block' }} />
+            <span style={{ fontSize: 24, color: 'var(--bone)', fontWeight: 400 }}>
+              <strong style={{ fontWeight: 600 }}>~$700M</strong> paid to outside code consultants — the line item we replace.
+            </span>
+          </div>
+        </div>
+
+        {/* Support — two phases, sans, clearly secondary */}
+        <div style={{ paddingTop: 44, borderTop: '1px solid rgba(242,237,228,0.16)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 76 }}>
+          <div data-reveal style={{ '--reveal-delay': '1800ms' }}>
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 16 }}>
+              PHASE ONE · ARCHITECTS
+            </div>
+            <div style={{ fontSize: 23, lineHeight: 1.45, fontWeight: 300, color: 'var(--bone-2)' }}>
+              <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>1,235 US firms</strong> have 50 or more
+              people — 6.5% of firms, but more than half of everyone in private practice. Where the
+              complex projects are, and where our design partners already are.
+            </div>
+          </div>
+          <div data-reveal style={{ '--reveal-delay': '1950ms' }}>
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 16 }}>
+              PHASE TWO · CITIES
+            </div>
+            <div style={{ fontSize: 23, lineHeight: 1.45, fontWeight: 300, color: 'var(--bone-2)' }}>
+              Every submission from a Cuniform firm arrives <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>pre-checked
+              and cited</strong>. Jurisdictions clear them faster — it costs them nothing and requires no procurement.
             </div>
           </div>
         </div>
 
-        <div style={{ paddingTop: 36, borderTop: '1px solid rgba(242,237,228,0.18)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72 }}>
-          <div data-reveal style={{ '--reveal-delay': '2200ms' }}>
-            <div className="mono" style={{ fontSize: 13, letterSpacing: '0.26em', color: 'var(--amber)', marginBottom: 16 }}>
-              PHASE ONE · THE BEACHHEAD
-            </div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 20 }}>
-              <div className="serif" style={{ fontSize: 68, lineHeight: 1, letterSpacing: '-0.02em' }}>
-                <Counter to={1235} duration={1200} delay={2300} active={isActive} format={(n) => Math.round(n).toLocaleString()} />
-              </div>
-              <div className="mono" style={{ fontSize: 13, letterSpacing: '0.2em', color: 'var(--bone-2)', opacity: 0.75 }}>
-                US FIRMS · 50+ PEOPLE
-              </div>
-            </div>
-            {/* firms vs. employment — the asymmetry, drawn */}
-            <div style={{ marginTop: 20, display: 'grid', gridTemplateColumns: '300px 1fr', rowGap: 10, columnGap: 20, alignItems: 'center' }}>
-              <div style={{ position: 'relative', height: 10, background: 'rgba(242,237,228,0.08)' }}>
-                <div className="bar-with" style={{ '--bar-w': '6.5%', '--bar-delay': '2500ms', position: 'absolute', left: 0, top: 0, bottom: 0, background: 'rgba(242,237,228,0.6)' }} />
-              </div>
-              <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--bone-2)', opacity: 0.7 }}>6.5% OF FIRMS</div>
-              <div style={{ position: 'relative', height: 10, background: 'rgba(242,237,228,0.08)' }}>
-                <div className="bar-with" style={{ '--bar-w': '52%', '--bar-delay': '2650ms', position: 'absolute', left: 0, top: 0, bottom: 0, background: 'rgba(242,237,228,0.6)' }} />
-              </div>
-              <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--bone-2)', opacity: 0.7 }}>MORE THAN HALF OF PRIVATE-PRACTICE EMPLOYMENT</div>
-            </div>
-            <div style={{ marginTop: 18, fontSize: 24, lineHeight: 1.45, fontWeight: 300, color: 'var(--bone)' }}>
-              It's where the complex projects are, and where our
-              design partners already are.
-            </div>
-            <SourceTag style={{ marginTop: 12 }}>AIA FIRM SURVEY</SourceTag>
-          </div>
-
-          <div data-reveal style={{ '--reveal-delay': '2400ms' }}>
-            <div className="mono" style={{ fontSize: 13, letterSpacing: '0.26em', color: 'var(--amber)', marginBottom: 16 }}>
-              PHASE TWO · THE CITIES
-            </div>
-            <div style={{ fontSize: 26, lineHeight: 1.5, fontWeight: 300, color: 'var(--bone)' }}>
-              Every submission that leaves a Cuniform firm arrives <strong style={{ fontWeight: 600 }}>pre-checked
-              and cited.</strong> Jurisdictions that accept pre-checked submissions move projects to ground
-              months faster — <em style={{ fontStyle: 'italic' }}>it costs them nothing and requires no procurement.</em>
-            </div>
-          </div>
-        </div>
+        <SourceTag style={{ marginTop: 22 }}>MARKET · COHERENT MARKET INSIGHTS, 2023&nbsp;&nbsp;·&nbsp;&nbsp;FIRM COUNTS · AIA FIRM SURVEY</SourceTag>
       </div>
     </Slide>
   );
 }
 
-/* ============ 07 · COMPETITION ============ */
+/* ============ 07 · COMPETITION ============
+   ONE IDEA: Everyone works after the drawing is done. Nobody is in the model. */
 function CondCompetition({ index }) {
-  const COLS = '250px 1fr 200px';
-  // barW: raised, proportional within a 160px track ($91M = full track)
+  const COLS = '230px 1fr 96px 150px';
   const rows = [
-    { name: 'UpCodes', what: 'Code search. Reads the rule book.', raised: '$7.6M', barW: 14 },
-    { name: 'CodeComply.Ai', what: 'Reviews PDFs after design is done.', raised: '$2M', barW: 4 },
-    { name: 'PermitFlow', what: 'Automates the submission paperwork.', raised: '$91M', barW: 160 },
-    { name: 'Archistar · CivCheck · Symbium', what: 'Help city reviewers review faster.', raised: '—', barW: 0 },
+    { name: 'UpCodes', what: 'Code search. Reads the rule book.', raised: '$7.6M', w: 8 },
+    { name: 'CodeComply.Ai', what: 'Reviews PDFs after design is done.', raised: '$2M', w: 2 },
+    { name: 'PermitFlow', what: 'Automates the submission paperwork.', raised: '$91M', w: 100 },
+    { name: 'Archistar · CivCheck · Symbium', what: 'Help city reviewers review faster.', raised: '—', w: 0 },
   ];
 
   return (
     <Slide index={index} total={TOTAL} section="06 · Competition" label="Competition" tone="paper">
-      <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 140px', display: 'flex', flexDirection: 'column' }}>
-        <h2 className="serif" style={{ fontSize: 100, lineHeight: 1.0, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>
-          <span data-wipe style={{ '--reveal-delay': '200ms' }}>Nobody is</span>{' '}
-          <span data-wipe style={{ '--reveal-delay': '500ms', fontStyle: 'italic', color: 'var(--amber)' }}>inside the model.</span>
+      <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Eyebrow style={{ color: 'var(--amber)' }}>COMPETITION</Eyebrow>
+
+        {/* THE TAKEAWAY — the only serif on this slide */}
+        <h2 className="serif" style={{ fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0', color: 'var(--ink)' }}>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>A hundred million dollars in.</span><br />
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>Nobody is inside the model.</span>
         </h2>
 
-        <div style={{ marginTop: 56 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: COLS, gap: 28, paddingBottom: 14, borderBottom: '1.5px solid var(--ink)' }}>
-            {['COMPANY', 'WHAT THEY DO', 'RAISED'].map((c) => (
-              <div key={c} className="mono" style={{ fontSize: 12, letterSpacing: '0.24em', color: 'rgba(10,10,10,0.4)' }}>{c}</div>
+        {/* Support — the table, sans throughout */}
+        <div style={{ marginTop: 46 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: COLS, gap: 26, paddingBottom: 12, borderBottom: '1.5px solid var(--ink)' }}>
+            {['COMPANY', 'WHAT THEY DO', 'RAISED', ''].map((c, i) => (
+              <div key={i} className="mono" style={{ fontSize: 11, letterSpacing: '0.24em', color: 'rgba(10,10,10,0.4)' }}>{c}</div>
             ))}
           </div>
 
           {rows.map((r, i) => (
             <div key={r.name} data-reveal style={{
-              '--reveal-delay': `${800 + i * 130}ms`,
-              display: 'grid', gridTemplateColumns: COLS, gap: 28,
-              padding: '22px 0', borderBottom: '1px solid rgba(10,10,10,0.1)', alignItems: 'center',
+              '--reveal-delay': `${1000 + i * 130}ms`,
+              display: 'grid', gridTemplateColumns: COLS, gap: 26,
+              padding: '20px 0', borderBottom: '1px solid rgba(10,10,10,0.1)', alignItems: 'center',
             }}>
-              <div style={{ fontSize: 24, fontWeight: 500, color: 'var(--ink)' }}>{r.name}</div>
-              <div style={{ fontSize: 23, color: 'rgba(10,10,10,0.65)', fontWeight: 300 }}>{r.what}</div>
-              <div>
-                <div className="serif tnum" style={{ fontSize: 26, fontStyle: 'italic', color: 'rgba(10,10,10,0.55)' }}>{r.raised}</div>
-                {r.barW > 0 && (
-                  <div style={{ position: 'relative', height: 5, width: 160, background: 'rgba(10,10,10,0.07)', marginTop: 8 }}>
-                    <div className="bar-with" style={{
-                      '--bar-w': `${r.barW}px`, '--bar-delay': `${1100 + i * 130}ms`,
+              <div style={{ fontSize: 22, fontWeight: 500, color: 'var(--ink)', lineHeight: 1.2 }}>{r.name}</div>
+              <div style={{ fontSize: 21, color: 'rgba(10,10,10,0.6)', fontWeight: 300 }}>{r.what}</div>
+              <div style={{ fontSize: 22, color: 'rgba(10,10,10,0.45)', fontWeight: 400 }}>{r.raised}</div>
+              <div style={{ height: 8, background: 'rgba(10,10,10,0.07)', position: 'relative' }}>
+                {r.w > 0 && (
+                  <div
+                    className="fw-bar"
+                    style={{
+                      '--fw-w': `${r.w}%`, '--fw-delay': `${1150 + i * 130}ms`,
                       position: 'absolute', left: 0, top: 0, bottom: 0,
-                      background: 'rgba(10,10,10,0.45)',
-                    }} />
-                  </div>
+                      background: 'rgba(10,10,10,0.42)',
+                    }}
+                  />
                 )}
               </div>
             </div>
           ))}
 
           <div data-reveal style={{
-            '--reveal-delay': '1350ms',
-            display: 'grid', gridTemplateColumns: COLS, gap: 28,
-            padding: '24px 24px', margin: '0 -24px', alignItems: 'center', background: 'var(--ink)',
+            '--reveal-delay': '1580ms',
+            display: 'grid', gridTemplateColumns: COLS, gap: 26,
+            padding: '22px 24px', margin: '0 -24px', alignItems: 'center', background: 'var(--ink)',
           }}>
-            <div className="serif" style={{ fontSize: 28, fontStyle: 'italic', color: 'var(--amber)' }}>Cuniform</div>
-            <div style={{ fontSize: 23, color: 'var(--bone)', fontWeight: 400 }}>
-              Inside the model, while it's being drawn.
+            <div style={{ fontSize: 22, fontWeight: 600, color: 'var(--amber)' }}>Cuniform</div>
+            <div style={{ fontSize: 21, color: 'var(--bone)', fontWeight: 400 }}>
+              Inside the model, while it is being drawn.
             </div>
-            <div className="serif" style={{ fontSize: 26, fontStyle: 'italic', color: 'rgba(242,237,228,0.4)' }}>—</div>
+            <div style={{ fontSize: 22, color: 'rgba(242,237,228,0.35)' }}>—</div>
+            <div />
           </div>
         </div>
 
-        <div data-reveal className="serif" style={{
-          marginTop: 'auto', paddingTop: 44, fontSize: 44, lineHeight: 1.25,
-          color: 'var(--ink)', maxWidth: 1500, '--reveal-delay': '1700ms',
+        <div data-reveal style={{
+          paddingTop: 38, fontSize: 27, lineHeight: 1.4,
+          color: 'rgba(10,10,10,0.75)', fontWeight: 300, maxWidth: 1400, '--reveal-delay': '1750ms',
         }}>
-          A hundred million dollars has gone into this problem — and
-          <span style={{ fontStyle: 'italic', color: 'var(--amber)' }}> none of it checks the code while you draw.</span>
+          Every one of them works on the drawing after it is finished, or on the paperwork around it.
+          <strong style={{ color: 'var(--ink)', fontWeight: 500 }}> None of them check the code while you draw.</strong>
         </div>
 
-        <SourceTag dark={false} style={{ marginTop: 20 }}>FUNDING · PITCHBOOK, TECHCRUNCH, BUSINESSWIRE</SourceTag>
+        <SourceTag dark={false} style={{ marginTop: 18 }}>FUNDING · PITCHBOOK, TECHCRUNCH, BUSINESSWIRE</SourceTag>
       </div>
     </Slide>
   );
 }
 
-/* ============ 08 · TEAM ============ */
+/* ============ 08 · TEAM ============
+   ONE IDEA: Built by an architect who lived the problem.
+   (Capital efficiency moved here from Traction — as conviction, not excuse.) */
 function CondTeam({ index }) {
   const founders = [
     { name: 'Joe Yatco', role: 'CEO', bio: '[BIO PENDING]' },
@@ -681,49 +691,52 @@ function CondTeam({ index }) {
 
   return (
     <Slide index={index} total={TOTAL} section="07 · Team" label="Team" tone="dark">
-      <div style={{ position: 'absolute', inset: 0, padding: '140px 120px 120px', display: 'flex', flexDirection: 'column' }}>
-        <h2 className="serif" style={{ fontSize: 84, lineHeight: 1.02, letterSpacing: '-0.02em', margin: 0 }}>
-          <span data-wipe style={{ '--reveal-delay': '200ms' }}>Built by an architect</span><br />
-          <span data-wipe style={{ '--reveal-delay': '550ms', fontStyle: 'italic', color: 'var(--amber)' }}>who lived the problem.</span>
+      <div style={{ position: 'absolute', inset: 0, padding: '150px 120px 125px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Eyebrow>TEAM</Eyebrow>
+
+        {/* THE TAKEAWAY — the only serif on this slide */}
+        <h2 className="serif" style={{ fontSize: 88, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '24px 0 0' }}>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>Built by an architect</span>{' '}
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>who lived the problem.</span>
         </h2>
 
         <div data-reveal style={{
-          marginTop: 26, fontSize: 27, lineHeight: 1.5, fontWeight: 300,
-          color: 'var(--bone-2)', maxWidth: 1450, '--reveal-delay': '900ms',
+          marginTop: 26, fontSize: 26, lineHeight: 1.5, fontWeight: 300,
+          color: 'var(--bone-2)', maxWidth: 1420, '--reveal-delay': '900ms',
         }}>
-          Most AEC software is built by technologists who studied the industry from the outside.
-          Joe spent ten years watching projects lose months to code review, then built the tool he needed.
-          That shows up most in what we chose <em style={{ fontStyle: 'italic' }}>not</em> to build —
-          <strong style={{ color: 'var(--bone)', fontWeight: 600 }}> no auto-fix, no generated drawings.
-          The architect's stamp stays the architect's.</strong>
+          Most AEC software is built by technologists who studied the industry from outside.
+          Joe spent ten years losing months to code review, then built the tool he needed. That shows
+          up most in what we chose <em style={{ fontStyle: 'italic' }}>not</em> to build —
+          <strong style={{ color: 'var(--bone)', fontWeight: 500 }}> no auto-fix, no generated drawings.
+          The architect’s stamp stays the architect’s.</strong>
         </div>
 
-        <div style={{ marginTop: 'auto', paddingTop: 40, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 52 }}>
+        <div style={{ paddingTop: 42, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}>
           {founders.map((f, i) => (
             <div key={f.name} data-reveal style={{
-              '--reveal-delay': `${1200 + i * 200}ms`, '--reveal-y': '36px',
-              borderTop: '2px solid var(--amber)', paddingTop: 24,
+              '--reveal-delay': `${1200 + i * 180}ms`, '--reveal-y': '30px',
+              borderTop: '1px solid rgba(242,237,228,0.22)', paddingTop: 24,
             }}>
               <div style={{
-                width: '36%', aspectRatio: '1', marginBottom: 20,
+                width: 92, height: 92, marginBottom: 20,
                 background: 'linear-gradient(135deg, #1C1C1C, #0A0A0A)',
                 border: '1px solid rgba(242,237,228,0.14)',
                 position: 'relative', overflow: 'hidden',
               }}>
-                <div className="serif" style={{
+                <div style={{
                   position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 84, fontStyle: 'italic', color: 'var(--amber)', opacity: 0.22, letterSpacing: '-0.04em',
+                  fontSize: 34, fontWeight: 300, color: 'var(--amber)', opacity: 0.4, letterSpacing: '0.02em',
                 }}>
                   {f.name.split(' ').map((s) => s[0]).join('')}
                 </div>
               </div>
-              <div className="mono" style={{ fontSize: 12, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 12 }}>
+              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 12 }}>
                 {f.role}
               </div>
-              <div className="serif" style={{ fontSize: 38, lineHeight: 1, letterSpacing: '-0.015em', marginBottom: 14 }}>
+              <div style={{ fontSize: 32, lineHeight: 1.1, letterSpacing: '-0.02em', fontWeight: 500, color: 'var(--bone)', marginBottom: 14 }}>
                 {f.name}
               </div>
-              <div style={{ fontSize: 19, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300 }}>
+              <div style={{ fontSize: 19, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.85 }}>
                 {f.bio}
               </div>
             </div>
@@ -731,15 +744,15 @@ function CondTeam({ index }) {
         </div>
 
         <div data-reveal style={{
-          marginTop: 36, paddingTop: 24, borderTop: '1px solid rgba(242,237,228,0.14)',
+          marginTop: 34, paddingTop: 24, borderTop: '1px solid rgba(242,237,228,0.14)',
           display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 40,
-          '--reveal-delay': '1900ms',
+          '--reveal-delay': '1850ms',
         }}>
-          <div className="mono" style={{ fontSize: 13, letterSpacing: '0.24em', color: 'var(--bone-2)', opacity: 0.75 }}>
-            + TWO ENGINEERS · ONE PRODUCT DESIGNER · ALL UNPAID FOR 18 MONTHS
+          <div style={{ fontSize: 22, color: 'var(--bone)', fontWeight: 400 }}>
+            Six people. Eighteen months. <strong style={{ color: 'var(--amber)', fontWeight: 500 }}>No outside capital, and nobody paid.</strong>
           </div>
-          <div className="serif" style={{ fontSize: 26, fontStyle: 'italic', color: 'var(--bone)', textAlign: 'right', maxWidth: 780 }}>
-            The software can be copied. <span style={{ color: 'var(--amber)' }}>The relationships can't be rushed.</span>
+          <div style={{ fontSize: 22, color: 'var(--bone-2)', fontWeight: 300, textAlign: 'right' }}>
+            The software can be copied. The relationships cannot be rushed.
           </div>
         </div>
       </div>
@@ -747,114 +760,86 @@ function CondTeam({ index }) {
   );
 }
 
-/* ============ 09 · THE ASK ============ */
+/* ============ 09 · THE ASK ============
+   ONE IDEA: $1.5M buys 18 months and gets us to $1M ARR.
+   (Founder decision: lead with $1M, not $500K. At 8–12x ARR multiples a
+   $12M post requires ~$1M+ ARR to justify a flat next round, and 78% of
+   vertical-AI Series A rounds happen under $1.2M ARR — so $1M is both the
+   fundable number and the one this valuation implies.) */
 function CondAsk({ index }) {
   const innerRef = useRef(null);
   const isActive = useSlideActive(innerRef);
 
   return (
     <Slide index={index} total={TOTAL} section="08 · The Ask" label="The Ask" tone="dark">
-      <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '150px 120px 130px', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: 80, alignItems: 'start', flex: 1 }}>
-          <div>
-            <div className="mono" data-reveal style={{ fontSize: 15, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 24 }}>
-              THE ASK
-            </div>
-            <div className="serif" data-reveal style={{
-              fontSize: 190, lineHeight: 0.9, letterSpacing: '-0.04em',
-              '--reveal-delay': '300ms', '--reveal-y': '50px',
-            }}>
-              $<Counter to={1.5} duration={1100} delay={400} active={isActive} format={(n) => n.toFixed(1)} />M
-            </div>
-            <div data-reveal style={{ fontSize: 32, marginTop: 22, color: 'var(--bone-2)', fontWeight: 300, '--reveal-delay': '650ms' }}>
-              SAFE · <span style={{ color: 'var(--amber)' }}>$12M post-money</span> · 18 months
-            </div>
-            <div data-reveal style={{ fontSize: 23, marginTop: 18, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.8, maxWidth: 620, lineHeight: 1.45, '--reveal-delay': '800ms' }}>
-              Eighteen months is sized to how long enterprise sales actually take in this
-              industry — six to nine months a deal.
-            </div>
-          </div>
+      <div ref={innerRef} style={{ position: 'absolute', inset: 0, padding: '150px 120px 125px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Eyebrow>THE ASK</Eyebrow>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 36, paddingTop: 14 }}>
-            <div>
-              <div className="mono" data-reveal style={{ fontSize: 13, letterSpacing: '0.26em', color: 'var(--amber)', marginBottom: 22, '--reveal-delay': '1000ms' }}>
-                WHERE IT GOES
-              </div>
-              <div data-reveal style={{ '--reveal-delay': '1100ms', display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: 24, rowGap: 20, alignItems: 'baseline' }}>
-                <div className="serif" style={{ fontSize: 28, fontStyle: 'italic', color: 'var(--amber)' }}>01</div>
-                <div style={{ fontSize: 27, fontWeight: 300, color: 'var(--bone)', lineHeight: 1.4 }}>
-                  It converts a <strong style={{ fontWeight: 600 }}>volunteer team into a full-time one.</strong>
-                </div>
-                <div className="serif" style={{ fontSize: 28, fontStyle: 'italic', color: 'var(--amber)' }}>02</div>
-                <div style={{ fontSize: 27, fontWeight: 300, color: 'var(--bone)', lineHeight: 1.4 }}>
-                  It buys <strong style={{ fontWeight: 600 }}>enterprise readiness</strong> —
-                  <span style={{ display: 'inline-flex', gap: 10, marginLeft: 14, verticalAlign: 'middle' }}>
-                    {['SOC 2', 'SINGLE SIGN-ON', 'ADMIN CONTROLS'].map((c) => (
-                      <span key={c} className="mono" style={{
-                        fontSize: 13, letterSpacing: '0.16em', color: 'var(--bone)',
-                        border: '1px solid rgba(242,237,228,0.3)', padding: '7px 12px', whiteSpace: 'nowrap',
-                      }}>{c}</span>
-                    ))}
-                  </span>
-                </div>
-              </div>
-              <div data-reveal style={{ '--reveal-delay': '1300ms', marginTop: 20, fontSize: 22, lineHeight: 1.45, fontWeight: 300, color: 'var(--bone-2)', opacity: 0.85 }}>
-                That's what any firm this size requires before they can buy, and it's the last
-                thing standing between our design partners and a contract.
-              </div>
-            </div>
+        {/* THE TAKEAWAY — the only serif on this slide */}
+        <h2 className="serif" style={{ fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0' }}>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>$1.5M for eighteen months,</span><br />
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>to reach $1M in ARR.</span>
+        </h2>
 
-            <div data-reveal style={{ '--reveal-delay': '1500ms', paddingTop: 30, borderTop: '1px solid rgba(242,237,228,0.16)' }}>
-              <div className="mono" style={{ fontSize: 13, letterSpacing: '0.26em', color: 'var(--amber)', marginBottom: 18 }}>
-                WHERE IT GETS US
-              </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 24 }}>
-                <div className="serif" style={{ fontSize: 72, lineHeight: 1, letterSpacing: '-0.02em' }}>
-                  ~$<Counter to={500} duration={1100} delay={1700} active={isActive} format={(n) => Math.round(n)} />K
-                </div>
-                <div style={{ fontSize: 24, color: 'var(--bone-2)', fontWeight: 300 }}>ARR at 18 months.</div>
-              </div>
-              {/* ARR bar — solid to $500K, dashed upside to $1M */}
-              <div style={{ position: 'relative', height: 14, marginTop: 22, background: 'rgba(242,237,228,0.07)' }}>
-                <div className="bar-with" style={{
-                  '--bar-w': '50%', '--bar-delay': '1900ms',
-                  position: 'absolute', left: 0, top: 0, bottom: 0,
-                  background: 'var(--bone)',
-                }} />
-                <div data-reveal style={{
-                  '--reveal-delay': '2300ms',
-                  position: 'absolute', left: '50%', right: 0, top: 0, bottom: 0,
-                  border: '1px dashed rgba(242,237,228,0.4)', borderLeft: 'none',
-                }} />
-              </div>
-              <div data-reveal className="mono" style={{
-                '--reveal-delay': '2300ms', marginTop: 12, textAlign: 'right',
-                fontSize: 12, letterSpacing: '0.18em', color: 'var(--bone-2)', opacity: 0.75,
-              }}>
-                UPSIDE $1M, VIA FIRM-WIDE EXPANSION
-              </div>
-            </div>
-          </div>
+        <div data-reveal style={{
+          marginTop: 26, fontSize: 27, lineHeight: 1.45, fontWeight: 300,
+          color: 'var(--bone-2)', maxWidth: 1400, '--reveal-delay': '950ms',
+        }}>
+          SAFE at <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$12M post-money</strong>.
+          Eighteen months is sized to this industry’s sales cycle — six to nine months a deal.
         </div>
 
-        <div data-reveal className="serif" style={{
-          marginTop: 44, paddingTop: 44, borderTop: '2px solid var(--amber)',
-          fontSize: 62, lineHeight: 1.1, letterSpacing: '-0.02em',
-          '--reveal-delay': '2600ms',
-        }}>
-          Check the code while you draw.{' '}
-          <span style={{ fontStyle: 'italic', color: 'var(--amber)' }}>Not after you submit.</span>
+        {/* Support — sans, two columns, clearly secondary */}
+        <div style={{ paddingTop: 46, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 76 }}>
+          <div data-reveal style={{ '--reveal-delay': '1250ms' }}>
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 20 }}>
+              WHERE IT GOES
+            </div>
+            <div style={{ fontSize: 24, lineHeight: 1.5, fontWeight: 300, color: 'var(--bone-2)' }}>
+              <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>It converts a volunteer team into a full-time one</strong>,
+              and buys the enterprise readiness firms this size require before they can buy.
+            </div>
+            <div style={{ display: 'flex', gap: 10, marginTop: 20, flexWrap: 'wrap' }}>
+              {['SOC 2', 'SINGLE SIGN-ON', 'ADMIN CONTROLS'].map((c, i) => (
+                <span key={c} data-reveal className="mono" style={{
+                  '--reveal-delay': `${1450 + i * 100}ms`,
+                  fontSize: 11, letterSpacing: '0.18em',
+                  border: '1px solid rgba(242,237,228,0.22)', padding: '8px 14px',
+                  color: 'var(--bone-2)',
+                }}>{c}</span>
+              ))}
+            </div>
+          </div>
+
+          <div data-reveal style={{ '--reveal-delay': '1450ms' }}>
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 20 }}>
+              WHERE IT GETS US
+            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 20, marginBottom: 18 }}>
+              <div style={{ fontSize: 72, lineHeight: 1, fontWeight: 300, letterSpacing: '-0.03em', color: 'var(--bone)' }}>
+                $<Counter to={1} duration={900} delay={1600} active={isActive} format={(n) => n.toFixed(0)} />M
+              </div>
+              <div style={{ fontSize: 22, color: 'var(--bone-2)', fontWeight: 300, lineHeight: 1.35 }}>
+                ARR at month 18,<br />across 20–25 firms.
+              </div>
+            </div>
+            <div style={{ fontSize: 20, lineHeight: 1.5, color: 'var(--bone-2)', fontWeight: 300, opacity: 0.8 }}>
+              Reached by firm-wide expansion at two or three logos — the motion our design
+              partners are already in.
+            </div>
+          </div>
         </div>
 
         <div data-reveal style={{
-          marginTop: 28, display: 'flex', gap: 56, alignItems: 'baseline',
-          '--reveal-delay': '2800ms',
+          marginTop: 40, paddingTop: 26, borderTop: '2px solid var(--amber)',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 40,
+          '--reveal-delay': '1900ms',
         }}>
-          <div className="mono" style={{ fontSize: 14, letterSpacing: '0.24em', color: 'var(--bone-2)', opacity: 0.8 }}>
-            JOE@CUNIFORM.TECH
+          <div style={{ fontSize: 26, color: 'var(--bone)', fontWeight: 400 }}>
+            Building code compliance, <span style={{ color: 'var(--amber)' }}>in real time.</span>
           </div>
-          <div className="mono" style={{ fontSize: 14, letterSpacing: '0.24em', color: 'var(--bone-2)', opacity: 0.8 }}>
-            CUNIFORM.TECH
+          <div className="mono" style={{ fontSize: 13, letterSpacing: '0.24em', color: 'var(--bone-2)', opacity: 0.75 }}>
+            JOE@CUNIFORM.TECH&nbsp;&nbsp;·&nbsp;&nbsp;CUNIFORM.TECH
           </div>
         </div>
       </div>
@@ -862,7 +847,7 @@ function CondAsk({ index }) {
   );
 }
 
-/* ---- Export the 9 condensed slides, in order --------------------- */
+/* ---- The 9 slides, in order --------------------- */
 window.CONDENSED_SLIDES = [
   { key: 'cover',       C: CondCover },
   { key: 'problem',     C: CondProblem },
@@ -876,7 +861,8 @@ window.CONDENSED_SLIDES = [
 ];
 
 Object.assign(window, {
-  TOTAL, Logomark,
+  TOTAL, Logomark, SourceTag, Eyebrow,
+  IconCodeBook, IconBIM, IconGridlock, IconRetiring,
   CondCover, CondProblem, CondDemo, CondWhyNow, CondTraction,
   CondMarket, CondCompetition, CondTeam, CondAsk,
 });
