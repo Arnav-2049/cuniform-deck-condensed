@@ -73,73 +73,10 @@ function Logomark({ size = 28 }) {
 /* ============ 01 · COVER ============
    ONE IDEA: Building code compliance in real time. */
 
-/* Cover ticker, ported from the extensive deck: the audience widens
-   word by word, ending on "everyone". Rises in, holds, exits upward. */
-const TICKER_WORDS = ['architects', 'cities', 'developers', 'everyone'];
-
-function useCoverTicker(isActive) {
-  const elRef = useRef(null);
-  const timerRef = useRef(null);
-  const startedRef = useRef(false);
-
-  useEffect(() => {
-    if (!isActive) return;
-    if (startedRef.current) return;
-    startedRef.current = true;
-
-    let i = 0;
-
-    /* Size the wrap to the word so the following text always sits flush
-       after it. Without this the container holds a fixed width and short
-       words leave a visible gap. */
-    function fitWrap(el) {
-      const wrap = el.parentElement;
-      if (wrap) wrap.style.width = `${Math.ceil(el.scrollWidth)}px`;
-    }
-
-    function showWord(index) {
-      const el = elRef.current;
-      if (!el) return;
-      el.textContent = TICKER_WORDS[index];
-      el.className = 'ticker-word';
-      void el.offsetHeight;
-      fitWrap(el);
-      el.classList.add('visible');
-    }
-
-    function next() {
-      const el = elRef.current;
-      if (!el || i >= TICKER_WORDS.length) return;
-      showWord(i);
-      i++;
-      if (i < TICKER_WORDS.length) {
-        timerRef.current = setTimeout(() => {
-          if (!el) return;
-          el.classList.add('exit');
-          el.addEventListener('transitionend', () => {
-            el.className = 'ticker-word';
-            timerRef.current = setTimeout(next, 60);
-          }, { once: true });
-        }, 900);
-      }
-    }
-
-    /* Give the wrap an explicit starting width so the first resize
-       animates rather than snapping from `auto`. */
-    if (elRef.current) fitWrap(elRef.current);
-
-    timerRef.current = setTimeout(next, 1700);
-    return () => clearTimeout(timerRef.current);
-  }, [isActive]);
-
-  return elRef;
-}
-
 function CondCover({ index }) {
   const activeIdx = useActiveSlideIndex();
   const ref = useRef(null);
   const isActive = activeIdx === index;
-  const tickerRef = useCoverTicker(isActive);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -185,17 +122,11 @@ function CondCover({ index }) {
           <span style={{ color: 'var(--amber)', fontStyle: 'italic' }}>in real time.</span>
         </div>
 
-        {/* The ticker: the audience widens word by word, ending on "everyone". */}
         <div data-reveal style={{
           fontSize: 34, lineHeight: 1.3, fontWeight: 400, textAlign: 'center',
           color: 'var(--bone)', '--reveal-delay': '1100ms',
-          display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 12,
         }}>
-          <span>For</span>
-          <span className="ticker-wrap">
-            <span className="ticker-word" ref={tickerRef}>everyone</span>
-          </span>
-          <span>who touches a building before it is built.</span>
+          For everyone who touches a building before it is built.
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, marginTop: 12 }}>
