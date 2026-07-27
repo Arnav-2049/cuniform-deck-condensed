@@ -482,3 +482,64 @@ Hook must land in ~90 seconds; each slide must stand alone as a re-entry point.
 
 **9 slides retained, but every word must earn its place.** Repeat the one-liner on the Ask slide —
 he may not recall slide 1 by slide 9; give him the anchor at the moment of decision.
+
+---
+
+## 11 · ROUND 6 — DEVELOPER ECONOMICS REFRAME (CONFIRMED)
+
+### What changes — and what doesn't
+**Pricing does not change.** What changes is *whose money the deck argues about.*
+
+| Slide | FROM (firm-expense argument) | TO (project-capital argument) |
+|---|---|---|
+| **2 · Problem** | "$2.5–15K consultant fee" — an architecture firm's P&L line | "40% rejected on first submission → 4–8 weeks of delay → **$50–200K/month in carrying costs**" |
+| **ROI** | "One rejection = 28 seats for a year" | "One rejection on a $50M project = **$100–200K in preserved carry**, vs ~$35K/yr for the tool" |
+| **Market** | Seat math as the headline | Seat math as the **delivery mechanism**; project economics as the **value** |
+
+**Why it works on this audience:** "$59/seat" requires JR to translate into a frame he doesn't use.
+"Every month of delay costs the project $150K" requires no translation — he has paid that bill for
+thirty years. Speak in the units of his career.
+
+**Also confirmed: add one sentence on the city angle** (every word earning its place) — the
+structural endgame framing: *pre-cleared submissions make cities faster without cities buying
+anything.*
+
+### Milestone framing — final
+**$500K ARR at M18 is the headline; $1M is the explicit upside with a named mechanism.**
+
+AEC benchmark reality: *"you won't hit $10M ARR in a year and might not even hit $1M ARR in two."*
+Construction shows only **12% MQL→SQL** — worst of any B2B vertical. Enterprise cycles run
+**6–9 months**, so a GA at M6 means the first real cohort signs M12–M15 and contributes only 3–6
+months of ARR by M18.
+
+**Why Cuniform can beat the benchmark (say this explicitly):**
+1. **Not cold-starting** — two ENR Top-500 firms already in
+2. **Freemium bypasses procurement** — the exact friction the benchmark measures
+3. **Firm-wide expansion is the accelerant** — RAMSA alone ≈ $215K at full deployment; five such
+   expansions *is* $1M
+
+Being the founder who knows the AEC benchmark and prices against it is itself a credibility signal.
+
+### Conversion benchmarks (sourced — for the funnel model)
+| Metric | Benchmark |
+|---|---|
+| Freemium → paid, broad B2B | 1–5% |
+| **Freemium → paid, tightly targeted high-intent** | **5–15%** |
+| Enterprise software trial → paid | 18.6% |
+| **Pilot → paid (run well)** | **60–90%** |
+| Enterprise sales cycle ($100K+) | 6–9 months |
+| Enterprise win rate | 12–18% (median 15%) |
+
+**Modeled path to $500K at M18:** ~500–1,000 free signups (no paid marketing) → 5% → ~25–50 Pro
+seats ≈ $30–60K; plus 2 design partners converting at ~70% and 6–8 new enterprise lands at ~$60K
+≈ $450–480K. **Total ≈ $510–540K.**
+
+### Cities slide — framing decided
+**"Structural endgame."** Pre-cleared submissions make cities faster *without cities buying
+anything* — that's the wedge into municipal review. Clearly labeled Phase 2. No fabricated traction.
+
+### Other decisions
+- **Team portraits: keep initials placeholders** (founder's call).
+- **Demo: deferred** until content is locked. Script to be written after.
+- **Team bios (O4): BOTH need refining** — awaiting accurate versions from founder. Do not ship the
+  current "80+ projects" / "1M+ customers" language unverified.
