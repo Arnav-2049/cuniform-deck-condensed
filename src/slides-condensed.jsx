@@ -858,7 +858,7 @@ function CondTeam({ index }) {
   const founders = [
     { name: 'Joe Yatco', role: 'CEO', bio: 'Ten years in architecture. Lived the code-compliance problem across 80+ projects at RAMSA and East Horizon.', photo: 'assets/joe-yatco.png' },
     { name: 'Kyle Gallatin', role: 'CTO', bio: 'Production ML at Pfizer, Etsy, and Handshake. O’Reilly author. Full-time on close.', photo: 'assets/kyle-gallatin.png' },
-    { name: 'Arnav Somani', role: 'SENIOR DESIGNER', bio: 'Led design at Smartmedia Tech. Enterprise tools used across Visa, Nike, and the IOC.', photo: 'assets/arnav-somani.png' },
+    { name: 'Arnav Somani', role: 'CDO', bio: 'Led design at Smartmedia Tech. Enterprise tools used across Visa, Nike, and the IOC.', photo: 'assets/arnav-somani.png' },
   ];
 
   /* Design lead and advisor. Al's line is drawn from his public profile
