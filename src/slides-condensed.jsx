@@ -590,7 +590,7 @@ function CondTraction({ index }) {
     { name: 'RAMSA', sub: 'Robert A.M. Stern Architects' },
     { name: 'Hart Howerton', sub: 'Architecture · Planning · Landscape' },
   ];
-  const talking = ['Selldorf Architects', 'Arquitectonica', 'FXCollaborative', 'Notre Dame School of Architecture'];
+  const talking = ['Hart Howerton', 'RAMSA', 'FXCollaborative', 'Notre Dame School of Architecture'];
 
   return (
     <Slide index={index} total={TOTAL} section="04 · Momentum" label="Momentum" tone="dark">
