@@ -157,8 +157,9 @@ function CondCover({ index }) {
 }
 
 /* ============ 02 · PROBLEM ============
-   ONE IDEA: The check happens after the drawing is finished,
-   which costs the project money and clogs the city. */
+   ONE IDEA: Compliance is unknowable until the city rules on it, and that
+   uncertainty does two kinds of damage: the rework a firm can see, and the
+   work it never bids on. The second is the growth argument. */
 
 /* The rework loop. Six steps, drawn left to right, then an arc carries
    the eye back to the start so the cycle is visible rather than described.
@@ -254,27 +255,33 @@ function CondProblem({ index }) {
 
         {/* THE TAKEAWAY, the only serif on this slide */}
         <h2 className="serif" style={{ fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.025em', margin: '26px 0 0', maxWidth: 1560 }}>
-          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>Nobody checks the code</span><br />
-          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', paddingBottom: '0.16em', marginBottom: '-0.16em', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>until the drawing is finished.</span>
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', '--reveal-delay': '200ms' }}>Until the city looks,</span><br />
+          <span data-wipe style={{ display: 'inline-block', whiteSpace: 'nowrap', paddingBottom: '0.16em', marginBottom: '-0.16em', '--reveal-delay': '560ms', fontStyle: 'italic', color: 'var(--amber)' }}>compliance is a guess.</span>
         </h2>
 
-        {/* Two sentences, one per line. */}
+        {/* Two costs: the one a firm can see, and the one it never books. */}
         <div data-reveal style={{
-          marginTop: 26, fontSize: 28, lineHeight: 1.5, fontWeight: 300,
-          color: 'var(--bone-2)', '--reveal-delay': '950ms',
+          marginTop: 24, fontSize: 26, lineHeight: 1.5, fontWeight: 300,
+          color: 'var(--bone-2)', maxWidth: 1560, '--reveal-delay': '950ms',
         }}>
           <div>
-            Firms pay <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$700 million a year</strong> to have consultants check it by hand.
+            Firms pay <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$700 million a year</strong> to shrink that guess by hand.
+            It stays a guess until the city rules, and every rejection costs the project <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$50–200K a month</strong>.
           </div>
-          <div>
-            Every rejection costs the project <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>$50–200K a month</strong> and re-enters a <strong style={{ color: 'var(--bone)', fontWeight: 500 }}>4–12 week</strong> city queue.
+          <div style={{ marginTop: 14 }}>
+            So firms bid what they already know. New typologies, new jurisdictions, code they have
+            not run before: declined, or priced for the risk.
+          </div>
+          <div style={{ marginTop: 16, color: 'var(--bone)', fontWeight: 400 }}>
+            The uncertainty does not just cost rework.
+            <strong style={{ color: 'var(--amber)', fontWeight: 500 }}> It caps what a firm will take on.</strong>
           </div>
         </div>
 
         {/* The loop, drawn. Replaces the two support columns. */}
-        <div style={{ paddingTop: 40, borderTop: '1px solid rgba(242,237,228,0.16)' }}>
-          <div className="mono" data-reveal style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 34, '--reveal-delay': '1250ms' }}>
-            THE LOOP THIS CREATES
+        <div style={{ paddingTop: 30, borderTop: '1px solid rgba(242,237,228,0.16)' }}>
+          <div className="mono" data-reveal style={{ fontSize: 12, letterSpacing: '0.24em', color: 'var(--amber)', marginBottom: 28, '--reveal-delay': '1250ms' }}>
+            THE GUESSING, DRAWN
           </div>
           <ReworkLoop isActive={isActive} />
         </div>
@@ -668,7 +675,7 @@ function CondTraction({ index }) {
               fontSize: 21, lineHeight: 1.45, color: 'var(--bone-2)', fontWeight: 300,
               '--reveal-delay': '2150ms',
             }}>
-              Eighteen months from idea to an enterprise-level product — no outside funding.
+              Eighteen months from idea to an enterprise-level product. No outside funding.
               <strong style={{ color: 'var(--bone)', fontWeight: 500 }}> The waitlist built itself while we were heads-down.</strong>
             </div>
           </div>
